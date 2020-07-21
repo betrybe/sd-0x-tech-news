@@ -158,7 +158,9 @@ Essas notícias devem ser salvas no banco de dados utilizando os mesmos atributo
 
 ### MongoDB
 
-Para a realização desse projeto, suger-se que você crie um banco de dados `tech_news` para a aplicação e um banco de dados `tech_news_test` separado para o ambiente de testes. Para garantir que os dados gerados para um teste não influencie em outro teste, você deve popular e deletar as coleções ao início e ao fim de cada teste, respectivamente.
+Para a realização desse projeto, suger-se que você crie um banco de dados `tech_news` para a aplicação e um banco de dados `tech_news_test` separado para o ambiente de testes.
+
+Para garantir que os dados gerados para um teste não influencie em outro teste, você deve popular e deletar as coleções ao início e ao fim de cada teste, respectivamente.
 
 ---
 
@@ -416,16 +418,6 @@ Selecione uma das opções a seguir:
 - Caso a opção `6` seja selecionada, a raspagem deve ser feita utilizando função `top_5_categories` e seu resultado deve ser impresso em tela;
 
 - Caso a opção `7` seja selecionada, deve-se encerrar a execução do script.
-
----
-
-## Dicas
-
-- [Caso haja alguma dica de desenvolvimento]
-
-- [Ou pontos para o estudante dar uma revisada para realizar este projeto]
-
-- [Coloque os aqui]
 
 ---
 
