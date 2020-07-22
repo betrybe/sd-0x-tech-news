@@ -117,6 +117,10 @@ Apesar do projeto já possuir uma estrutura base, você quem deve implementar ta
 
 Para executar os testes, lembre-se de primeiro criar e ativar o ambiente virtual, e instalar as dependências do projeto. Isso pode ser feito através dos comandos `python3 -m venv .venv`, `source .venv/bin/activate` e `python3 -m pip install -r requirements.txt`, respectivamente. Com as dependências já instaladas, para executar os testes basta usar o comando `python3 -m pytest`.
 
+Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse artigo: https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
+
+Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando `python3 -m flake8`.
+
 ---
 
 ## Dados
@@ -144,8 +148,17 @@ Os arquivos JSON devem seguir o seguinte modelo:
     "shares_count": 0,
     "comments_count": 0,
     "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
-    "sources": "The Next Web,The Next Web,Automotive News Europe",
-    "categories": "Mobilidade Urbana/Smart Cities,Veículos autônomos,Carro,Política"
+    "sources": [
+      "The Next Web",
+      "The Next Web",
+      "Automotive News Europe"
+    ],
+    "categories": [
+      "Mobilidade Urbana/Smart Cities",
+      "Veículos autônomos",
+      "Carro",
+      "Política"
+    ]
   }
 ]
 ```
@@ -158,7 +171,7 @@ Essas notícias devem ser salvas no banco de dados utilizando os mesmos atributo
 
 ### MongoDB
 
-Para a realização desse projeto, suger-se que você crie um banco de dados `tech_news` para a aplicação e um banco de dados `tech_news_test` separado para o ambiente de testes.
+Para a realização desse projeto, suger-se que você crie um banco de dados `tech_news` para a aplicação e um banco de dados `tech_news_test` separado para o ambiente de testes. Dessa forma, ambos os ambientes estarão isolados, o que garante que os testes não poluirão sua base de dados.
 
 Para garantir que os dados gerados para um teste não influencie em outro teste, você deve popular e deletar as coleções ao início e ao fim de cada teste, respectivamente.
 
@@ -172,7 +185,7 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 
 ##### As seguintes verificações serão feitas:
 
-- Todos os testes que envolvem mensagens de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
+- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
 
 - Todos os testes que envolvem manipulação de arquivos criam _Fakes_ com `StringIO`;
 
@@ -181,8 +194,6 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 - A cobertura de testes é de no mínimo 90%.
 
 ### 2 - Deve haver uma função `csv_importer` em um módulo `news_importer` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador. Todas as mensagens de erro devem ir para a `stderr`.
-
-**Dica:** Caso um seletor possua o texto dividido em múltiplos nós, utilize `*::text` para selecionar os textos de todos os seus descendentes.
 
 ##### As seguintes verificações serão feitas:
 
@@ -214,7 +225,7 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 
 - Todas as notícias salvas no banco de dados devem ser exportadas e mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
 
-### 4 - Deve haver uma função `json_importer` em um módulo `news_importer` capaz de importar notícias a partir de um arquivo JSON. Todas as mensagens de erro devem ir para a `stderr`. Observação: considere o número da notícia como índice do array + 1.
+### 4 - Deve haver uma função `json_importer` em um módulo `news_importer` capaz de importar notícias a partir de um arquivo JSON. Todas as mensagens de erro devem ir para a `stderr`. Observação: considere o número da notícia como índice da lista + 1.
 
 ##### As seguintes verificações serão feitas:
 
@@ -246,6 +257,14 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 
 ### 6 - Deve haver uma função `scrape` no módulo `news_scrapper` capaz raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados. Utilizar os seguintes atributos: `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Notícias que já existirem no banco de dados devem ser atualizadas (verifique pela URL).
 
+**Dica:** Caso uma tag possua outras tags aninhadas, para obter todos os textos da tag ancestral e de suas tags descendentes, utilize `*::text` no seletor.
+
+**Exemplo:**
+
+```html
+<p>Recentemente, a Alemanha fez a <a href="https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm" rel="noopener noreferrer" target="_blank">Tesla</a> “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o <em>Automotive News Europe</em>, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.</p>
+```
+
 ##### As seguintes verificações serão feitas:
 
 - Por padrão deve-se raspar apenas as notícias da primeira página;
@@ -268,51 +287,51 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser case insensitive e deve retornar um array de notícias no formato "- {title}: {url}";
+- A busca deve ser case insensitive e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
 
-- Caso nenhuma notícia seja encontrada, deve-se retornar um array vazio.
+- Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
 ### 9 - Deve haver uma função `search_by_date` em um módulo `news_search_engine`, que busque as notícias do banco de dados por data e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve retornar um array de notícias no formato "- {title}: {url}";
+- A busca deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
 
 - A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida deve-se exibir a mensagem "Data inválida";
 
-- Caso nenhuma notícia seja encontrada, deve-se retornar um array vazio.
+- Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
 ### 10 - Deve haver uma função `search_by_source` em um módulo `news_search_engine`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser case insensitive e deve retornar um array de notícias no formato "- {title}: {url}";
+- A busca deve ser case insensitive e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
 
-- Caso nenhuma notícia seja encontrada, deve-se retornar um array vazio.
+- Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
 ### 11 - Deve haver uma função `search_by_category` em um módulo `news_search_engine`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser case insensitive e deve retornar um array de notícias no formato "- {title}: {url}";
+- A busca deve ser case insensitive e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
 
-- Caso nenhuma notícia seja encontrada, deve-se retornar um array vazio.
+- Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
 ### 12 - Deve haver uma função `top_5_news` em um módulo `news_analyser`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade e para desempate por ordem alfabética de título.
 
 ##### As seguintes verificações serão feitas:
 
-- As top 5 notícias da análise devem ser retornadas em um array de notícias no formato "- {title}: {url}";
+- As top 5 notícias da análise devem ser retornadas em uma lista de notícias no formato `["- {title}: {url}"]`;
 
-- Caso não haja notícias disponíveis, deve-se retornar um array vazio.
+- Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
 ### 13 - Deve haver uma função `top_5_categories` em um módulo `news_analyser`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
 ##### As seguintes verificações serão feitas:
 
-- As top 5 categorias da análise devem ser retornadas em um array de notícias no formato "- {category}";
+- As top 5 categorias da análise devem ser retornadas em uma lista de notícias no formato "- {category}";
 
-- Caso não haja categorias disponíveis, deve-se retornar um array vazio.
+- Caso não haja categorias disponíveis, deve-se retornar uma lista vazia.
 
 ---
 
