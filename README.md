@@ -97,20 +97,22 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 
 ```
 .
-|--- requirements.txt
-|--- tech_news_data_collector
-     |--- news_importer.py
-     |--- news_exporter.py
-     |--- news_scrapper.py
-|--- tech_news_app
-     |--- news_search_engine.py
-     |--- news_analyser.py
-|--- tests
-     |--- test_news_importer.py 
-     |--- test_news_exporter.py 
-     |--- test_news_scrapper.py 
-     |--- test_news_search_engine.py 
-     |--- test_news_analyser.py 
+├── README.md
+├── requirements.txt
+├── setup.cfg
+├── tech_news_app
+│   ├── news_analyser.py
+│   └── news_search_engine.py
+├── tech_news_data_collector
+│   ├── news_exporter.py
+│   ├── news_importer.py
+│   └── news_scrapper.py
+└── tests
+    ├── test_news_analyser.py
+    ├── test_news_exporter.py
+    ├── test_news_importer.py
+    ├── test_news_scrapper.py
+    └── test_news_search_engine.py
 ```
 
 Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as funções quanto os testes. Novos arquivos podem ser criados conforme a necessidade.
@@ -215,7 +217,7 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 
 ##### As seguintes verificações serão feitas:
 
-- O arquivo exportado deve possuir o formato CSV;
+- O arquivo exportado deve possuir o formato CSV. Caso contrário, deve ser exibida uma mensagem de erro "Formato inválido" na `stderr`;
 
 - O arquivo deve ser criado na raiz do projeto;
 
@@ -247,7 +249,7 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 
 ##### As seguintes verificações serão feitas:
 
-- O arquivo exportado deve possuir o formato JSON;
+- O arquivo exportado deve possuir o formato JSON. Caso contrário, deve ser exibida uma mensagem de erro "Formato inválido" na `stderr`;
 
 - O arquivo deve ser criado na raiz do projeto;
 
@@ -323,13 +325,17 @@ Para garantir que os dados gerados para um teste não influencie em outro teste,
 
 - As top 5 notícias da análise devem ser retornadas em uma lista de notícias no formato `["- {title}: {url}"]`;
 
+- Caso haja menos de cinco notícias, retorna todas;
+
 - Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
 ### 13 - Deve haver uma função `top_5_categories` em um módulo `news_analyser`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
 ##### As seguintes verificações serão feitas:
 
-- As top 5 categorias da análise devem ser retornadas em uma lista de notícias no formato "- {category}";
+- As top 5 categorias da análise devem ser retornadas em uma lista de categorias no formato `["- {category}"]`;
+
+- Caso haja menos de cinco categorias, retorna todas;
 
 - Caso não haja categorias disponíveis, deve-se retornar uma lista vazia.
 
