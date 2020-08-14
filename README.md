@@ -261,7 +261,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Em caso de sucesso, todas as notícias devem ser salvas no banco de dados e a mensagem "Importação realizada com sucesso" deve ser exibida na `stdout`.
 
-#### 3 - Deve haver uma função `csv_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco dedados para um arquivo CSV, utilizando ";" como separador.
+#### 3 - Deve haver uma função `csv_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
 
@@ -287,7 +287,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso o JSON seja inválido por qualquer erro no arquivo, deve ser exibida a mensagem "JSON inválido";
 
-- Todos as informações devem ser obrigatórias. Caso haja alguma informação faltando, deve ser exibida a mensagem "Erro na notícia {numero-da-notícia}";
+- Todas as informações devem ser obrigatórias. Caso haja alguma informação faltando, deve ser exibida a mensagem "Erro na notícia {numero-da-notícia}";
 
 - Não deve ser possível adicionar notícias com URLs duplicadas, exibindo a mensagem "Notícia {numero-da-notícia} duplicada" em caso de erro;
 
@@ -295,7 +295,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Em caso de sucesso, todas as notícias devem ser salvas no banco de dados e a mensagem "Importação realizada com sucesso" deve ser exibida na `stdout`.
 
-#### 5 - Deve haver uma função `json_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco dedados para um arquivo JSON.
+#### 5 - Deve haver uma função `json_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo JSON.
 
 ##### As seguintes verificações serão feitas:
 
@@ -306,7 +306,6 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 - Caso já exista um arquivo com o mesmo nome, ele deve ser substituído;
 
 - Todas as notícias salvas no banco de dados devem ser exportadas e a mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
-
 
 ### Pacote `tech_news_app`
 
