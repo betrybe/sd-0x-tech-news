@@ -138,7 +138,7 @@ $ python3 -m pytest
 Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse artigo: https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
 
 Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando:
- 
+
 ```bash
 $ python3 -m flake8
 ```
@@ -201,17 +201,47 @@ _Dica:_ Utilize a função `drop` do mongo no final do teste.
 
 ### Pacote `tech_news_data_collector`
 
-#### 1 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
+#### 1 - Deve haver uma função `scrape` dentro do módulo `news_scrapper` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
+
+> Observação: Utilizar os seguintes atributos: `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Notícias que já existirem no banco de dados devem ser atualizadas (verifique pela URL).
+
+**Dica:** Caso uma tag possua outras tags aninhadas, para obter todos os textos da tag ancestral e de suas tags descendentes, utilize `*::text` no seletor.
+
+**Exemplo:**
+
+```html
+<p>
+  Recentemente, a Alemanha fez a
+  <a
+    href="https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
+    rel="noopener noreferrer"
+    target="_blank"
+    >Tesla</a
+  >
+  “pisar no freio” quanto ao uso de termos comerciais relacionados a carros
+  autônomos, mas quem pensa que esse é um sinal de resistência à introdução de
+  novas tecnologias se engana. Isso porque, de acordo o
+  <em>Automotive News Europe</em>, o país está se preparando para se tornar o
+  primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos
+  de nível 4.
+</p>
+```
+
+Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é um caso onde a tag _p_ é um ancestral e as tags _a_ e _em_ são as descendentes. Para obter todo o texto do exemplo, utiliza-se `*::text` no seletor.
 
 ##### As seguintes verificações serão feitas:
 
-- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
+- Por padrão deve-se raspar apenas as notícias da primeira página;
 
-- Todos os testes que envolvem manipulação de arquivos criam _Fakes_ com `StringIO`;
+- Um número de páginas para serem raspadas pode ser passado para a função. Caso o número de páginas seja definido, deve-se raspar os dados das N primeiras páginas;
 
-- Todas as requisições externas utilizam _Mocks_;
+- O scrapper deve ser capaz de tratar um erro de `status 404` ao acessar uma notícia. Devemos considerar que é possível que haja alguma notícia com link quebrado;
 
-- A cobertura de testes é de no mínimo 90%.
+- Todas as notícias devem conter obrigatóriamente os atributos `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
+
+- Caso a notícia já exista no banco de dados, ela deve ser atualizada;
+
+- Ao finalizar o scrapping, deve-se exibir a mensagem "Raspagem de notícias finalizada".
 
 #### 2 - Deve haver uma função `csv_importer` dentro do módulo `news_importer` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador. Todas as mensagens de erro devem ir para a `stderr`.
 
@@ -277,53 +307,10 @@ _Dica:_ Utilize a função `drop` do mongo no final do teste.
 
 - Todas as notícias salvas no banco de dados devem ser exportadas e a mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
 
-#### 6 - Deve haver uma função `scrape` dentro do módulo `news_scrapper` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
-
-> Observação: Utilizar os seguintes atributos: `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Notícias que já existirem no banco de dados devem ser atualizadas (verifique pela URL).
-
-**Dica:** Caso uma tag possua outras tags aninhadas, para obter todos os textos da tag ancestral e de suas tags descendentes, utilize `*::text` no seletor.
-
-**Exemplo:**
-
-```html
-<p>
-  Recentemente, a Alemanha fez a
-  <a
-    href="https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
-    rel="noopener noreferrer"
-    target="_blank"
-    >Tesla</a
-  >
-  “pisar no freio” quanto ao uso de termos comerciais relacionados a carros
-  autônomos, mas quem pensa que esse é um sinal de resistência à introdução de
-  novas tecnologias se engana. Isso porque, de acordo o
-  <em>Automotive News Europe</em>, o país está se preparando para se tornar o
-  primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos
-  de nível 4.
-</p>
-```
-
-Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é um caso onde a tag _p_ é um ancestral e as tags _a_ e _em_ são as descendentes. Para obter todo o texto do exemplo, utiliza-se `*::text` no seletor.
-
-##### As seguintes verificações serão feitas:
-
-- Por padrão deve-se raspar apenas as notícias da primeira página;
-
-- Um número de páginas para serem raspadas pode ser passado para a função. Caso o número de páginas seja definido, deve-se raspar os dados das N primeiras páginas;
-
-- O scrapper deve ser capaz de tratar um erro de `status 404` ao acessar uma notícia. Devemos considerar que é possível que haja alguma notícia com link quebrado;
-
-- Todas as notícias devem conter obrigatóriamente os atributos `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
-
-- Caso a notícia já exista no banco de dados, ela deve ser atualizada;
-
-- Ao finalizar o scrapping, deve-se exibir a mensagem "Raspagem de notícias finalizada".
 
 ### Pacote `tech_news_app`
 
-#### 7 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
-
-#### 8 - Deve haver uma função `search_by_title` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por título (parcial ou completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 6 - Deve haver uma função `search_by_title` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por título (parcial ou completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -331,7 +318,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 9 - Deve haver uma função `search_by_date` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por data e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 7 - Deve haver uma função `search_by_date` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por data e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -341,7 +328,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 10 - Deve haver uma função `search_by_source` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 8 - Deve haver uma função `search_by_source` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -349,7 +336,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 11 - Deve haver uma função `search_by_category` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 9 - Deve haver uma função `search_by_category` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -357,7 +344,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 12 - Deve haver uma função `top_5_news` dentro do módulo `news_analyser`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
+#### 10 - Deve haver uma função `top_5_news` dentro do módulo `news_analyser`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
 
 ##### As seguintes verificações serão feitas:
 
@@ -367,7 +354,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
-#### 13 - Deve haver uma função `top_5_categories` dentro do módulo `news_analyser`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
+#### 11 - Deve haver uma função `top_5_categories` dentro do módulo `news_analyser`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
 ##### As seguintes verificações serão feitas:
 
@@ -383,7 +370,19 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 ### Pacote `tech_news_data_collector`
 
-#### 14 - Crie um módulo `news_data_collector_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+#### 12 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
+
+##### As seguintes verificações serão feitas:
+
+- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
+
+- Todos os testes que envolvem manipulação de arquivos criam _Fakes_ com `StringIO`;
+
+- Todas as requisições externas utilizam _Mocks_;
+
+- A cobertura de testes é de no mínimo 90%.
+
+#### 13 - Crie um módulo `news_data_collector_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 **Dica**: Utilize o `__main__`.
 
@@ -414,7 +413,7 @@ Selecione uma das opções a seguir:
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
 
-#### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
+#### 14 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
 
 ##### As seguintes verificações serão feitas:
 
@@ -433,6 +432,8 @@ Selecione uma das opções a seguir:
 - Após finalizar a execução de uma ação, deve-se encerrar a execução do script (dica: verifique o `exit code`).
 
 ### Pacote `tech_news_app`
+
+#### 15 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
 
 #### 16 - Crie um módulo `news_app_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
