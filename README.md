@@ -87,7 +87,7 @@ Essas notícias podem ser obtidas de diferentes formas. Sendo elas:
 
 - E através da raspagem das [últimas notícias do TecMundo](https://www.tecmundo.com.br/novidades).
 
-Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas.
+Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas. **Ou seja: desenvolva um sistema capaz de importar _e_ exportar notícias via JSON e CSV; e que faça raspagem e preenchimento de um banco de dados com notícias.**
 
 Legal, não é?
 
