@@ -117,7 +117,7 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 │   └── test_news_search_engine.py
 ```
 
-Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as funções quanto os testes. Novos arquivos podem ser criados conforme a necessidade.
+Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as funções quanto os testes (extra). Novos arquivos podem ser criados conforme a necessidade.
 
 Para executar os testes, lembre-se de primeiro **criar e ativar o ambiente virtual**, além de também instalar as dependências do projeto. Isso pode ser feito através dos comandos:
 
@@ -237,7 +237,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - O scrapper deve ser capaz de tratar um erro de `status 404` ao acessar uma notícia. Devemos considerar que é possível que haja alguma notícia com link quebrado;
 
-- Todas as notícias devem conter obrigatóriamente os atributos `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
+- Todas as notícias devem conter obrigatoriamente os atributos `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
 
 - Caso a notícia já exista no banco de dados, ela deve ser atualizada;
 
@@ -369,19 +369,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 ### Pacote `tech_news_data_collector`
 
-#### 12 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
-
-##### As seguintes verificações serão feitas:
-
-- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
-
-- Todos os testes que envolvem manipulação de arquivos criam _Fakes_ com `StringIO`;
-
-- Todas as requisições externas utilizam _Mocks_;
-
-- A cobertura de testes é de no mínimo 90%.
-
-#### 13 - Crie um módulo `news_data_collector_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+#### 12 - Crie um módulo `news_data_collector_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 **Dica**: Utilize o `__main__`.
 
@@ -412,7 +400,7 @@ Selecione uma das opções a seguir:
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
 
-#### 14 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
+#### 13 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
 
 ##### As seguintes verificações serão feitas:
 
@@ -432,9 +420,7 @@ Selecione uma das opções a seguir:
 
 ### Pacote `tech_news_app`
 
-#### 15 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
-
-#### 16 - Crie um módulo `news_app_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+#### 14 - Crie um módulo `news_app_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 **Dica**: Utilize o `__main__`.
 
@@ -464,7 +450,7 @@ Selecione uma das opções a seguir:
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
 
-#### 17 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
+#### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
 
 ##### As seguintes verificações serão feitas:
 
@@ -481,6 +467,28 @@ Selecione uma das opções a seguir:
 - Caso a opção `6` seja selecionada, a raspagem deve ser feita utilizando a função `top_5_categories` e seu resultado deve ser impresso em tela;
 
 - Caso a opção `7` seja selecionada, deve-se encerrar a execução do script.
+
+## Requisitos extras:
+
+⚠️  Requisitos não serão avaliados ⚠️
+
+### Pacote `tech_news_data_collector`
+
+#### 16 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
+
+##### As seguintes verificações serão feitas:
+
+- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
+
+- Todos os testes que envolvem manipulação de arquivos criam _Fakes_ com `StringIO`;
+
+- Todas as requisições externas utilizam _Mocks_;
+
+- A cobertura de testes é de no mínimo 90%.
+
+### Pacote `tech_news_app`
+
+#### 17 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
 
 ---
 
