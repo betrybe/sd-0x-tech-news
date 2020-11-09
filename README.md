@@ -83,11 +83,9 @@ Essas notícias podem ser obtidas de diferentes formas. Sendo elas:
 
 - Através da importação de um arquivo `CSV`;
 
-- Através da importação de um arquivo `JSON`;
-
 - E através da raspagem das [últimas notícias do _TecMundo_](https://www.tecmundo.com.br/novidades).
 
-Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas. **Ou seja: desenvolva um sistema capaz de importar _e_ exportar notícias via JSON e CSV; e que faça raspagem e preenchimento de um banco de dados com notícias.**
+Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas. **Ou seja: desenvolva um sistema capaz de importar, exportar notícias e que faça raspagem e preenchimento de um banco de dados com notícias.**
 
 Legal, não é?
 
@@ -155,32 +153,6 @@ Os arquivos CSV devem seguir o modelo abaixo, utilizando ponto e vírgula (`;`) 
 url;title;timestamp;writer;shares_count;comments_count;summary;sources;categories
 https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155348-alemanha-trabalha-regulamentacao-carros-autonomos.htm;Alemanha já trabalha na regulamentação de carros autônomos;2020-07-20T15:30:00;Reinaldo Zaruvni;0;0;Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.;The Next Web,The Next Web,Automotive News Europe;Mobilidade Urbana/Smart Cities,Veículos autônomos,Carro,Política
 ```
-
-### Importação e exportação de JSON
-
-Os arquivos JSON devem seguir o seguinte modelo:
-
-```json
-[
-  {
-    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155348-alemanha-trabalha-regulamentacao-carros-autonomos.htm",
-    "title": "Alemanha já trabalha na regulamentação de carros autônomos",
-    "timestamp": "2020-07-20T15:30:00",
-    "writer": "Reinaldo Zaruvni",
-    "shares_count": 0,
-    "comments_count": 0,
-    "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
-    "sources": ["The Next Web", "The Next Web", "Automotive News Europe"],
-    "categories": [
-      "Mobilidade Urbana/Smart Cities",
-      "Veículos autônomos",
-      "Carro",
-      "Política"
-    ]
-  }
-]
-```
-
 ### Raspagem de notícias
 
 As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do _TecMundo_: https://www.tecmundo.com.br/novidades.
@@ -275,38 +247,6 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Todas as notícias salvas no banco de dados devem ser exportadas. Em caso de sucesso na exportação, a mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
 
-#### 4 - Deve haver uma função `json_importer` dentro do módulo `news_importer` capaz de importar notícias a partir de um arquivo JSON. Todas as mensagens de erro devem ir para a `stderr`.
-
-> Observação: considere o número da notícia como índice da lista + 1.
-
-##### As seguintes verificações serão feitas:
-
-- Caso o arquivo não exista, deve ser exibida a mensagem "Arquivo {path/to/file.json} não encontrado";
-
-- Caso a extensão do arquivo seja diferente de `.json`, deve ser exibida a mensagem "Formato inválido";
-
-- Caso o JSON seja inválido por qualquer erro no arquivo, deve ser exibida a mensagem "JSON inválido";
-
-- Todas as informações devem ser obrigatórias. Caso haja alguma informação faltando, deve ser exibida a mensagem "Erro na notícia {numero-da-notícia}";
-
-- Não deve ser possível adicionar notícias com URLs duplicadas, exibindo a mensagem "Notícia {numero-da-notícia} duplicada" em caso de erro;
-
-- Em caso de erros, a importação deve ser interrompida e nenhuma notícia deve ser salva;
-
-- Em caso de sucesso, todas as notícias devem ser salvas no banco de dados e a mensagem "Importação realizada com sucesso" deve ser exibida na `stdout`.
-
-#### 5 - Deve haver uma função `json_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo JSON.
-
-##### As seguintes verificações serão feitas:
-
-- O arquivo exportado deve possuir o formato `.json`. Caso contrário, deve ser exibida a mensagem de erro "Formato inválido" na `stderr`;
-
-- O arquivo deve ser criado na raiz do projeto;
-
-- Caso já exista um arquivo com o mesmo nome, ele deve ser substituído;
-
-- Todas as notícias salvas no banco de dados devem ser exportadas e a mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
-
 ### Pacote `tech_news_app`
 
 #### 6 - Deve haver uma função `search_by_title` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por título (parcial ou completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
@@ -378,10 +318,8 @@ Selecione uma das opções a seguir:
 
 1 - Importar notícias a partir de um arquivo CSV;
 2 - Exportar notícias para CSV;
-3 - Importar notícias a partir de um arquivo JSON;
-4 - Exportar notícias para JSON;
-5 - Raspar notícias online;
-6 - Sair.
+3 - Raspar notícias online;
+4 - Sair.
 ```
 
 ##### As seguintes verificações serão feitas:
@@ -392,11 +330,7 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser exportado:";
 
-- Caso a opção `3` seja selecionada, deve-se exibir a mensagem "Digite o path do arquivo JSON a ser importado:";
-
-- Caso a opção `4` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo JSON a ser exportado:";
-
-- Caso a opção `5` seja selecionada, deve-se exibir a mensagem "Digite a quantidade de páginas a serem raspadas:";
+- Caso a opção `3` seja selecionada, deve-se exibir a mensagem "Digite a quantidade de páginas a serem raspadas:";
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
 
@@ -408,13 +342,9 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando função `csv_exporter`;
 
-- Caso a opção `3` seja selecionada, a importação deve ser feita utilizando função `json_importer`;
+- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando função `scrape`;
 
-- Caso a opção `4` seja selecionada, exportação deve ser feita utilizando função `json_exporter`;
-
-- Caso a opção `5` seja selecionada, a raspagem deve ser feita utilizando função `scrape`;
-
-- Caso a opção `6` seja selecionada, deve-se encerrar a execução do script (dica: verifique o `exit code`);
+- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script (dica: verifique o `exit code`);
 
 - Após finalizar a execução de uma ação, deve-se encerrar a execução do script (dica: verifique o `exit code`).
 
