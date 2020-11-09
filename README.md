@@ -1,6 +1,6 @@
 # Boas vindas ao repositório do projeto de Tech News!
 
-Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
+Você já usa o _GitHub_ diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
 
 Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir desse repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
 
@@ -53,7 +53,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 7. Crie um novo `Pull Request` _(PR)_
 
-- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-tech-news/pulls)
+- Vá até a página de _Pull Requests_ do [repositório no _GitHub_](https://github.com/tryber/sd-0x-tech-news/pulls)
 - Clique no botão verde _"New pull request"_
 - Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
 - Clique no botão verde _"Create pull request"_
@@ -71,7 +71,7 @@ Para entregar o seu projeto você deverá criar um _Pull Request_ neste reposit�
 
 Você pode adicionar outros arquivos se julgar necessário. Qualquer dúvida, procure a monitoria.
 
-Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://course.betrybe.com/intro/git/) sempre que precisar!
+Lembre-se que você pode consultar nosso conteúdo sobre [_Git & GitHub_](https://course.betrybe.com/intro/git/) sempre que precisar!
 
 ---
 
@@ -85,7 +85,7 @@ Essas notícias podem ser obtidas de diferentes formas. Sendo elas:
 
 - Através da importação de um arquivo `JSON`;
 
-- E através da raspagem das [últimas notícias do TecMundo](https://www.tecmundo.com.br/novidades).
+- E através da raspagem das [últimas notícias do _TecMundo_](https://www.tecmundo.com.br/novidades).
 
 Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas. **Ou seja: desenvolva um sistema capaz de importar _e_ exportar notícias via JSON e CSV; e que faça raspagem e preenchimento de um banco de dados com notícias.**
 
@@ -135,7 +135,7 @@ O arquivo `requirements.txt` contém todos as dependências que serão utilizada
 $ python3 -m pytest
 ```
 
-Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse artigo: https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
+Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse [artigo](https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1).
 
 Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando:
 
@@ -183,7 +183,7 @@ Os arquivos JSON devem seguir o seguinte modelo:
 
 ### Raspagem de notícias
 
-As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do TecMundo: https://www.tecmundo.com.br/novidades.
+As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do _TecMundo_: https://www.tecmundo.com.br/novidades.
 
 Essas notícias devem ser salvas no banco de dados, utilizando os mesmos atributos já descritos nas importações/exportações citadas anteriormente.
 
