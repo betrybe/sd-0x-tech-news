@@ -468,28 +468,6 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `7` seja selecionada, deve-se encerrar a execução do script.
 
-## Requisitos extras:
-
-⚠️  Requisitos não serão avaliados ⚠️
-
-### Pacote `tech_news_data_collector`
-
-#### 16 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
-
-##### As seguintes verificações serão feitas:
-
-- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
-
-- Todos os testes que envolvem manipulação de arquivos criam _Fakes_ com `StringIO`;
-
-- Todas as requisições externas utilizam _Mocks_;
-
-- A cobertura de testes é de no mínimo 90%.
-
-### Pacote `tech_news_app`
-
-#### 17 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
-
 ---
 
 ### DURANTE O DESENVOLVIMENTO
