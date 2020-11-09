@@ -24,12 +24,12 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 - `python3 -m pip install -r requirements.txt`
 
-4. Crie uma branch a partir da branch `master`
+4. Crie uma branch a partir da branch `main`
 
-- Verifique que você está na branch `master`
+- Verifique que você está na branch `main`
   - Exemplo: `git branch`
-- Se não estiver, mude para a branch `master`
-  - Exemplo: `git checkout master`
+- Se não estiver, mude para a branch `main`
+  - Exemplo: `git checkout main`
 - Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
   - Você deve criar uma branch no seguinte formato: `nome-github-nome-do-projeto`
   - Exemplo: `git checkout -b exemplo-tech-news`
