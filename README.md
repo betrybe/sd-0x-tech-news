@@ -22,7 +22,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 3. Instale as dependências
 
-- `python3 -m pip install -r requirements.txt`
+- `python3 -m pip install -r dev-requirements.txt`
 
 4. Crie uma branch a partir da branch `main`
 
@@ -65,7 +65,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ## Entregáveis
 
-Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter os arquivos `news_importer.py`, `news_exporter.py`, `news_scrapper.py`, `news_search_engine.py`, `news_analyser.py`, `test_news_importer.py`, `test_news_exporter.py`, `test_news_scrapper.py`, `test_news_search_engine.py`, `test_news_analyser.py`, que conterão seu código `Python` e seus testes, respectivamente.
+Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter o diretório `tech_news` e o diretório `tests` com seus respectivos arquivos, que conterão seu código `Python` e seus testes, respectivamente.
 
 ### ⚠️ É importante que seus arquivos tenham exatamente estes nomes! ⚠️
 
@@ -97,25 +97,35 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 
 ```
 .
+├── dev-requirements.txt
+├── pyproject.toml
 ├── README.md
 ├── requirements.txt
 ├── setup.cfg
-├── tech_news_app
-│   ├── news_analyser.py
-│   └── news_search_engine.py
-├── tech_news_data_collector
-│   ├── news_exporter.py
-│   ├── news_importer.py
-│   └── news_scrapper.py
-├── tests
-│   ├── test_news_analyser.py
-│   ├── test_news_exporter.py
-│   ├── test_news_importer.py
-│   ├── test_news_scrapper.py
-│   └── test_news_search_engine.py
+├── setup.py
+├── tech_news
+│   ├── analyzer
+│   │   ├── ratings.py
+│   │   └── search_engine.py
+│   ├── collector
+│   │   ├── exporter.py
+│   │   ├── importer.py
+│   │   └── scrapper.py
+│   ├── database.py
+│   └── menu.py
+└── tests
+    ├── __init__.py
+    ├── test_analyzer
+    │   ├── test_ratings.py
+    │   └── test_search_engine.py
+    ├── test_collector
+    │   ├── test_exporter.py
+    │   ├── test_importer.py
+    │   └── test_scrapper.py
+    └── test_menu.py
 ```
 
-Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as funções quanto os testes (extra). Novos arquivos podem ser criados conforme a necessidade.
+Apesar do projeto já possuir uma estrutura base, você quem deve implementar as funções. Novos arquivos podem ser criados conforme a necessidade.
 
 Para executar os testes, lembre-se de primeiro **criar e ativar o ambiente virtual**, além de também instalar as dependências do projeto. Isso pode ser feito através dos comandos:
 
@@ -124,10 +134,10 @@ $ python3 -m venv .venv
 
 $ source .venv/bin/activate
 
-$ python3 -m pip install -r requirements.txt
+$ python3 -m pip install -r dev-requirements.txt
 ```
 
-O arquivo `requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
+O arquivo `dev-requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
 
 ```bash
 $ python3 -m pytest
@@ -140,7 +150,6 @@ Para verificar se você está seguindo o guia de estilo do Python corretamente, 
 ```bash
 $ python3 -m flake8
 ```
-
 ---
 
 ## Dados
@@ -153,29 +162,59 @@ Os arquivos CSV devem seguir o modelo abaixo, utilizando ponto e vírgula (`;`) 
 url;title;timestamp;writer;shares_count;comments_count;summary;sources;categories
 https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155348-alemanha-trabalha-regulamentacao-carros-autonomos.htm;Alemanha já trabalha na regulamentação de carros autônomos;2020-07-20T15:30:00;Reinaldo Zaruvni;0;0;Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.;The Next Web,The Next Web,Automotive News Europe;Mobilidade Urbana/Smart Cities,Veículos autônomos,Carro,Política
 ```
+⚠️ Fique atento à maneira que os dados estão dispostos, como por exemplo, `sources` e `categories` serão armazenados separados por `,` e `comments_count` e `shares_count` são numéricos.
+
 ### Raspagem de notícias
 
 As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do _TecMundo_: https://www.tecmundo.com.br/novidades.
 
-Essas notícias devem ser salvas no banco de dados, utilizando os mesmos atributos já descritos nas importações/exportações citadas anteriormente.
+Essas notícias devem ser salvas no banco de dados, utilizando os mesmos atributos já descritos na importação/exportação citada anteriormente.
 
 ### MongoDB
 
-Para a realização desse projeto, **sugere-se** que você crie um banco de dados, chamado `tech_news`, para a aplicação e um banco de dados separado, chamado `tech_news_test`, para o ambiente de testes. Dessa forma, ambos os ambientes estarão isolados, o que garante que os testes não poluirão sua base de dados.
-
-Para garantir que os dados gerados para um teste não influencie em outro teste, você deve popular e deletar as coleções ao início e ao fim de cada teste, respectivamente.
-
-_Dica:_ Utilize a função `drop` do mongo no final do teste.
+Para a realização deste projeto utilizaremos um banco de dados chamado `tech_news` e as notícias serão armazenadas em uma coleção chamada `news`.
 
 ---
 
 ## Requisitos obrigatórios:
 
-### Pacote `tech_news_data_collector`
+### Pacote `tech_news/collector`
 
-#### 1 - Deve haver uma função `scrape` dentro do módulo `news_scrapper` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
+#### 1- Deve haver uma função chamada `fetch_content` no arquivo `tech_news/collector/scrapper.py` capaz de realizar uma requisição HTTP e retornar o conteúdo como resposta.
 
-> Observação: Utilizar os seguintes atributos: `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Notícias que já existirem no banco de dados devem ser atualizadas (verifique pela URL).
+##### As seguintes verificações serão feitas:
+
+- Caso a resposta tenha o código de status diferente de `200`, deve-se retornar uma `str` vazia;
+
+- O tempo máximo de resposta do servidor deve ser configurado como parâmetro e por padrão será `3` segundos;
+
+- Para evitar um problema de [Rate Limit](https://app.betrybe.com/course/computer-science/python/raspagem-dados#alguns-problemas) faça um sleep com tempo obtido por parâmetro, mas que por padrão seja `0.5` segundos;
+
+- Caso a requisição seja bem sucedida retorne seu conteúdo de texto;
+
+✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`
+
+#### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
+
+Utilizar os seguintes atributos:
+
+* `url` - link para acesso da notícia. Ex: "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
+
+* `title` - título da notícia. Ex: "Musk: Tesla está muito perto de carros totalmente autônomos"
+
+* `timestamp` - data e hora da notícia. Ex: "2020-07-09T11:00:00"
+
+* `writer` - autor da notícia. Ex: "Nilton Kleina"
+
+* `shares_count` - número de compartilhamento da notícia. Ex: 61
+
+* `comments_count` - número de comentários que a notícia recebeu. Ex: 26
+
+* `summary` - o primeiro parágrafo da notícia. Ex:"O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado."
+
+* `sources` - fontes da notícia. Ex: ["Venture Beat"]
+
+* `categories` - categorias que classificam a notícia. Ex: ["Mobilidade Urbana/Smart Cities", "Veículos autônomos", "Tesla", "Elon Musk"]
 
 **Dica:** Caso uma tag possua outras tags aninhadas, para obter todos os textos da tag ancestral e de suas tags descendentes, utilize `*::text` no seletor.
 
@@ -207,15 +246,46 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Um número de páginas para serem raspadas pode ser passado para a função. Caso o número de páginas seja definido, deve-se raspar os dados das N primeiras páginas;
 
-- O scrapper deve ser capaz de tratar um erro de `status 404` ao acessar uma notícia. Devemos considerar que é possível que haja alguma notícia com link quebrado;
+- A função deve retornar uma lista com cada notícia em no seguinte formato.
 
-- Todas as notícias devem conter obrigatoriamente os atributos `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
+```json
+[{
+    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm",
+    "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
+    "timestamp": "2020-07-09T11:00:00",
+    "writer": "Nilton Kleina",
+    "shares_count": 0,
+    "comments_count": 0,
+    "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
+    "sources": ["The Next Web", "The Next Web", "Automotive News Europe"],
+    "categories": [
+      "Mobilidade Urbana/Smart Cities",
+      "Veículos autônomos",
+      "Carro",
+      "Política"
+    ]
+  }]
+```
+
+⚠️  Muita atenção aos tipos dos campos, por exemplo, `sources` e `categories` são listas, assim como `shares_count` e `comments_count` são numéricos.
+
+✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`
+
+#### 3 - Deve haver uma função `insert_or_update` dentro do módulo `tech_news/database.py` que deve receber uma notícia e a insira na coleção, mas se a mesma já existir deve apenas atualizá-la.
+
+##### As seguintes verificações serão feitas:
+
+- Insira uma notícia no banco;
 
 - Caso a notícia já exista no banco de dados, ela deve ser atualizada;
 
-- Ao finalizar o scrapping, deve-se exibir a mensagem "Raspagem de notícias finalizada".
+- Deve retornar `True` caso a notícia seja inserida senão `False`.
 
-#### 2 - Deve haver uma função `csv_importer` dentro do módulo `news_importer` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador. Todas as mensagens de erro devem ir para a `stderr`.
+✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`
+
+⚠️ Não esqueça de ter o banco de dados configurado e rodando.
+
+#### 4 - Deve haver uma função `csv_importer` dentro do módulo `news_importer` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador. Todas as mensagens de erro devem ir para a `stderr`.
 
 ##### As seguintes verificações serão feitas:
 
@@ -233,7 +303,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Em caso de sucesso, todas as notícias devem ser salvas no banco de dados e a mensagem "Importação realizada com sucesso" deve ser exibida na `stdout`.
 
-#### 3 - Deve haver uma função `csv_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
+#### 5 - Deve haver uma função `csv_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
 
