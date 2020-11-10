@@ -285,37 +285,54 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 ⚠️ Não esqueça de ter o banco de dados configurado e rodando.
 
-#### 4 - Deve haver uma função `csv_importer` dentro do módulo `news_importer` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador. Todas as mensagens de erro devem ir para a `stderr`.
+#### 4 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
 
-- Caso o arquivo CSV não exista, deve ser exibida a mensagem "Arquivo {path/to/file.csv} não encontrado";
+- Caso a extensão do arquivo seja diferente de `.csv`, uma exceção deve ser lançada;
 
-- Caso a extensão do arquivo seja diferente de `.csv`, deve ser exibida uma mensagem "Formato inválido";
+- Caso o arquivo CSV não exista, uma exceção deve ser lançada;
 
-- O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Caso contrário, deve ser exibida uma mensagem "Cabeçalho inválido";
+Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançada dever ser a de formato inválido.
 
-- Todos as informações devem ser obrigatórias. Caso haja alguma informação faltando, deve ser exibida uma mensagem "Erro na notícia {numero-da-linha}";
+- O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Caso contrário, uma exceção deve ser lançada;
 
-- Como não sabemos se a notícia importada está na versão mais atual, não deve ser possível adicionar notícias com URLs duplicadas. Em caso de erro, exiba a mensagem "Notícia {numero-da-linha} duplicada";
+- A função deve retornar uma lista com cada notícia em no seguinte formato.
 
-- Em caso de erros, a importação deve ser interrompida e nenhuma notícia deve ser salva;
+```json
+[{
+    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm",
+    "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
+    "timestamp": "2020-07-09T11:00:00",
+    "writer": "Nilton Kleina",
+    "shares_count": 0,
+    "comments_count": 0,
+    "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
+    "sources": ["The Next Web", "The Next Web", "Automotive News Europe"],
+    "categories": [
+      "Mobilidade Urbana/Smart Cities",
+      "Veículos autônomos",
+      "Carro",
+      "Política"
+    ]
+  }]
+```
 
-- Em caso de sucesso, todas as notícias devem ser salvas no banco de dados e a mensagem "Importação realizada com sucesso" deve ser exibida na `stdout`.
+⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
-#### 5 - Deve haver uma função `csv_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
+#### 5 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
 
-- O arquivo exportado deve possuir o formato CSV. Caso contrário, deve ser exibida uma mensagem de erro "Formato inválido" na `stderr`;
-
-- O arquivo deve ser criado na raiz do projeto;
+- O arquivo exportado deve possuir o formato CSV. Caso contrário, uma exceção deve ser lançada;
 
 - Caso já exista um arquivo com o mesmo nome, ele deve ser substituído;
 
 - O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
 
-- Todas as notícias salvas no banco de dados devem ser exportadas. Em caso de sucesso na exportação, a mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
+- Todas as notícias salvas no banco de dados devem ser exportadas.
+
+⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
 ### Pacote `tech_news_app`
 
