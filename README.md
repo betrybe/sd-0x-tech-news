@@ -320,6 +320,8 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
+✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`
+
 #### 5 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
@@ -334,7 +336,9 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
-### Pacote `tech_news_app`
+✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`
+
+### Pacote `analyzer`
 
 #### 6 - Deve haver uma função `search_by_title` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por título (parcial ou completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
