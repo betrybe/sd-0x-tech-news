@@ -67,7 +67,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter o diretório `tech_news` e o diretório `tests` com seus respectivos arquivos, que conterão seu código `Python` e seus testes, respectivamente.
 
-### ⚠️ É importante que seus arquivos tenham exatamente estes nomes! ⚠️
+### 🚨 É importante que seus arquivos tenham exatamente estes nomes!
 
 Você pode adicionar outros arquivos se julgar necessário. Qualquer dúvida, procure a monitoria.
 
@@ -192,7 +192,7 @@ Para a realização deste projeto utilizaremos um banco de dados chamado `tech_n
 
 - Caso a requisição seja bem sucedida retorne seu conteúdo de texto;
 
-✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`.
 
 #### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
 
@@ -254,22 +254,22 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
     "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
     "timestamp": "2020-07-09T11:00:00",
     "writer": "Nilton Kleina",
-    "shares_count": 0,
-    "comments_count": 0,
-    "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
-    "sources": ["The Next Web", "The Next Web", "Automotive News Europe"],
+    "shares_count": 61,
+    "comments_count": 26,
+    "summary": "O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado.",
+    "sources": ["Venture Beat"],
     "categories": [
       "Mobilidade Urbana/Smart Cities",
       "Veículos autônomos",
-      "Carro",
-      "Política"
+      "Tesla",
+      "Elon Musk"
     ]
   }]
 ```
 
 ⚠️  Muita atenção aos tipos dos campos, por exemplo, `sources` e `categories` são listas, assim como `shares_count` e `comments_count` são numéricos.
 
-✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
 
 #### 3 - Deve haver uma função `insert_or_update` dentro do módulo `tech_news/database.py` que deve receber uma notícia e a insira na coleção, mas se a mesma já existir deve apenas atualizá-la.
 
@@ -281,7 +281,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Deve retornar `True` caso a notícia seja inserida senão `False`.
 
-✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`.
 
 ⚠️ Não esqueça de ter o banco de dados configurado e rodando.
 
@@ -305,22 +305,22 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
     "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
     "timestamp": "2020-07-09T11:00:00",
     "writer": "Nilton Kleina",
-    "shares_count": 0,
-    "comments_count": 0,
+    "shares_count": 61,
+    "comments_count": 27,
     "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
-    "sources": ["The Next Web", "The Next Web", "Automotive News Europe"],
+    "sources": ["Venture Beat"],
     "categories": [
       "Mobilidade Urbana/Smart Cities",
       "Veículos autônomos",
-      "Carro",
-      "Política"
+      "Tesla",
+      "Elon Musk"
     ]
   }]
 ```
 
 ⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
-✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`.
 
 #### 5 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
 
@@ -336,29 +336,37 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
-✍️  Teste manual: Abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`.
 
-### Pacote `analyzer`
+### Pacote `tech_news/analyzer`
 
-#### 6 - Deve haver uma função `search_by_title` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por título (parcial ou completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 6 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato (lista de strings) `["- {title}: {url}"]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 7 - Deve haver uma função `search_by_date` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por data e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
+
+#### 7 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
 - A busca deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
 
-- A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, deve-se exibir a mensagem "Data inválida";
+- A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, uma exceção deve ser lançada.
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 8 - Deve haver uma função `search_by_source` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
+
+#### 8 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -366,7 +374,11 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 9 - Deve haver uma função `search_by_category` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
+
+#### 9 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -374,7 +386,12 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 10 - Deve haver uma função `top_5_news` dentro do módulo `news_analyser`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
+⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
+
+
+#### 10 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
 
 ##### As seguintes verificações serão feitas:
 
@@ -384,7 +401,11 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
-#### 11 - Deve haver uma função `top_5_categories` dentro do módulo `news_analyser`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
+⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
+
+
+#### 11 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
 ##### As seguintes verificações serão feitas:
 
@@ -393,6 +414,10 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 - Caso haja menos de cinco categorias, no banco de dados, deve-se retornar todas as categorias existentes;
 
 - Caso não haja categorias disponíveis, deve-se retornar uma lista vazia.
+
+⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
 
 ---
 
