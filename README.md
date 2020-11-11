@@ -425,11 +425,9 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ## Requisitos bônus:
 
-### Pacote `tech_news_data_collector`
+### Pacote `tech_news`
 
-#### 12 - Crie um módulo `news_data_collector_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
-
-**Dica**: Utilize o `__main__`.
+#### 12 - Preencha a função `collector_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
@@ -444,7 +442,7 @@ Selecione uma das opções a seguir:
 
 - A mensagem de menu deve ser exibida corretamente;
 
-- Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o path do arquivo CSV a ser importado:";
+- Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser importado:";
 
 - Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser exportado:";
 
@@ -452,25 +450,28 @@ Selecione uma das opções a seguir:
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
 
+📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
+
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
+
+
 #### 13 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
 
 ##### As seguintes verificações serão feitas:
 
-- Caso a opção `1` seja selecionada, a importação deve ser feita utilizando função `csv_importer`;
+- Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `csv_importer`;
 
-- Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando função `csv_exporter`;
+- Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando a função `csv_exporter`;
 
-- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando função `scrape`;
+- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando a função `scrape`;
 
-- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script (dica: verifique o `exit code`);
+- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script;
 
-- Após finalizar a execução de uma ação, deve-se encerrar a execução do script (dica: verifique o `exit code`).
+- Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-### Pacote `tech_news_app`
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, assim você conseguirá interagir com o menu.
 
-#### 14 - Crie um módulo `news_app_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias disparar uma ação. O texto exibido pelo menu deve ser exatamente:
-
-**Dica**: Utilize o `__main__`.
+#### 14 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
@@ -490,13 +491,17 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o título:";
 
-- Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite a data:";
+- Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite a data no formato aaaa-mm-dd:";
 
 - Caso a opção `3` seja selecionada, deve-se exibir a mensagem "Digite a fonte:";
 
 - Caso a opção `4` seja selecionada, deve-se exibir a mensagem "Digite a categoria:";
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
+
+📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
+
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `analyzer_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
 #### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
 
@@ -514,7 +519,12 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `6` seja selecionada, a raspagem deve ser feita utilizando a função `top_5_categories` e seu resultado deve ser impresso em tela;
 
-- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script.
+- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script;
+
+- Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
+
+
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, assim você conseguirá interagir com o menu.
 
 ---
 
