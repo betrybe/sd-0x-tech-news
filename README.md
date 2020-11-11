@@ -349,7 +349,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
 
@@ -363,7 +363,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
 
@@ -375,7 +375,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
 
@@ -387,7 +387,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
 
@@ -402,7 +402,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
 
@@ -417,7 +417,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso não haja categorias disponíveis, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
 
