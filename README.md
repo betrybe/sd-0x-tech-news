@@ -1,6 +1,6 @@
 # Boas vindas ao repositório do projeto de Tech News!
 
-Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
+Você já usa o _GitHub_ diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
 
 Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir desse repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
 
@@ -22,14 +22,14 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 3. Instale as dependências
 
-- `python3 -m pip install -r requirements.txt`
+- `python3 -m pip install -r dev-requirements.txt`
 
-4. Crie uma branch a partir da branch `master`
+4. Crie uma branch a partir da branch `main`
 
-- Verifique que você está na branch `master`
+- Verifique que você está na branch `main`
   - Exemplo: `git branch`
-- Se não estiver, mude para a branch `master`
-  - Exemplo: `git checkout master`
+- Se não estiver, mude para a branch `main`
+  - Exemplo: `git checkout main`
 - Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
   - Você deve criar uma branch no seguinte formato: `nome-github-nome-do-projeto`
   - Exemplo: `git checkout -b exemplo-tech-news`
@@ -53,7 +53,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 7. Crie um novo `Pull Request` _(PR)_
 
-- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-tech-news/pulls)
+- Vá até a página de _Pull Requests_ do [repositório no _GitHub_](https://github.com/tryber/sd-0x-tech-news/pulls)
 - Clique no botão verde _"New pull request"_
 - Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
 - Clique no botão verde _"Create pull request"_
@@ -65,13 +65,13 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ## Entregáveis
 
-Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter os arquivos `news_importer.py`, `news_exporter.py`, `news_scrapper.py`, `news_search_engine.py`, `news_analyser.py`, `test_news_importer.py`, `test_news_exporter.py`, `test_news_scrapper.py`, `test_news_search_engine.py`, `test_news_analyser.py`, que conterão seu código `Python` e seus testes, respectivamente.
+Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter o diretório `tech_news` e o diretório `tests` com seus respectivos arquivos, que conterão seu código `Python` e seus testes, respectivamente.
 
-### ⚠️ É importante que seus arquivos tenham exatamente estes nomes! ⚠️
+### 🚨 É importante que seus arquivos tenham exatamente estes nomes!
 
 Você pode adicionar outros arquivos se julgar necessário. Qualquer dúvida, procure a monitoria.
 
-Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://course.betrybe.com/intro/git/) sempre que precisar!
+Lembre-se que você pode consultar nosso conteúdo sobre [_Git & GitHub_](https://course.betrybe.com/intro/git/) sempre que precisar!
 
 ---
 
@@ -83,11 +83,9 @@ Essas notícias podem ser obtidas de diferentes formas. Sendo elas:
 
 - Através da importação de um arquivo `CSV`;
 
-- Através da importação de um arquivo `JSON`;
+- E através da raspagem das [últimas notícias do _TecMundo_](https://www.tecmundo.com.br/novidades).
 
-- E através da raspagem das [últimas notícias do TecMundo](https://www.tecmundo.com.br/novidades).
-
-Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas. **Ou seja: desenvolva um sistema capaz de importar _e_ exportar notícias via JSON e CSV; e que faça raspagem e preenchimento de um banco de dados com notícias.**
+Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas. **Ou seja: desenvolva um sistema capaz de importar, exportar notícias e que faça raspagem e preenchimento de um banco de dados com notícias.**
 
 Legal, não é?
 
@@ -99,25 +97,35 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 
 ```
 .
+├── dev-requirements.txt
+├── pyproject.toml
 ├── README.md
 ├── requirements.txt
 ├── setup.cfg
-├── tech_news_app
-│   ├── news_analyser.py
-│   └── news_search_engine.py
-├── tech_news_data_collector
-│   ├── news_exporter.py
-│   ├── news_importer.py
-│   └── news_scrapper.py
-├── tests
-│   ├── test_news_analyser.py
-│   ├── test_news_exporter.py
-│   ├── test_news_importer.py
-│   ├── test_news_scrapper.py
-│   └── test_news_search_engine.py
+├── setup.py
+├── tech_news
+│   ├── analyzer
+│   │   ├── ratings.py
+│   │   └── search_engine.py
+│   ├── collector
+│   │   ├── exporter.py
+│   │   ├── importer.py
+│   │   └── scrapper.py
+│   ├── database.py
+│   └── menu.py
+└── tests
+    ├── __init__.py
+    ├── test_analyzer
+    │   ├── test_ratings.py
+    │   └── test_search_engine.py
+    ├── test_collector
+    │   ├── test_exporter.py
+    │   ├── test_importer.py
+    │   └── test_scrapper.py
+    └── test_menu.py
 ```
 
-Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as funções quanto os testes (extra). Novos arquivos podem ser criados conforme a necessidade.
+Apesar do projeto já possuir uma estrutura base, você quem deve implementar as funções. Novos arquivos podem ser criados conforme a necessidade.
 
 Para executar os testes, lembre-se de primeiro **criar e ativar o ambiente virtual**, além de também instalar as dependências do projeto. Isso pode ser feito através dos comandos:
 
@@ -126,23 +134,22 @@ $ python3 -m venv .venv
 
 $ source .venv/bin/activate
 
-$ python3 -m pip install -r requirements.txt
+$ python3 -m pip install -r dev-requirements.txt
 ```
 
-O arquivo `requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
+O arquivo `dev-requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
 
 ```bash
 $ python3 -m pytest
 ```
 
-Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse artigo: https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
+Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse [artigo](https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1).
 
 Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando:
 
 ```bash
 $ python3 -m flake8
 ```
-
 ---
 
 ## Dados
@@ -155,55 +162,59 @@ Os arquivos CSV devem seguir o modelo abaixo, utilizando ponto e vírgula (`;`) 
 url;title;timestamp;writer;shares_count;comments_count;summary;sources;categories
 https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155348-alemanha-trabalha-regulamentacao-carros-autonomos.htm;Alemanha já trabalha na regulamentação de carros autônomos;2020-07-20T15:30:00;Reinaldo Zaruvni;0;0;Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.;The Next Web,The Next Web,Automotive News Europe;Mobilidade Urbana/Smart Cities,Veículos autônomos,Carro,Política
 ```
-
-### Importação e exportação de JSON
-
-Os arquivos JSON devem seguir o seguinte modelo:
-
-```json
-[
-  {
-    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155348-alemanha-trabalha-regulamentacao-carros-autonomos.htm",
-    "title": "Alemanha já trabalha na regulamentação de carros autônomos",
-    "timestamp": "2020-07-20T15:30:00",
-    "writer": "Reinaldo Zaruvni",
-    "shares_count": 0,
-    "comments_count": 0,
-    "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
-    "sources": ["The Next Web", "The Next Web", "Automotive News Europe"],
-    "categories": [
-      "Mobilidade Urbana/Smart Cities",
-      "Veículos autônomos",
-      "Carro",
-      "Política"
-    ]
-  }
-]
-```
+📌 Fique atento à maneira que os dados estão dispostos, como por exemplo, `sources` e `categories` serão armazenados separados por `,` e `comments_count` e `shares_count` são numéricos.
 
 ### Raspagem de notícias
 
-As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do TecMundo: https://www.tecmundo.com.br/novidades.
+As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do _TecMundo_: https://www.tecmundo.com.br/novidades.
 
-Essas notícias devem ser salvas no banco de dados, utilizando os mesmos atributos já descritos nas importações/exportações citadas anteriormente.
+Essas notícias devem ser salvas no banco de dados, utilizando os mesmos atributos já descritos na importação/exportação citada anteriormente.
 
 ### MongoDB
 
-Para a realização desse projeto, **sugere-se** que você crie um banco de dados, chamado `tech_news`, para a aplicação e um banco de dados separado, chamado `tech_news_test`, para o ambiente de testes. Dessa forma, ambos os ambientes estarão isolados, o que garante que os testes não poluirão sua base de dados.
-
-Para garantir que os dados gerados para um teste não influencie em outro teste, você deve popular e deletar as coleções ao início e ao fim de cada teste, respectivamente.
-
-_Dica:_ Utilize a função `drop` do mongo no final do teste.
+Para a realização deste projeto utilizaremos um banco de dados chamado `tech_news` e as notícias serão armazenadas em uma coleção chamada `news`.
 
 ---
 
 ## Requisitos obrigatórios:
 
-### Pacote `tech_news_data_collector`
+### Pacote `tech_news/collector`
 
-#### 1 - Deve haver uma função `scrape` dentro do módulo `news_scrapper` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
+#### 1- Deve haver uma função chamada `fetch_content` no arquivo `tech_news/collector/scrapper.py` capaz de realizar uma requisição HTTP e retornar o conteúdo como resposta.
 
-> Observação: Utilizar os seguintes atributos: `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Notícias que já existirem no banco de dados devem ser atualizadas (verifique pela URL).
+##### As seguintes verificações serão feitas:
+
+- Caso a resposta tenha o código de status diferente de `200`, deve-se retornar uma `str` vazia;
+
+- O tempo máximo de resposta do servidor deve ser configurado como parâmetro e por padrão será `3` segundos;
+
+- Para evitar um problema de [Rate Limit](https://app.betrybe.com/course/computer-science/python/raspagem-dados#alguns-problemas) faça um sleep com tempo obtido por parâmetro, mas que por padrão seja `0.5` segundos;
+
+- Caso a requisição seja bem sucedida retorne seu conteúdo de texto;
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`.
+
+#### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
+
+Utilizar os seguintes atributos:
+
+* `url` - link para acesso da notícia. Ex: "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
+
+* `title` - título da notícia. Ex: "Musk: Tesla está muito perto de carros totalmente autônomos"
+
+* `timestamp` - data e hora da notícia. Ex: "2020-07-09T11:00:00"
+
+* `writer` - autor da notícia. Ex: "Nilton Kleina"
+
+* `shares_count` - número de compartilhamento da notícia. Ex: 61
+
+* `comments_count` - número de comentários que a notícia recebeu. Ex: 26
+
+* `summary` - o primeiro parágrafo da notícia. Ex:"O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado."
+
+* `sources` - fontes da notícia. Ex: ["Venture Beat"]
+
+* `categories` - categorias que classificam a notícia. Ex: ["Mobilidade Urbana/Smart Cities", "Veículos autônomos", "Tesla", "Elon Musk"]
 
 **Dica:** Caso uma tag possua outras tags aninhadas, para obter todos os textos da tag ancestral e de suas tags descendentes, utilize `*::text` no seletor.
 
@@ -235,99 +246,128 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Um número de páginas para serem raspadas pode ser passado para a função. Caso o número de páginas seja definido, deve-se raspar os dados das N primeiras páginas;
 
-- O scrapper deve ser capaz de tratar um erro de `status 404` ao acessar uma notícia. Devemos considerar que é possível que haja alguma notícia com link quebrado;
+- A função deve retornar uma lista com cada notícia em no seguinte formato.
 
-- Todas as notícias devem conter obrigatoriamente os atributos `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
+```json
+[{
+    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm",
+    "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
+    "timestamp": "2020-07-09T11:00:00",
+    "writer": "Nilton Kleina",
+    "shares_count": 61,
+    "comments_count": 26,
+    "summary": "O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado.",
+    "sources": ["Venture Beat"],
+    "categories": [
+      "Mobilidade Urbana/Smart Cities",
+      "Veículos autônomos",
+      "Tesla",
+      "Elon Musk"
+    ]
+  }]
+```
+
+📌 Muita atenção aos tipos dos campos, por exemplo, `sources` e `categories` são listas, assim como `shares_count` e `comments_count` são numéricos.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
+
+#### 3 - Deve haver uma função `insert_or_update` dentro do módulo `tech_news/database.py` que deve receber uma notícia e a insira na coleção, mas se a mesma já existir deve apenas atualizá-la.
+
+##### As seguintes verificações serão feitas:
+
+- Insira uma notícia no banco;
 
 - Caso a notícia já exista no banco de dados, ela deve ser atualizada;
 
-- Ao finalizar o scrapping, deve-se exibir a mensagem "Raspagem de notícias finalizada".
+- Deve retornar `True` caso a notícia seja inserida senão `False`.
 
-#### 2 - Deve haver uma função `csv_importer` dentro do módulo `news_importer` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador. Todas as mensagens de erro devem ir para a `stderr`.
+📌 Não esqueça de ter o banco de dados configurado e rodando.
 
-##### As seguintes verificações serão feitas:
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`.
 
-- Caso o arquivo CSV não exista, deve ser exibida a mensagem "Arquivo {path/to/file.csv} não encontrado";
 
-- Caso a extensão do arquivo seja diferente de `.csv`, deve ser exibida uma mensagem "Formato inválido";
-
-- O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Caso contrário, deve ser exibida uma mensagem "Cabeçalho inválido";
-
-- Todos as informações devem ser obrigatórias. Caso haja alguma informação faltando, deve ser exibida uma mensagem "Erro na notícia {numero-da-linha}";
-
-- Como não sabemos se a notícia importada está na versão mais atual, não deve ser possível adicionar notícias com URLs duplicadas. Em caso de erro, exiba a mensagem "Notícia {numero-da-linha} duplicada";
-
-- Em caso de erros, a importação deve ser interrompida e nenhuma notícia deve ser salva;
-
-- Em caso de sucesso, todas as notícias devem ser salvas no banco de dados e a mensagem "Importação realizada com sucesso" deve ser exibida na `stdout`.
-
-#### 3 - Deve haver uma função `csv_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
+#### 4 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
 
-- O arquivo exportado deve possuir o formato CSV. Caso contrário, deve ser exibida uma mensagem de erro "Formato inválido" na `stderr`;
+- Caso a extensão do arquivo seja diferente de `.csv`, uma exceção deve ser lançada;
 
-- O arquivo deve ser criado na raiz do projeto;
+- Caso o arquivo CSV não exista, uma exceção deve ser lançada;
+
+Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançada dever ser a de formato inválido.
+
+- O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Caso contrário, uma exceção deve ser lançada;
+
+- A função deve retornar uma lista com cada notícia em no seguinte formato.
+
+```json
+[{
+    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm",
+    "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
+    "timestamp": "2020-07-09T11:00:00",
+    "writer": "Nilton Kleina",
+    "shares_count": 61,
+    "comments_count": 27,
+    "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
+    "sources": ["Venture Beat"],
+    "categories": [
+      "Mobilidade Urbana/Smart Cities",
+      "Veículos autônomos",
+      "Tesla",
+      "Elon Musk"
+    ]
+  }]
+```
+
+📌Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`.
+
+#### 5 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
+
+##### As seguintes verificações serão feitas:
+
+- O arquivo exportado deve possuir o formato CSV. Caso contrário, uma exceção deve ser lançada;
 
 - Caso já exista um arquivo com o mesmo nome, ele deve ser substituído;
 
 - O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
 
-- Todas as notícias salvas no banco de dados devem ser exportadas. Em caso de sucesso na exportação, a mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
+- Todas as notícias salvas no banco de dados devem ser exportadas.
 
-#### 4 - Deve haver uma função `json_importer` dentro do módulo `news_importer` capaz de importar notícias a partir de um arquivo JSON. Todas as mensagens de erro devem ir para a `stderr`.
+📌 Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
-> Observação: considere o número da notícia como índice da lista + 1.
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`.
 
-##### As seguintes verificações serão feitas:
+### Pacote `tech_news/analyzer`
 
-- Caso o arquivo não exista, deve ser exibida a mensagem "Arquivo {path/to/file.json} não encontrado";
-
-- Caso a extensão do arquivo seja diferente de `.json`, deve ser exibida a mensagem "Formato inválido";
-
-- Caso o JSON seja inválido por qualquer erro no arquivo, deve ser exibida a mensagem "JSON inválido";
-
-- Todas as informações devem ser obrigatórias. Caso haja alguma informação faltando, deve ser exibida a mensagem "Erro na notícia {numero-da-notícia}";
-
-- Não deve ser possível adicionar notícias com URLs duplicadas, exibindo a mensagem "Notícia {numero-da-notícia} duplicada" em caso de erro;
-
-- Em caso de erros, a importação deve ser interrompida e nenhuma notícia deve ser salva;
-
-- Em caso de sucesso, todas as notícias devem ser salvas no banco de dados e a mensagem "Importação realizada com sucesso" deve ser exibida na `stdout`.
-
-#### 5 - Deve haver uma função `json_exporter` dentro do módulo `news_exporter` capaz de exportar todas as notícias do banco de dados para um arquivo JSON.
+#### 6 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
-- O arquivo exportado deve possuir o formato `.json`. Caso contrário, deve ser exibida a mensagem de erro "Formato inválido" na `stderr`;
-
-- O arquivo deve ser criado na raiz do projeto;
-
-- Caso já exista um arquivo com o mesmo nome, ele deve ser substituído;
-
-- Todas as notícias salvas no banco de dados devem ser exportadas e a mensagem "Exportação realizada com sucesso" deve ser exibida na `stdout`.
-
-### Pacote `tech_news_app`
-
-#### 6 - Deve haver uma função `search_by_title` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por título (parcial ou completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
-##### As seguintes verificações serão feitas:
-
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato (lista de strings) `["- {title}: {url}"]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 7 - Deve haver uma função `search_by_date` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por data e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
+
+#### 7 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
 - A busca deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
 
-- A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, deve-se exibir a mensagem "Data inválida";
+- A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, uma exceção deve ser lançada.
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 8 - Deve haver uma função `search_by_source` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
+
+#### 8 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -335,7 +375,11 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 9 - Deve haver uma função `search_by_category` dentro do módulo `news_search_engine`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
+
+#### 9 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 ##### As seguintes verificações serão feitas:
 
@@ -343,7 +387,12 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-#### 10 - Deve haver uma função `top_5_news` dentro do módulo `news_analyser`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
+
+
+#### 10 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
 
 ##### As seguintes verificações serão feitas:
 
@@ -353,7 +402,12 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
-#### 11 - Deve haver uma função `top_5_categories` dentro do módulo `news_analyser`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
+
+
+#### 11 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
 ##### As seguintes verificações serão feitas:
 
@@ -363,66 +417,61 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Caso não haja categorias disponíveis, deve-se retornar uma lista vazia.
 
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
+
+✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
+
 ---
 
 ## Requisitos bônus:
 
-### Pacote `tech_news_data_collector`
+### Pacote `tech_news`
 
-#### 12 - Crie um módulo `news_data_collector_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
-
-**Dica**: Utilize o `__main__`.
+#### 12 - Preencha a função `collector_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
 
 1 - Importar notícias a partir de um arquivo CSV;
 2 - Exportar notícias para CSV;
-3 - Importar notícias a partir de um arquivo JSON;
-4 - Exportar notícias para JSON;
-5 - Raspar notícias online;
-6 - Sair.
+3 - Raspar notícias online;
+4 - Sair.
 ```
 
 ##### As seguintes verificações serão feitas:
 
 - A mensagem de menu deve ser exibida corretamente;
 
-- Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o path do arquivo CSV a ser importado:";
+- Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser importado:";
 
 - Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser exportado:";
 
-- Caso a opção `3` seja selecionada, deve-se exibir a mensagem "Digite o path do arquivo JSON a ser importado:";
-
-- Caso a opção `4` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo JSON a ser exportado:";
-
-- Caso a opção `5` seja selecionada, deve-se exibir a mensagem "Digite a quantidade de páginas a serem raspadas:";
+- Caso a opção `3` seja selecionada, deve-se exibir a mensagem "Digite a quantidade de páginas a serem raspadas:";
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
+
+📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
+
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
+
 
 #### 13 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
 
 ##### As seguintes verificações serão feitas:
 
-- Caso a opção `1` seja selecionada, a importação deve ser feita utilizando função `csv_importer`;
+- Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `csv_importer`;
 
-- Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando função `csv_exporter`;
+- Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando a função `csv_exporter`;
 
-- Caso a opção `3` seja selecionada, a importação deve ser feita utilizando função `json_importer`;
+- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando a função `scrape`;
 
-- Caso a opção `4` seja selecionada, exportação deve ser feita utilizando função `json_exporter`;
+- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script;
 
-- Caso a opção `5` seja selecionada, a raspagem deve ser feita utilizando função `scrape`;
+- Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-- Caso a opção `6` seja selecionada, deve-se encerrar a execução do script (dica: verifique o `exit code`);
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, assim você conseguirá interagir com o menu.
 
-- Após finalizar a execução de uma ação, deve-se encerrar a execução do script (dica: verifique o `exit code`).
-
-### Pacote `tech_news_app`
-
-#### 14 - Crie um módulo `news_app_menu` que deve ser utilizado como um menu de opções, em que cada opção pede as informações necessárias disparar uma ação. O texto exibido pelo menu deve ser exatamente:
-
-**Dica**: Utilize o `__main__`.
+#### 14 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
@@ -442,13 +491,17 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o título:";
 
-- Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite a data:";
+- Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite a data no formato aaaa-mm-dd:";
 
 - Caso a opção `3` seja selecionada, deve-se exibir a mensagem "Digite a fonte:";
 
 - Caso a opção `4` seja selecionada, deve-se exibir a mensagem "Digite a categoria:";
 
 - Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
+
+📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
+
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `analyzer_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
 #### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
 
@@ -466,29 +519,12 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `6` seja selecionada, a raspagem deve ser feita utilizando a função `top_5_categories` e seu resultado deve ser impresso em tela;
 
-- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script.
+- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script;
 
-## Requisitos extras:
+- Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-⚠️  Requisitos não serão avaliados ⚠️
 
-### Pacote `tech_news_data_collector`
-
-#### 16 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
-
-##### As seguintes verificações serão feitas:
-
-- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para _Fakes_ com `StringIO`;
-
-- Todos os testes que envolvem manipulação de arquivos criam _Fakes_ com `StringIO`;
-
-- Todas as requisições externas utilizam _Mocks_;
-
-- A cobertura de testes é de no mínimo 90%.
-
-### Pacote `tech_news_app`
-
-#### 17 - A cobertura de testes unitários do pacote deve ser de no mínimo 90%.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `analyzer_menu`, assim você conseguirá interagir com o menu.
 
 ---
 
