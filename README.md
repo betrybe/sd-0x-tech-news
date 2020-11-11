@@ -162,7 +162,7 @@ Os arquivos CSV devem seguir o modelo abaixo, utilizando ponto e vírgula (`;`) 
 url;title;timestamp;writer;shares_count;comments_count;summary;sources;categories
 https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155348-alemanha-trabalha-regulamentacao-carros-autonomos.htm;Alemanha já trabalha na regulamentação de carros autônomos;2020-07-20T15:30:00;Reinaldo Zaruvni;0;0;Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.;The Next Web,The Next Web,Automotive News Europe;Mobilidade Urbana/Smart Cities,Veículos autônomos,Carro,Política
 ```
-⚠️ Fique atento à maneira que os dados estão dispostos, como por exemplo, `sources` e `categories` serão armazenados separados por `,` e `comments_count` e `shares_count` são numéricos.
+📌 Fique atento à maneira que os dados estão dispostos, como por exemplo, `sources` e `categories` serão armazenados separados por `,` e `comments_count` e `shares_count` são numéricos.
 
 ### Raspagem de notícias
 
@@ -267,7 +267,7 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
   }]
 ```
 
-⚠️  Muita atenção aos tipos dos campos, por exemplo, `sources` e `categories` são listas, assim como `shares_count` e `comments_count` são numéricos.
+📌 Muita atenção aos tipos dos campos, por exemplo, `sources` e `categories` são listas, assim como `shares_count` e `comments_count` são numéricos.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
 
@@ -281,9 +281,10 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 - Deve retornar `True` caso a notícia seja inserida senão `False`.
 
+📌 Não esqueça de ter o banco de dados configurado e rodando.
+
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`.
 
-⚠️ Não esqueça de ter o banco de dados configurado e rodando.
 
 #### 4 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
 
@@ -318,7 +319,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
   }]
 ```
 
-⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
+📌Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`.
 
@@ -334,7 +335,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Todas as notícias salvas no banco de dados devem ser exportadas.
 
-⚠️ Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
+📌 Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`.
 
@@ -348,7 +349,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
 
@@ -362,7 +363,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
 
@@ -374,7 +375,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
 
@@ -386,7 +387,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
 
@@ -401,7 +402,8 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
-⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
 
 
@@ -415,7 +417,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Caso não haja categorias disponíveis, deve-se retornar uma lista vazia.
 
-⚠️  Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
+📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py` e lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
 
