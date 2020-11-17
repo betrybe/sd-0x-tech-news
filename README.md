@@ -345,7 +345,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato (lista de strings) `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de lista de tuplas `[("title", "url")]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
@@ -357,7 +357,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve retornar uma lista de tuplas `[("title", "url")]`;
 
 - A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, uma exceção deve ser lançada.
 
@@ -371,7 +371,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
@@ -383,7 +383,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
@@ -396,7 +396,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- As top 5 notícias da análise devem ser retornadas em uma lista de notícias no formato `["- {title}: {url}"]`;
+- As top 5 notícias da análise devem ser retornadas em uma lista de tuplas `[("title", "url")]`;
 
 - Caso haja menos de cinco notícias, no banco de dados, deve-se retornar todas as notícias existentes;
 
@@ -411,7 +411,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- As top 5 categorias da análise devem ser retornadas em uma lista de categorias no formato `["- {category}"]`;
+- As top 5 categorias da análise devem ser retornadas em uma lista no formato `["category"]`;
 
 - Caso haja menos de cinco categorias, no banco de dados, deve-se retornar todas as categorias existentes;
 
