@@ -1,0 +1,9 @@
+{
+  "requirements": [
+    {
+      "identifier": "test_desafio1",
+      "description": "requirement #1",
+      "bonus": false
+    }
+  ]
+}
