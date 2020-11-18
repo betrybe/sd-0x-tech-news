@@ -7,14 +7,8 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Flake8 Linter Step
-        uses: betrybe/flake8-linter-action@v1.0
-        id: flake8_linter
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pr_number: ${{ github.event.number }}
       - name: Pytest Evaluator Step
-        uses: betrybe/pytest-evaluator-action@v1.1
+        uses: betrybe/pytest-evaluator-action@add-deps
         with:
           repository_main_branch: master
         id: pytest_evaluator
