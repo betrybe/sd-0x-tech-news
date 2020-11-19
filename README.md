@@ -452,7 +452,7 @@ Selecione uma das opções a seguir:
 
 📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
 
 #### 13 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
@@ -469,7 +469,7 @@ Selecione uma das opções a seguir:
 
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, assim você conseguirá interagir com o menu.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, assim você conseguirá interagir com o menu.
 
 #### 14 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
@@ -501,7 +501,7 @@ Selecione uma das opções a seguir:
 
 📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `analyzer_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
 #### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
 
@@ -524,7 +524,7 @@ Selecione uma das opções a seguir:
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `analyzer_menu`, assim você conseguirá interagir com o menu.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, assim você conseguirá interagir com o menu.
 
 ---
 
