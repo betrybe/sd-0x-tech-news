@@ -5,12 +5,21 @@ jobs:
   evaluator_job:
     name: Evaluator Job
     runs-on: ubuntu-18.04
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - "27017:27017"
+        options: -v ${{ github.workspace }}:/github/workspace
     steps:
       - uses: actions/checkout@v2
       - name: Pytest Evaluator Step
-        uses: betrybe/pytest-evaluator-action@change-img
+        uses: betrybe/pytest-evaluator-action@add-deps
         with:
-          repository_main_branch: master
+          repository_main_branch: main
+        env:
+          DB_HOST: 'mongodb'
+          DB_PORT: 27017
         id: pytest_evaluator
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2

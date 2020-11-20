@@ -1,22 +1,20 @@
 import pytest
-import time
+
 from unittest.mock import patch
 from unittest.mock import Mock
 
 from tech_news.collector.scrapper import ( fetch_content, scrape)
 
-from tests.test_collector.faker import RESPONSE
-# Caso a requisição seja bem sucedida retorne seu conteúdo de texto;
-def test_validar_metodo_fetch_content_quando_status_200():
-    teste = fetch_content('https://app.betrybe.com/') 
+from tech_news.database import insert_or_update
 
-    assert "Aprenda a programar com uma formação de alta qualidade e só comece a pagar quando conseguir um bom trabalho." in teste
+def test_validar_fetch_com_sucesso():
+    assert 'content=\"Aprenda a programar com uma formação de alta qualidade e só comece a pagar quando conseguir um bom trabalho.\"' in fetch_content('https://app.betrybe.com/')
 
-# O tempo máximo de resposta do servidor deve ser configurado como parâmetro e por padrão será 3 segundos;
-def test_validar_fetch_retorna_vazio_quando_status_diferente_de_200():
-    teste = scrape(fetcher=fetch_content, pages=1) 
-    ##print(type(teste))
-    print(teste)
-    assert RESPONSE == teste, 'deu erro ferrou'
+def test_validar_fetch_com_tempo_maximo_maior_que_3():
+    assert "" == fetch_content('https://httpbin.org/delay/10')
 
-#Caso a resposta tenha o código de status diferente de 200, deve-se retornar uma str vazia;
+def test_validar_fetch_com_status_diferente_de_200():
+    assert "" == fetch_content('https://httpbin.org/status/404')
+
+def test_database():
+    assert True == insert_or_update({'url': 'https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/206992-2-acidentes-fatais-boeing-737-max-voltar-voar.htm', 'title': 'Após 2 acidentes fatais, Boeing 737 Max já pode voltar a voar', 'timestamp': '2020-11-19T12:00:01', 'writer': ' Nilton Kleina ', 'shares_count': 0, 'comments_count': 0, 'summary': '0', 'sources': [' Anac ', ' Digital Trends '], 'categories': [' Mobilidade Urbana/Smart Cities ', ' Avião ', ' Transporte ']})

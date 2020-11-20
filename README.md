@@ -194,7 +194,7 @@ Para a realização deste projeto utilizaremos um banco de dados chamado `tech_n
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`.
 
-#### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas, armazenando suas informações no banco de dados.
+#### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas.
 
 Utilizar os seguintes atributos:
 
@@ -345,7 +345,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato (lista de strings) `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de lista de tuplas `[("title", "url")]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
@@ -357,7 +357,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve retornar uma lista de tuplas `[("title", "url")]`;
 
 - A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, uma exceção deve ser lançada.
 
@@ -371,7 +371,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
@@ -383,7 +383,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de notícias no formato `["- {title}: {url}"]`;
+- A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
@@ -396,7 +396,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- As top 5 notícias da análise devem ser retornadas em uma lista de notícias no formato `["- {title}: {url}"]`;
+- As top 5 notícias da análise devem ser retornadas em uma lista de tuplas `[("title", "url")]`;
 
 - Caso haja menos de cinco notícias, no banco de dados, deve-se retornar todas as notícias existentes;
 
@@ -411,7 +411,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ##### As seguintes verificações serão feitas:
 
-- As top 5 categorias da análise devem ser retornadas em uma lista de categorias no formato `["- {category}"]`;
+- As top 5 categorias da análise devem ser retornadas em uma lista no formato `["category"]`;
 
 - Caso haja menos de cinco categorias, no banco de dados, deve-se retornar todas as categorias existentes;
 
@@ -452,7 +452,7 @@ Selecione uma das opções a seguir:
 
 📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
 
 #### 13 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
@@ -469,7 +469,7 @@ Selecione uma das opções a seguir:
 
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `collector_menu`, assim você conseguirá interagir com o menu.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, assim você conseguirá interagir com o menu.
 
 #### 14 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
@@ -501,7 +501,7 @@ Selecione uma das opções a seguir:
 
 📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `analyzer_menu`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
 #### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
 
@@ -524,7 +524,7 @@ Selecione uma das opções a seguir:
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `analyzer_menu`, assim você conseguirá interagir com o menu.
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, assim você conseguirá interagir com o menu.
 
 ---
 
