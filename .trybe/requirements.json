@@ -13,7 +13,7 @@
     {
       "identifier": "test_validar_fetch_com_status_diferente_de_200",
       "description": "requirement #1",
-      "bonus": false
+      "bonus": true
     },
     {
       "identifier": "test_database",
