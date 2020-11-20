@@ -1,0 +1,25 @@
+{
+  "requirements": [
+    {
+      "identifier": "test_validar_fetch_com_sucesso",
+      "description": "requirement #1",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_fetch_com_tempo_maximo_maior_que_3",
+      "description": "requirement #1",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_fetch_com_status_diferente_de_200",
+      "description": "requirement #1",
+      "bonus": false
+    },
+    {
+      "identifier": "test_database",
+      "description": "requirement #2",
+      "bonus": false
+    }
+  ]
+}
+

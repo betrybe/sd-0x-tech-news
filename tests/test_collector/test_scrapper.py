@@ -6,13 +6,13 @@ from unittest.mock import Mock
 from tech_news.collector.scrapper import ( fetch_content, scrape)
 from tech_news.database import insert_or_update
 
-def test_validar_metodo_fetch_com_sucesso():
+def test_validar_fetch_com_sucesso():
     assert 'content=\"Aprenda a programar com uma formação de alta qualidade e só comece a pagar quando conseguir um bom trabalho.\"' in fetch_content('https://app.betrybe.com/')
 
-def test_validar_metodo_fetch_com_tempo_maximo_maior_que_3():
+def test_validar_fetch_com_tempo_maximo_maior_que_3():
     assert "" == fetch_content('https://httpbin.org/delay/10')
 
-def test_validar_metodo_fetch_com_status_diferente_de_200():
+def test_validar_fetch_com_status_diferente_de_200():
     assert "" == fetch_content('https://httpbin.org/status/404')
 
 def test_database():
