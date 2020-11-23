@@ -1,23 +1,18 @@
 {
   "requirements": [
     {
-      "identifier": "test_validar_fetch_com_sucesso",
-      "description": "requirement #1",
+      "identifier": "test_sera_validado_que_fetch_retorna_requisicao_com_sucesso",
+      "description": "Será validado que fetch retorna requisição com sucesso",
       "bonus": false
     },
     {
-      "identifier": "test_validar_fetch_com_tempo_maximo_maior_que_3",
-      "description": "requirement #1",
+      "identifier": "test_sera_validado_fetch_com_tempo_de_resposta_maior_que_3",
+      "description": "Será validado fetch com tempo de resposta maior que 3",
       "bonus": false
     },
     {
-      "identifier": "test_validar_fetch_com_status_diferente_de_200",
-      "description": "requirement #1",
-      "bonus": true
-    },
-    {
-      "identifier": "test_database",
-      "description": "requirement #2",
+      "identifier": "test_sera_validado_resposta_fetch_com_status_diferente_de_200",
+      "description": "Será validado resposta fetch com status diferente de 200",
       "bonus": false
     }
   ]

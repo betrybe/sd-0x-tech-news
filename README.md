@@ -182,8 +182,6 @@ Para a realização deste projeto utilizaremos um banco de dados chamado `tech_n
 
 #### 1- Deve haver uma função chamada `fetch_content` no arquivo `tech_news/collector/scrapper.py` capaz de realizar uma requisição HTTP e retornar o conteúdo como resposta.
 
-##### As seguintes verificações serão feitas:
-
 - Caso a resposta tenha o código de status diferente de `200`, deve-se retornar uma `str` vazia;
 
 - O tempo máximo de resposta do servidor deve ser configurado como parâmetro e por padrão será `3` segundos;
@@ -193,6 +191,14 @@ Para a realização deste projeto utilizaremos um banco de dados chamado `tech_n
 - Caso a requisição seja bem sucedida retorne seu conteúdo de texto;
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que fetch retorna requisição com sucesso]**
+
+**[Será validado fetch com tempo de resposta maior que 3]**
+
+**[Será validado resposta fetch com status diferente de 200]**
 
 #### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas.
 
