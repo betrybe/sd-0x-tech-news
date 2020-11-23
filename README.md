@@ -355,6 +355,12 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`.
 
+**[Será validado que ao exportar um arquivo inválido irá mostrar o erro]**
+
+**[Será validado que ao exportar um arquivo válido com sucesso]**
+
+**[Será validado que ao exportar um arquivo com mesmo nome irá atualizar com sucesso]**
+
 ### Pacote `tech_news/analyzer`
 
 #### 6 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
