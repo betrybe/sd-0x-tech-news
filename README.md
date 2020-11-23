@@ -299,8 +299,6 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 #### 4 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
 
-##### As seguintes verificações serão feitas:
-
 - Caso a extensão do arquivo seja diferente de `.csv`, uma exceção deve ser lançada;
 
 - Caso o arquivo CSV não exista, uma exceção deve ser lançada;
@@ -329,6 +327,13 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
     ]
   }]
 ```
+##### As seguintes verificações serão feitas:
+
+**[Será validado que ao importar um arquivo inválido deverá retornar erro]**
+
+**[Será validado que ao importar um arquivo inexistente deverá retornar erro]**
+
+**[Será validado que ao importar um arquivo válido deverá retornar importar com sucesso]**
 
 📌Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 

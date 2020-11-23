@@ -44,6 +44,21 @@
       "identifier": "test_sera_validado_que_e_nao_possivel_inserir_a_mesma_noticia",
       "description": "Será validado que não é possivel inserir a mesma notícia",
       "bonus": false
+    },
+    {
+      "identifier": "test_sera_validado_importar_arquivo_invalido_ira_mostrar_erro",
+      "description": "Será validado que ao importar um arquivo inválido deverá retornar erro",
+      "bonus": false
+    },
+    {
+      "identifier": "test_sera_validado_importar_arquivo_inexistente_ira_mostrar_erro",
+      "description": "Será validado que ao importar um arquivo inexistente deverá retornar erro",
+      "bonus": false
+    },
+    {
+      "identifier": "test_sera_validado_importar_arquivo_com_sucesso",
+      "description": "Será validado que ao importar um arquivo válido deverá retornar importar com sucesso",
+      "bonus": false
     }
   ]
 }
