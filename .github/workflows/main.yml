@@ -13,6 +13,12 @@ jobs:
         options: -v ${{ github.workspace }}:/github/workspace
     steps:
       - uses: actions/checkout@v2
+      - name: Flake8 Linter Step
+        uses: betrybe/flake8-linter-action@learn-724
+        id: flake8_linter
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.number }}
       - name: Pytest Evaluator Step
         uses: betrybe/pytest-evaluator-action@add-deps
         with:
