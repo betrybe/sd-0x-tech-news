@@ -279,8 +279,6 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 #### 3 - Deve haver uma função `insert_or_update` dentro do módulo `tech_news/database.py` que deve receber uma notícia e a insira na coleção, mas se a mesma já existir deve apenas atualizá-la.
 
-##### As seguintes verificações serão feitas:
-
 - Insira uma notícia no banco;
 
 - Caso a notícia já exista no banco de dados, ela deve ser atualizada;
@@ -291,6 +289,13 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`.
 
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possivel inserir uma notícia no banco com sucesso]**
+
+**[Será validado que é possivel atualizar uma notícia no banco com sucesso]**
+
+**[Será validado que não é possivel inserir a mesma notícia]**
 
 #### 4 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
 

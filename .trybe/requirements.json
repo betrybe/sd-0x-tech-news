@@ -14,6 +14,36 @@
       "identifier": "test_sera_validado_resposta_fetch_com_status_diferente_de_200",
       "description": "Será validado resposta fetch com status diferente de 200",
       "bonus": false
+    },
+    {
+      "identifier": "",
+      "description": "",
+      "bonus": false
+    },
+    {
+      "identifier": "",
+      "description": "",
+      "bonus": false
+    },
+    {
+      "identifier": "",
+      "description": "",
+      "bonus": false
+    },
+    {
+      "identifier": "test_sera_validado_que_e_possivel_inserir_noticia_no_banco_com_sucesso",
+      "description": "Será validado que é possivel inserir uma notícia no banco com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_sera_validado_que_e_possivel_atualizar_noticia_no_banco_com_sucesso",
+      "description": "Será validado que é possivel atualizar uma notícia no banco com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_sera_validado_que_e_nao_possivel_inserir_a_mesma_noticia",
+      "description": "Será validado que não é possivel inserir a mesma notícia",
+      "bonus": false
     }
   ]
 }
