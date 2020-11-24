@@ -42,6 +42,7 @@ def test_sera_valiado_que_e_possivel_atualizar_noticia_no_banco_com_sucesso():
     insert_or_update(NEW_NOTICE)
     assert True is insert_or_update(NEW_UPDATE_NOTICE)
 
+
 def test_sera_valiado_que_e_nao_possivel_inserir_a_mesma_noticia():
     db.news.delete_many({})
     insert_or_update(NEW_NOTICE)

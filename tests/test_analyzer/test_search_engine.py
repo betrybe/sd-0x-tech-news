@@ -1,4 +1,3 @@
-from tech_news.database import insert_or_update
 from pymongo import MongoClient
 from decouple import config
 from tech_news.analyzer.search_engine import (
@@ -26,10 +25,12 @@ NEW_NOTICE = {'url': 'https://www.tecmundo.com.br/vamos.htm',
 
 LIST = [('Vamoscomtudo', 'https://www.tecmundo.com.br/vamos.htm')]
 
+
 def test_buscar_noticia_pelo_titulo_com_sucesso():
     db.news.delete_many({})
     db.news.insert_one(NEW_NOTICE)
     assert search_by_title("Vamoscomtudo") == LIST
+
 
 def test_buscar_titulo_que_nao_existe_deve_retornar_vazio():
     db.news.delete_many({})
