@@ -429,7 +429,6 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 **[Será validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia]**
 
-
 #### 10 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
 
 - As top 5 notícias da análise devem ser retornadas em uma lista de tuplas `[("title", "url")]`;
@@ -441,6 +440,12 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar as cinco top notícias]**
+
+**[Será validado que é possível buscar as cinco top notícias e retornar vazio caso não tenha nenhuma notícia]**
 
 #### 11 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
@@ -455,6 +460,12 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar as cinco top categorias]**
+
+**[Será validado que é possível buscar as cinco top categorias e retornar vazio caso não tenha nenhuma notícia]**
 
 ---
 

@@ -114,6 +114,26 @@
       "identifier": "test_buscar_categoria_que_nao_existe_deve_retornar_vazio",
       "description": "Sera validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia",
       "bonus": false
+    },
+    {
+      "identifier": "test_listar_as_top_cinco_noticias",
+      "description": "Será validado que é possível buscar as cinco top notícias",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_top_noticias_retornar_vazio_caso_nao_exista_noticias",
+      "description": "Será validado que é possível buscar as cinco top notícias e retornar vazio caso não tenha nenhuma notícia",
+      "bonus": false
+    },
+    {
+      "identifier": "test_listar_as_top_cinco_categorias",
+      "description": "Será validado que é possível buscar as cinco top categorias",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_top_categorias_retornar_vazio_caso_nao_exista_noticias",
+      "description": "Será validado que é possível buscar as cinco top categorias e retornar vazio caso não tenha nenhuma notícia",
+      "bonus": false
     }
   ]
 }
