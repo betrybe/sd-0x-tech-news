@@ -74,7 +74,46 @@
       "identifier": "test_sera_validado_atualizar_arquivo_com_mesmo_nome_com_sucesso",
       "description": "Será validado que ao exportar um arquivo com mesmo nome irá atualizar com sucesso",
       "bonus": false
+    },
+    {
+      "identifier": "test_buscar_noticia_pelo_titulo_com_sucesso",
+      "description": "Será validado que é possível buscar uma notícia pelo título com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_titulo_que_nao_existe_deve_retornar_vazio",
+      "description": "Sera validado que ao buscar por um título que não existe, o retorno deve ser uma lista vazia",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_noticia_pela_data_com_sucesso",
+      "description": "Será validado que é possível buscar uma notícia pela data com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_data_que_nao_existe_deve_retornar_vazio",
+      "description": "Sera validado que ao buscar por uma data que não existe, o retorno deve ser uma lista vazia",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_noticia_pela_fonte_com_sucesso",
+      "description": "Será validado que é possível buscar uma notícia pela fonte com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_fonte_que_nao_existe_deve_retornar_vazio",
+      "description": "Sera validado que ao buscar por uma fonte que não existe, o retorno deve ser uma lista vazia",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_noticia_pela_categoria_com_sucesso",
+      "description": "Será validado que é possível buscar uma notícia pela categoria com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_categoria_que_nao_existe_deve_retornar_vazio",
+      "description": "Sera validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia",
+      "bonus": false
     }
   ]
 }
-

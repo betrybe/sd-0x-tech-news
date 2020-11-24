@@ -365,8 +365,6 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 #### 6 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
-##### As seguintes verificações serão feitas:
-
 - A busca deve ser _case insensitive_ e deve retornar uma lista de lista de tuplas `[("title", "url")]`;
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
@@ -375,9 +373,13 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
 
-#### 7 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pelo título com sucesso]**
+
+**[Será validado que ao buscar por um título que não existe, o retorno deve ser uma lista vazia]**
+
+#### 7 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -389,9 +391,13 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
 
-#### 8 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pela data com sucesso]**
+
+**[Será validado que ao buscar por uma data que não existe, o retorno deve ser uma lista vazia]**
+
+#### 8 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -401,9 +407,13 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
 
-#### 9 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pela fonte com sucesso]**
+
+**[Será validado que ao buscar por uma fonte que não existe, o retorno deve ser uma lista vazia]**
+
+#### 9 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -413,10 +423,14 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
 
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pela categoria com sucesso]**
+
+**[Será validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia]**
+
 
 #### 10 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
-
-##### As seguintes verificações serão feitas:
 
 - As top 5 notícias da análise devem ser retornadas em uma lista de tuplas `[("title", "url")]`;
 
@@ -427,7 +441,6 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
-
 
 #### 11 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
