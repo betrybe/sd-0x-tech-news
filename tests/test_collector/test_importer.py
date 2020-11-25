@@ -29,4 +29,4 @@ def test_sera_validado_importar_arquivo_inexistente_ira_mostrar_erro():
 
 
 def test_sera_validado_importar_arquivo_com_sucesso():
-    assert csv_importer('tests/correct.csv') == DICT
+    assert csv_importer('correct.csv') == DICT
