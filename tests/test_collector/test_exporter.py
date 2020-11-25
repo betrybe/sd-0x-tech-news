@@ -15,7 +15,7 @@ NEW_NOTICE = {'url': 'https://www.tecmundo.com.br/brincadeira-levadaserio.htm',
               'writer': 'André Luis Dias Custodio',
               'shares_count': 0,
               'comments_count': 0,
-              'summary': '0',
+              'summary': 'Sumario da noticia',
               'sources': ['ResetEra'],
               'categories': ['Plataformas', 'PC', 'Console']}
 
@@ -25,7 +25,7 @@ NEW_NOTICE_UPDATE = {'url': 'https://www.tecmundo.com.br/vamos.htm',
                      'writer': 'Leonardo',
                      'shares_count': 1,
                      'comments_count': 1,
-                     'summary': '0',
+                     'summary': 'Sumario da noticia 2',
                      'sources': ['ResetEra2'],
                      'categories': ['PC', 'Console']}
 
@@ -40,9 +40,8 @@ with open(FILE_CSV_UPDATE) as f:
 
 
 def test_sera_validado_exportar_arquivo_invalido_ira_mostrar_erro():
-    with pytest.raises(ValueError) as error:
+    with pytest.raises(ValueError, match='Formato invalido'):
         assert csv_exporter('file_incorrect.json')
-    assert str(error.value) == 'Formato invalido'
 
 
 def test_sera_validado_exportar_arquivo_com_sucesso():
