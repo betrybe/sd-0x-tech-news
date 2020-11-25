@@ -16,33 +16,23 @@
       "bonus": false
     },
     {
-      "identifier": "",
-      "description": "",
+      "identifier": "test_validar_tempo_sleep_do_fecth",
+      "description": "Será validado o tempo de sleep do fetch",
       "bonus": false
     },
     {
-      "identifier": "",
-      "description": "",
+      "identifier": "test_validar_scrape_default_retorna_a_primeira_pagina",
+      "description": "Será validado que por default o método scrape irá raspar notícias da primeria página",
       "bonus": false
     },
     {
-      "identifier": "",
-      "description": "",
+      "identifier": "test_validar_scrape_retorna_noticias_de_N_paginas",
+      "description": "Será validado que ao passar o número de página deverá retornar todas as notícias das N páginas",
       "bonus": false
     },
     {
-      "identifier": "test_sera_validado_que_e_possivel_inserir_noticia_no_banco_com_sucesso",
-      "description": "Será validado que é possivel inserir uma notícia no banco com sucesso",
-      "bonus": false
-    },
-    {
-      "identifier": "test_sera_validado_que_e_possivel_atualizar_noticia_no_banco_com_sucesso",
-      "description": "Será validado que é possivel atualizar uma notícia no banco com sucesso",
-      "bonus": false
-    },
-    {
-      "identifier": "test_sera_validado_que_e_nao_possivel_inserir_a_mesma_noticia",
-      "description": "Será validado que não é possivel inserir a mesma notícia",
+      "identifier": "test_validar_formato_da_lista",
+      "description": "Será validado o formato da lista está correta",
       "bonus": false
     },
     {

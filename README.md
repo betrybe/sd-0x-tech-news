@@ -200,6 +200,8 @@ Para a realização deste projeto utilizaremos um banco de dados chamado `tech_n
 
 **[Será validado resposta fetch com status diferente de 200]**
 
+**[Será validado o tempo de sleep do fetch]**
+
 #### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas.
 
 Utilizar os seguintes atributos:
@@ -246,8 +248,6 @@ Utilizar os seguintes atributos:
 
 Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é um caso onde a tag _p_ é um ancestral e as tags _a_ e _em_ são as descendentes. Para obter todo o texto do exemplo, utiliza-se `*::text` no seletor.
 
-##### As seguintes verificações serão feitas:
-
 - Por padrão deve-se raspar apenas as notícias da primeira página;
 
 - Um número de páginas para serem raspadas pode ser passado para a função. Caso o número de páginas seja definido, deve-se raspar os dados das N primeiras páginas;
@@ -277,27 +277,15 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
 
-#### 3 - Deve haver uma função `insert_or_update` dentro do módulo `tech_news/database.py` que deve receber uma notícia e a insira na coleção, mas se a mesma já existir deve apenas atualizá-la.
-
-- Insira uma notícia no banco;
-
-- Caso a notícia já exista no banco de dados, ela deve ser atualizada;
-
-- Deve retornar `True` caso a notícia seja inserida senão `False`.
-
-📌 Não esqueça de ter o banco de dados configurado e rodando.
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`.
-
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que é possivel inserir uma notícia no banco com sucesso]**
+**[Será validado que por default o método scrape irá raspar notícias da primeria página]**
 
-**[Será validado que é possivel atualizar uma notícia no banco com sucesso]**
+**[Será validado que ao passar o número de página deverá retornar todas as notícias das N páginas]**
 
-**[Será validado que não é possivel inserir a mesma notícia]**
+**[Será validado o formato da lista está correta]**
 
-#### 4 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
+#### 3 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
 
 - Caso a extensão do arquivo seja diferente de `.csv`, uma exceção deve ser lançada;
 
@@ -339,7 +327,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`.
 
-#### 5 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
+#### 4 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
 
@@ -363,7 +351,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ### Pacote `tech_news/analyzer`
 
-#### 6 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 5 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de lista de tuplas `[("title", "url")]`;
 
@@ -379,7 +367,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 **[Será validado que ao buscar por um título que não existe, o retorno deve ser uma lista vazia]**
 
-#### 7 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 6 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -397,7 +385,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 **[Será validado que ao buscar por uma data que não existe, o retorno deve ser uma lista vazia]**
 
-#### 8 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 7 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -413,7 +401,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 **[Será validado que ao buscar por uma fonte que não existe, o retorno deve ser uma lista vazia]**
 
-#### 9 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+#### 8 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -429,7 +417,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 **[Será validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia]**
 
-#### 10 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
+#### 9 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
 
 - As top 5 notícias da análise devem ser retornadas em uma lista de tuplas `[("title", "url")]`;
 
@@ -447,7 +435,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 **[Será validado que é possível buscar as cinco top notícias e retornar vazio caso não tenha nenhuma notícia]**
 
-#### 11 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
+#### 10 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
 ##### As seguintes verificações serão feitas:
 
@@ -473,7 +461,7 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ### Pacote `tech_news`
 
-#### 12 - Preencha a função `collector_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+#### 11 - Preencha a função `collector_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
@@ -501,7 +489,7 @@ Selecione uma das opções a seguir:
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
 
-#### 13 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
+#### 12 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
 
 ##### As seguintes verificações serão feitas:
 
@@ -517,7 +505,7 @@ Selecione uma das opções a seguir:
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, assim você conseguirá interagir com o menu.
 
-#### 14 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+#### 13 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
@@ -549,7 +537,7 @@ Selecione uma das opções a seguir:
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
-#### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
+#### 14 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
 
 ##### As seguintes verificações serão feitas:
 
