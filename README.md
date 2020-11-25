@@ -321,6 +321,8 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 **[Será validado que ao importar um arquivo inexistente deverá retornar erro]**
 
+**[Será validado que ao importar um arquivo inexitente com formato inválido irá retornar erro]**
+
 **[Será validado que ao importar um arquivo válido deverá retornar importar com sucesso]**
 
 📌Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).

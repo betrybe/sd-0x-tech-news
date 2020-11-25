@@ -51,6 +51,11 @@
       "bonus": false
     },
     {
+      "identifier": "test_sera_validado_importar_arquivo_inexistente_com_formato_invalido_ira_mostrar_erro",
+      "description": "Será validado que ao importar um arquivo inexitente com formato inválido irá retornar erro",
+      "bonus": false
+    },
+    {
       "identifier": "test_sera_validado_exportar_arquivo_invalido_ira_mostrar_erro",
       "description": "Será validado que ao exportar um arquivo inválido irá mostrar o erro",
       "bonus": false
