@@ -14,7 +14,7 @@ NEW_NOTICE_1 = {'url': 'https://www.tecmundo.com.br/noticia_1.htm',
                        'writer': 'Escritor_1',
                        'shares_count': 1,
                        'comments_count': 1,
-                       'summary': '0',
+                       'summary': 'Sumario da noticia_1',
                        'sources': ['Fonte_1'],
                        'categories': ['PC_1', 'Console_1']}
 
@@ -24,7 +24,7 @@ NEW_NOTICE_2 = {'url': 'https://www.tecmundo.com.br/noticia_2.htm',
                        'writer': 'Escritor_2',
                        'shares_count': 1,
                        'comments_count': 1,
-                       'summary': '0',
+                       'summary': 'Sumario da noticia_2',
                        'sources': ['Fonte_2'],
                        'categories': ['PC_2', 'Console_2']}
 
@@ -34,7 +34,7 @@ NEW_NOTICE_3 = {'url': 'https://www.tecmundo.com.br/noticia_3.htm',
                        'writer': 'Escritor_3',
                        'shares_count': 1,
                        'comments_count': 1,
-                       'summary': '0',
+                       'summary': 'Sumario da noticia_3',
                        'sources': ['Fonte_3'],
                        'categories': ['PC_3', 'Console_3']}
 
@@ -44,7 +44,7 @@ NEW_NOTICE_4 = {'url': 'https://www.tecmundo.com.br/noticia_4.htm',
                        'writer': 'Escritor_4',
                        'shares_count': 1,
                        'comments_count': 1,
-                       'summary': '0',
+                       'summary': 'Sumario da noticia_4',
                        'sources': ['Fonte_4'],
                        'categories': ['PC_4', 'Console_4']}
 
@@ -54,7 +54,7 @@ NEW_NOTICE_5 = {'url': 'https://www.tecmundo.com.br/noticia_5.htm',
                        'writer': 'Escritor_5',
                        'shares_count': 1,
                        'comments_count': 1,
-                       'summary': '0',
+                       'summary': 'Sumario da noticia_5',
                        'sources': ['Fonte_5'],
                        'categories': ['PC_5', 'Console_5']}
 
@@ -64,7 +64,7 @@ NEW_NOTICE_6 = {'url': 'https://www.tecmundo.com.br/noticia_6.htm',
                        'writer': 'Escritor_6',
                        'shares_count': 1,
                        'comments_count': 1,
-                       'summary': '0',
+                       'summary': 'Sumario da noticia_6',
                        'sources': ['Fonte_6'],
                        'categories': ['PC_6', 'Console_6']}
 
