@@ -81,6 +81,11 @@
       "bonus": false
     },
     {
+      "identifier": "test_buscar_noticia_pelo_titulo_com_sucesso_com_sentive_case",
+      "description": "Será validado que é possível buscar uma notícia pelo título com case sensitive com sucesso",
+      "bonus": false
+    },
+    {
       "identifier": "test_buscar_noticia_pela_data_com_sucesso",
       "description": "Será validado que é possível buscar uma notícia pela data com sucesso",
       "bonus": false
@@ -88,6 +93,11 @@
     {
       "identifier": "test_buscar_data_que_nao_existe_deve_retornar_vazio",
       "description": "Sera validado que ao buscar por uma data que não existe, o retorno deve ser uma lista vazia",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_data_que_com_formato_invalido_deve_retornar_erro",
+      "description": "Sera validado que ao buscar por uma data com formato inválido, deve retornar `Data inválida`",
       "bonus": false
     },
     {
@@ -101,6 +111,11 @@
       "bonus": false
     },
     {
+      "identifier": "test_buscar_noticia_pela_fonte_com_sucesso_com_sentive_case",
+      "description": "Será validado que é possível buscar uma notícia pela fonte com case sensitive com sucesso",
+      "bonus": false
+    },
+    {
       "identifier": "test_buscar_noticia_pela_categoria_com_sucesso",
       "description": "Será validado que é possível buscar uma notícia pela categoria com sucesso",
       "bonus": false
@@ -108,6 +123,11 @@
     {
       "identifier": "test_buscar_categoria_que_nao_existe_deve_retornar_vazio",
       "description": "Sera validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia",
+      "bonus": false
+    },
+    {
+      "identifier": "test_buscar_noticia_pela_categoria_com_sucesso_com_sentive_case",
+      "description": "Será validado que é possível buscar uma notícia pela categoria com case sensitive com sucesso",
       "bonus": false
     },
     {
