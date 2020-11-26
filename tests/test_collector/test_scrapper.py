@@ -1,3 +1,5 @@
+# flake8: noqa
+
 from tech_news.collector.scrapper import fetch_content, scrape
 
 from unittest.mock import patch

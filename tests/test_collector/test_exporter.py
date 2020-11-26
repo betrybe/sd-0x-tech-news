@@ -1,3 +1,5 @@
+# flake8: noqa
+
 import pytest
 from tech_news.collector.exporter import csv_exporter
 from pymongo import MongoClient
