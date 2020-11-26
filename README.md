@@ -482,8 +482,6 @@ Selecione uma das opções a seguir:
 4 - Sair.
 ```
 
-##### As seguintes verificações serão feitas:
-
 - A mensagem de menu deve ser exibida corretamente;
 
 - Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser importado:";
@@ -498,22 +496,35 @@ Selecione uma das opções a seguir:
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível listar o menu collector no console]**
+
+**[Será validado que é possível sair do menu collector]**
+
+**[Será validado que é possível retornar um erro do menu collector quando opção inválida]**
 
 #### 12 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
-
-##### As seguintes verificações serão feitas:
 
 - Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `csv_importer`;
 
 - Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando a função `csv_exporter`;
 
-- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando a função `scrape`;
+- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando a função `scrape` e listar o resultado no console;
 
-- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script;
+- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script e deve-se exibir a mensagem "Encerrando script";
 
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, assim você conseguirá interagir com o menu.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que e possível executar a opção importar]**
+
+**[Será validado que e possível executar a opção exportar]**
+
+**[Será validado que e possível executar a opção raspar notícia]**
 
 #### 13 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
@@ -529,7 +540,7 @@ Selecione uma das opções a seguir:
 7 - Sair.
 ```
 
-##### As seguintes verificações serão feitas:
+
 
 - A mensagem de menu deve ser exibida corretamente;
 
@@ -547,9 +558,17 @@ Selecione uma das opções a seguir:
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível listar o menu analyzer no console]**
+
+**[Será validado que é possível sair do menu analyzer]**
+
+**[Será validado que é possível retornar um erro do menu analyzer quando opção inválida]**
+
 #### 14 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
 
-##### As seguintes verificações serão feitas:
+
 
 - Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `search_by_title` e seu resultado deve ser impresso em tela;
 
@@ -563,12 +582,25 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `6` seja selecionada, a raspagem deve ser feita utilizando a função `top_5_categories` e seu resultado deve ser impresso em tela;
 
-- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script;
+- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script e deve-se exibir a mensagem "Encerrando script";
 
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, assim você conseguirá interagir com o menu.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível executar a opção buscar por título]**
+
+**[Será validado que é possível executar a opção buscar por data]**
+
+**[Será validado que é possível executar a opção buscar por fonte]**
+
+**[Será validado que é possível executar a opção buscar por categoria]**
+
+**[Será validado que é possível executar a opção buscar top 5 noticías]**
+
+**[Será validado que é possível executar a opção buscar top 5 categorias]**
 
 ---
 

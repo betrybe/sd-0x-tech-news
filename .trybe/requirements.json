@@ -149,6 +149,81 @@
       "identifier": "test_buscar_top_categorias_retornar_vazio_caso_nao_exista_noticias",
       "description": "Será validado que é possível buscar as cinco top categorias e retornar vazio caso não tenha nenhuma notícia",
       "bonus": false
+    },
+    {
+      "identifier": "test_validar_saida_do_console_collector_menu",
+      "description": "Será validado que é possível listar o menu collector no console",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_sair_collector_menu",
+      "description": "Será validado que é possível sair do menu collector",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_invalida_do_collector_menu",
+      "description": "Será validado que é possível retornar um erro do menu collector quando opção inválida",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_importar_collector_menu",
+      "description": "Será validado que e possível executar a opção importar",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_exportar_collector_menu",
+      "description": "Será validado que e possível executar a opção exportar",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_raspar_collector_menu",
+      "description": "Será validado que e possível executar a opção raspar notícia",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_saida_do_console_analyzer_menu",
+      "description": "Será validado que é possível listar o menu analyzer no console",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_sair_do_console_analyzer_menu",
+      "description": "Será validado que é possível sair do menu analyzer",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_invalida_do_analyzer_menu",
+      "description": "Será validado que é possível retornar um erro do menu analyzer quando opção inválida",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_titulo_do_console_analyzer_menu",
+      "description": "Será validado que é possível executar a opção buscar por título",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_data_do_console_analyzer_menu",
+      "description": "Será validado que é possível executar a opção buscar por data",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_fonte_do_console_analyzer_menu",
+      "description": "Será validado que é possível executar a opção buscar por fonte",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_categoria_do_console_analyzer_menu",
+      "description": "Será validado que é possível executar a opção buscar por categoria",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_top5_noticias_do_console_analyzer_menu",
+      "description": "Será validado que é possível executar a opção buscar top 5 noticías",
+      "bonus": true
+    },
+    {
+      "identifier": "test_executar_opcao_top5_categorias_do_console_analyzer_menu",
+      "description": "Será validado que é possível executar a opção buscar top 5 categorias",
+      "bonus": true
     }
   ]
 }
