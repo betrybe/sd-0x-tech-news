@@ -25,7 +25,7 @@ jobs:
           repository_main_branch: main
         env:
           DB_HOST: 'mongodb'
-          DB_PORT: '27017'
+          DB_PORT: 27017
         id: pytest_evaluator
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2
