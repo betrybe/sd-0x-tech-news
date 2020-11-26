@@ -13,13 +13,19 @@ jobs:
         options: -v ${{ github.workspace }}:/github/workspace
     steps:
       - uses: actions/checkout@v2
+      - name: Flake8 Linter Step
+        uses: betrybe/flake8-linter-action@v1.2
+        id: flake8_linter
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.number }}
       - name: Pytest Evaluator Step
-        uses: betrybe/pytest-evaluator-action@add-deps
+        uses: betrybe/pytest-evaluator-action@v1.2
         with:
           repository_main_branch: main
         env:
           DB_HOST: 'mongodb'
-          DB_PORT: 27017
+          DB_PORT: '27017'
         id: pytest_evaluator
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2

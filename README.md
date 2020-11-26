@@ -182,8 +182,6 @@ Para a realização deste projeto utilizaremos um banco de dados chamado `tech_n
 
 #### 1- Deve haver uma função chamada `fetch_content` no arquivo `tech_news/collector/scrapper.py` capaz de realizar uma requisição HTTP e retornar o conteúdo como resposta.
 
-##### As seguintes verificações serão feitas:
-
 - Caso a resposta tenha o código de status diferente de `200`, deve-se retornar uma `str` vazia;
 
 - O tempo máximo de resposta do servidor deve ser configurado como parâmetro e por padrão será `3` segundos;
@@ -193,6 +191,16 @@ Para a realização deste projeto utilizaremos um banco de dados chamado `tech_n
 - Caso a requisição seja bem sucedida retorne seu conteúdo de texto;
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que fetch retorna requisição com sucesso]**
+
+**[Será validado fetch com tempo de resposta maior que 3]**
+
+**[Será validado resposta fetch com status diferente de 200]**
+
+**[Será validado o tempo de sleep do fetch]**
 
 #### 2 - Deve haver uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas.
 
@@ -240,8 +248,6 @@ Utilizar os seguintes atributos:
 
 Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é um caso onde a tag _p_ é um ancestral e as tags _a_ e _em_ são as descendentes. Para obter todo o texto do exemplo, utiliza-se `*::text` no seletor.
 
-##### As seguintes verificações serão feitas:
-
 - Por padrão deve-se raspar apenas as notícias da primeira página;
 
 - Um número de páginas para serem raspadas pode ser passado para a função. Caso o número de páginas seja definido, deve-se raspar os dados das N primeiras páginas;
@@ -271,24 +277,15 @@ Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é u
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
 
-#### 3 - Deve haver uma função `insert_or_update` dentro do módulo `tech_news/database.py` que deve receber uma notícia e a insira na coleção, mas se a mesma já existir deve apenas atualizá-la.
-
 ##### As seguintes verificações serão feitas:
 
-- Insira uma notícia no banco;
+**[Será validado que por default o método scrape irá raspar notícias da primeria página]**
 
-- Caso a notícia já exista no banco de dados, ela deve ser atualizada;
+**[Será validado que ao passar o número de página deverá retornar todas as notícias das N páginas]**
 
-- Deve retornar `True` caso a notícia seja inserida senão `False`.
+**[Será validado o formato da lista está correta]**
 
-📌 Não esqueça de ter o banco de dados configurado e rodando.
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/database.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `insert_or_update({"url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm", ...})`.
-
-
-#### 4 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
-
-##### As seguintes verificações serão feitas:
+#### 3 - Deve haver uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
 
 - Caso a extensão do arquivo seja diferente de `.csv`, uma exceção deve ser lançada;
 
@@ -318,12 +315,21 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
     ]
   }]
 ```
+##### As seguintes verificações serão feitas:
+
+**[Será validado que ao importar um arquivo inválido deverá retornar erro]**
+
+**[Será validado que ao importar um arquivo inexistente deverá retornar erro]**
+
+**[Será validado que ao importar um arquivo inexitente com formato inválido irá retornar erro]**
+
+**[Será validado que ao importar um arquivo válido deverá retornar importar com sucesso]**
 
 📌Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`.
 
-#### 5 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
+#### 4 - Deve haver uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
 
 ##### As seguintes verificações serão feitas:
 
@@ -339,11 +345,15 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`.
 
+**[Será validado que ao exportar um arquivo inválido irá mostrar o erro]**
+
+**[Será validado que ao exportar um arquivo válido com sucesso]**
+
+**[Será validado que ao exportar um arquivo com mesmo nome irá atualizar com sucesso]**
+
 ### Pacote `tech_news/analyzer`
 
-#### 6 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
-##### As seguintes verificações serão feitas:
+#### 5 - Deve haver uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de lista de tuplas `[("title", "url")]`;
 
@@ -353,13 +363,19 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
 
-#### 7 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pelo título com sucesso]**
+
+**[Será validado que ao buscar por um título que não existe, o retorno deve ser uma lista vazia]**
+
+**[Será validado que é possível buscar uma notícia pelo título com case sensitive com sucesso]**
+
+#### 6 - Deve haver uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve retornar uma lista de tuplas `[("title", "url")]`;
 
-- A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, uma exceção deve ser lançada.
+- A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, uma exceção deve ser lançada `Data inválida`.
 
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
@@ -367,9 +383,15 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
 
-#### 8 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pela data com sucesso]**
+
+**[Será validado que ao buscar por uma data que não existe, o retorno deve ser uma lista vazia]**
+
+**[Sera validado que ao buscar por uma data com formato inválido, deve retornar `Data inválida`]**
+
+#### 7 - Deve haver uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -379,9 +401,15 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
 
-#### 9 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pela fonte com sucesso]**
+
+**[Será validado que ao buscar por uma fonte que não existe, o retorno deve ser uma lista vazia]**
+
+**[Será validado que é possível buscar uma notícia pela fonte com case sensitive com sucesso]**
+
+#### 8 - Deve haver uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
 
 - A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
 
@@ -391,10 +419,15 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
 
-
-#### 10 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar uma notícia pela categoria com sucesso]**
+
+**[Será validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia]**
+
+**[Será validado que é possível buscar uma notícia pela categoria com case sensitive com sucesso]**
+
+#### 9 - Deve haver uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
 
 - As top 5 notícias da análise devem ser retornadas em uma lista de tuplas `[("title", "url")]`;
 
@@ -406,8 +439,13 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
 
+##### As seguintes verificações serão feitas:
 
-#### 11 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
+**[Será validado que é possível buscar as cinco top notícias]**
+
+**[Será validado que é possível buscar as cinco top notícias e retornar vazio caso não tenha nenhuma notícia]**
+
+#### 10 - Deve haver uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
 
 ##### As seguintes verificações serão feitas:
 
@@ -421,13 +459,19 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 ✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
 
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível buscar as cinco top categorias]**
+
+**[Será validado que é possível buscar as cinco top categorias e retornar vazio caso não tenha nenhuma notícia]**
+
 ---
 
 ## Requisitos bônus:
 
 ### Pacote `tech_news`
 
-#### 12 - Preencha a função `collector_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+#### 11 - Preencha a função `collector_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
@@ -437,8 +481,6 @@ Selecione uma das opções a seguir:
 3 - Raspar notícias online;
 4 - Sair.
 ```
-
-##### As seguintes verificações serão feitas:
 
 - A mensagem de menu deve ser exibida corretamente;
 
@@ -454,24 +496,37 @@ Selecione uma das opções a seguir:
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
-
-#### 13 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível listar o menu collector no console]**
+
+**[Será validado que é possível sair do menu collector]**
+
+**[Será validado que é possível retornar um erro do menu collector quando opção inválida]**
+
+#### 12 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
 
 - Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `csv_importer`;
 
 - Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando a função `csv_exporter`;
 
-- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando a função `scrape`;
+- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando a função `scrape` e listar o resultado no console;
 
-- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script;
+- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script e deve-se exibir a mensagem "Encerrando script";
 
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, assim você conseguirá interagir com o menu.
 
-#### 14 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+##### As seguintes verificações serão feitas:
+
+**[Será validado que e possível executar a opção importar]**
+
+**[Será validado que e possível executar a opção exportar]**
+
+**[Será validado que e possível executar a opção raspar notícia]**
+
+#### 13 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
 
 ```md
 Selecione uma das opções a seguir:
@@ -485,7 +540,7 @@ Selecione uma das opções a seguir:
 7 - Sair.
 ```
 
-##### As seguintes verificações serão feitas:
+
 
 - A mensagem de menu deve ser exibida corretamente;
 
@@ -503,9 +558,17 @@ Selecione uma das opções a seguir:
 
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
-#### 15 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível listar o menu analyzer no console]**
+
+**[Será validado que é possível sair do menu analyzer]**
+
+**[Será validado que é possível retornar um erro do menu analyzer quando opção inválida]**
+
+#### 14 - Ao selecionar uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
+
+
 
 - Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `search_by_title` e seu resultado deve ser impresso em tela;
 
@@ -519,12 +582,25 @@ Selecione uma das opções a seguir:
 
 - Caso a opção `6` seja selecionada, a raspagem deve ser feita utilizando a função `top_5_categories` e seu resultado deve ser impresso em tela;
 
-- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script;
+- Caso a opção `7` seja selecionada, deve-se encerrar a execução do script e deve-se exibir a mensagem "Encerrando script";
 
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-
 ✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, assim você conseguirá interagir com o menu.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível executar a opção buscar por título]**
+
+**[Será validado que é possível executar a opção buscar por data]**
+
+**[Será validado que é possível executar a opção buscar por fonte]**
+
+**[Será validado que é possível executar a opção buscar por categoria]**
+
+**[Será validado que é possível executar a opção buscar top 5 noticías]**
+
+**[Será validado que é possível executar a opção buscar top 5 categorias]**
 
 ---
 
