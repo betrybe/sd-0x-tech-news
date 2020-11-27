@@ -162,7 +162,7 @@ def test_executar_opcao_sair_do_console_analyzer_menu(capsys):
     assert "Encerrando script\n" in out
 
 
-def test_executar_opcao_invalida_do_console_analyzer_menu(capsys):
+def test_executar_opcao_invalida_do_analyzer_menu(capsys):
     with patch("builtins.input") as mocked_input:
         mocked_input.side_effect = ["8", ""]
         analyzer_menu()
