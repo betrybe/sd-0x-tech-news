@@ -172,7 +172,7 @@ Essas notícias devem ser salvas no banco de dados, utilizando os mesmos atribut
 
 ### MongoDB
 
-Para a realização deste projeto utilizaremos um banco de dados chamado `tech_news` e as notícias serão armazenadas em uma coleção chamada `news`.
+Para a realização deste projeto, utilizaremos um banco de dados chamado `tech_news`, e as notícias serão armazenadas em uma coleção chamada `news`. Já existem algumas funções prontas no arquivo `tech_news/database.py` que te auxiliarão no desenvolvimento.
 
 ---
 
