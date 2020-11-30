@@ -4,7 +4,7 @@ from tech_news.analyzer.search_engine import (
     search_by_title,
     search_by_date,
     search_by_source,
-    search_by_category
+    search_by_category,
 )
 import pytest
 from pymongo import MongoClient
@@ -16,17 +16,19 @@ DB_PORT = config("DB_PORT", default="27017")
 client = MongoClient(host=DB_HOST, port=int(DB_PORT))
 db = client.tech_news
 
-NEW_NOTICE = {'url': 'https://www.tecmundo.com.br/vamos.htm',
-                     'title': 'Vamoscomtudo',
-                     'timestamp': '2020-11-23T11:00:01',
-                     'writer': 'Leonardo',
-                     'shares_count': 1,
-                     'comments_count': 1,
-                     'summary': 'Sumario 2',
-                     'sources': ['ResetEra'],
-                     'categories': ['PC', 'Console']}
+NEW_NOTICE = {
+    "url": "https://www.tecmundo.com.br/vamos.htm",
+    "title": "Vamoscomtudo",
+    "timestamp": "2020-11-23T11:00:01",
+    "writer": "Leonardo",
+    "shares_count": 1,
+    "comments_count": 1,
+    "summary": "Sumario 2",
+    "sources": ["ResetEra"],
+    "categories": ["PC", "Console"],
+}
 
-LIST = [('Vamoscomtudo', 'https://www.tecmundo.com.br/vamos.htm')]
+LIST = [("Vamoscomtudo", "https://www.tecmundo.com.br/vamos.htm")]
 
 
 def test_buscar_noticia_pelo_titulo_com_sucesso():
@@ -62,7 +64,7 @@ def test_buscar_data_que_nao_existe_deve_retornar_vazio():
 def test_buscar_data_que_com_formato_invalido_deve_retornar_erro():
     db.news.delete_many({})
     db.news.insert_one(NEW_NOTICE)
-    with pytest.raises(ValueError, match='Data inválida'):
+    with pytest.raises(ValueError, match="Data inválida"):
         search_by_date("21-12-1980")
 
 
