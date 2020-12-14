@@ -32,7 +32,7 @@ def test_sera_validado_importar_arquivo_inexistente_com_formato_invalido_ira_mos
 
 def test_sera_validado_importar_arquivo_inexistente_ira_mostrar_erro():
     with pytest.raises(
-        ValueError, match="Arquivo file_not_exist.csv não encontrado"
+        ValueError, match="Arquivo tests/file_not_exist.csv não encontrado"
     ):
         assert csv_importer("tests/file_not_exist.csv")
 
