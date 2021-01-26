@@ -1,6 +1,6 @@
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--cov=tech_news"
+addopts = "-vv -s"
 testpaths = ["tests",]
 
 [tool.black]
