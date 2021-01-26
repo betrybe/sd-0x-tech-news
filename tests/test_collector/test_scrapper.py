@@ -34,7 +34,7 @@ def test_validar_scrape_default_retorna_a_primeira_pagina():
             file_name = "tests/test_collector/index.html"
         else:
             file_name = "tests/test_collector/notice.html"
-        with open(file_name) as file:
+        with open(file_name, encoding="utf-8") as file:
             return file.read()
 
     assert len(scrape(fetcher=fetcher)) == 20
@@ -62,7 +62,7 @@ def test_validar_scrape_retorna_noticias_de_N_paginas():
             file_name = "tests/test_collector/index.html"
         else:
             file_name = "tests/test_collector/notice.html"
-        with open(file_name) as file:
+        with open(file_name, encoding="utf-8") as file:
             return file.read()
 
     assert len(scrape(fetcher=fetcher, pages=2)) == 40
@@ -74,7 +74,7 @@ def test_validar_formato_da_lista():
             file_name = "tests/test_collector/index.html"
         else:
             file_name = "tests/test_collector/notice.html"
-        with open(file_name) as file:
+        with open(file_name, encoding="utf-8") as file:
             return file.read()
 
     notices = scrape(fetcher=fetcher)

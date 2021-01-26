@@ -37,11 +37,11 @@ NEW_NOTICE_UPDATE = {
 
 
 FILE_CSV = "file_csv.csv"
-with open(FILE_CSV) as f:
+with open(FILE_CSV, encoding="utf-8") as f:
     file_csv_file = f.readlines()
 
 FILE_CSV_UPDATE = "file_csv_update.csv"
-with open(FILE_CSV_UPDATE) as f:
+with open(FILE_CSV_UPDATE, encoding="utf-8") as f:
     file_csv_update_file = f.readlines()
 
 
@@ -55,7 +55,7 @@ def test_sera_validado_exportar_arquivo_com_sucesso():
     db.news.insert_one(NEW_NOTICE)
     csv_exporter("export_correct.csv")
     filename = "export_correct.csv"
-    with open(filename) as f:
+    with open(filename, encoding="utf-8") as f:
         content = f.readlines()
     assert content == file_csv_file
 
@@ -65,6 +65,6 @@ def test_sera_validado_atualizar_arquivo_com_mesmo_nome_com_sucesso():
     db.news.insert_one(NEW_NOTICE_UPDATE)
     csv_exporter("export_correct.csv")
     filename = "export_correct.csv"
-    with open(filename) as f:
+    with open(filename, encoding="utf-8") as f:
         content = f.readlines()
     assert content == file_csv_update_file
