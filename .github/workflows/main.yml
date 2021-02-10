@@ -29,7 +29,7 @@ jobs:
       - name: Pytest Evaluator Step
         uses: betrybe/pytest-evaluator-action@v1.3
         with:
-          repository_main_branch: master
+          repository_main_branch: main
         env:
           DB_HOST: 'mongodb'
           DB_PORT: '27017'
