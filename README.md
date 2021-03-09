@@ -23,8 +23,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [Durante o desenvolvimento](#durante-o-desenvolvimento)
 - [Como desenvolver](#como-desenvolver)
   - [Linter](#linter)
-  - [Dica: desativando testes](#dica-desativando-testes)
-  - [Dica: watch mode](#dica-watch-mode)
+  - [Testes](#testes)
 - [Requisitos do projeto](#requisitos-do-projeto)
 
     `Requisitos obrigatórios:`
