@@ -1,8 +1,8 @@
 # flake8: noqa
 
 from unittest.mock import patch
-from tech_news.menu import collector_menu, analyzer_menu
-from tech_news.collector.scrapper import fetch_content
+from tech_news.menu import analyzer_menu
+from tech_news.scraper import fetch
 from pymongo import MongoClient
 from decouple import config
 
@@ -109,77 +109,26 @@ NEW_NOTICE_6 = {
 }
 
 
-def test_validar_saida_do_console_collector_menu(capsys):
-    def fake_input(prompt=""):
-        print(prompt, end=" ")
-        return ""
-
-    with patch("builtins.input", fake_input):
-        collector_menu()
-    out, err = capsys.readouterr()
-    assert (
-        "Selecione uma das opções a seguir:\n 1 - Importar notícias a partir de um arquivo CSV;\n 2 - Exportar notícias para CSV;\n 3 - Raspar notícias online;\n 4 - Sair."
-        in out
-    )
-
-
-def test_executar_opcao_sair_collector_menu(capsys):
-    with patch("builtins.input") as mocked_input:
-        mocked_input.side_effect = ["4", ""]
-        collector_menu()
-    out, err = capsys.readouterr()
-    assert "Encerrando script\n" in out
-
-
-def test_executar_opcao_invalida_do_collector_menu(capsys):
-    with patch("builtins.input") as mocked_input:
-        mocked_input.side_effect = ["5", ""]
-        collector_menu()
-    out, err = capsys.readouterr()
-    assert err == "Opção inválida\n"
-
-
-def test_executar_opcao_importar_collector_menu(capsys):
-    with patch("builtins.input") as mocked_input, patch(
-        "tech_news.menu.csv_importer"
-    ) as mock_importer, patch("tech_news.menu.create_news") as create_news:
-        mocked_input.side_effect = ["1", "correct.csv"]
-        collector_menu()
-        mock_importer.assert_called_once_with("correct.csv")
-        create_news.assert_called_once()
-
-
-def test_executar_opcao_exportar_collector_menu(capsys):
-    db.news.delete_many({})
-    db.news.insert_one(NEW_NOTICE)
-    with patch("builtins.input") as mocked_input, patch(
-        "tech_news.menu.csv_exporter"
-    ) as mock_exporter:
-        mocked_input.side_effect = ["2", "export_correct.csv"]
-        collector_menu()
-        mock_exporter.assert_called_once_with("export_correct.csv")
-
-
-def test_executar_opcao_raspar_collector_menu(capsys):
-    with patch("builtins.input") as mocked_input, patch(
-        "tech_news.menu.scrape"
-    ) as scraper, patch("tech_news.menu.create_news") as create_news:
-        mocked_input.side_effect = ["3", "1"]
-        collector_menu()
-        scraper.assert_called_once_with(fetcher=fetch_content, pages=1)
-        create_news.assert_called_once()
+# def test_executar_opcao_raspar_collector_menu(capsys):
+#     with patch("builtins.input") as mocked_input, patch(
+#         "tech_news.menu.get_tech_news"
+#     ) as scraper, patch("tech_news.menu.create_news") as create_news:
+#         mocked_input.side_effect = ["3", "1"]
+#         collector_menu()
+#         scraper.assert_called_once_with(1)
+#         create_news.assert_called_once()
 
 
 def test_validar_saida_do_console_analyzer_menu(capsys):
     def fake_input(prompt=""):
         print(prompt, end=" ")
-        return "0"
+        return ""
 
     with patch("builtins.input", fake_input):
         analyzer_menu()
     out, err = capsys.readouterr()
     assert (
-        "Selecione uma das opções a seguir:\n 1 - Buscar notícias por título;\n 2 - Buscar notícias por data;\n 3 - Buscar notícias por fonte;\n 4 - Buscar notícias por categoria;\n 5 - Listar top 5 notícias;\n 6 - Listar top 5 categorias;\n 7 - Sair."
+        "Selecione uma das opções a seguir:\n 0 - Popular o banco com notícias;\n 1 - Buscar notícias por título;\n 2 - Buscar notícias por data;\n 3 - Buscar notícias por fonte;\n 4 - Buscar notícias por categoria;\n 5 - Listar top 5 notícias;\n 6 - Listar top 5 categorias;\n 7 - Sair."
         in out
     )
 
@@ -282,3 +231,23 @@ def test_executar_opcao_top5_categorias_do_console_analyzer_menu(capsys):
         mocked_input.side_effect = ["6", ""]
         analyzer_menu()
         mock_top_5_categories.assert_called_once()
+
+
+def test_executar_opcao_popular_banco_do_console_analyzer_menu(mocker):
+    def mocked_fetch(url):
+        path = (
+            "tests/assets/tecmundo_pages/"
+            + url.split("https://www.tecmundo.com.br/")[1].replace("/", "|")
+            + ".html"
+        )
+        with open(path) as f:
+            html_content = f.read()
+        return html_content
+
+    mocker.patch("tech_news.scraper.fetch", new=mocked_fetch)
+    with patch("builtins.input") as mocked_input, patch(
+        "tech_news.menu.get_tech_news"
+    ) as get_tech_news:
+        mocked_input.side_effect = ["0", "1"]
+        analyzer_menu()
+        get_tech_news.assert_called_once()
