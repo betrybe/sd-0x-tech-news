@@ -164,8 +164,6 @@ def test_listar_as_top_cinco_categorias():
     
     assert top_5_categories() == LIST_FOUR_CATEGORY[:4]
     
-
-
-def test_buscar_top_categorias_retornar_vazio_caso_nao_exista_noticias():
+    # buscar top categorias retornar vazio caso nao exista noticias
     db.news.delete_many({})
     assert top_5_categories() == []
