@@ -11,69 +11,41 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
- Sumário
+## Sumário
 
-- [Habilidades](#habilidades)
-- [Entregáveis](#entregáveis)
-  - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
-  - [Desenvolvimento](#desenvolvimento)
-  - [Data de Entrega](#data-de-entrega)
-- [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-- [Como desenvolver](#como-desenvolver)
-  - [Linter](#linter)
-  - [Dica: desativando testes](#dica-desativando-testes)
-  - [Dica: watch mode](#dica-watch-mode)
-- [Requisitos do projeto](#requisitos-do-projeto)
-
-    `Requisitos obrigatórios:`
-    - [1 - Crie uma função chamada fetch_content no arquivo tech_news/collector/scrapper.py capaz de realizar uma requisição HTTP e retornar o conteúdo como resposta.](#1---crie-uma-fun%C3%A7%C3%A3o-chamada-fetch_content-no-arquivo-tech_newscollectorscrapperpy-capaz-de-realizar-uma-requisi%C3%A7%C3%A3o-http-e-retornar-o-conte%C3%BAdo-como-resposta)
-    - [2 - Crie uma função scrape dentro do módulo tech_news/collector/scrapper.py capaz de raspar as últimas notícias das N primeiras páginas.](#2---crie-uma-fun%C3%A7%C3%A3o-scrape-dentro-do-m%C3%B3dulo-tech_newscollectorscrapperpy-capaz-de-raspar-as-%C3%BAltimas-not%C3%ADcias-das-n-primeiras-p%C3%A1ginas)
-    - [3 - Crie uma função csv_importer dentro do módulo tech_news/collector/importer.py capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.](#3---crie-uma-fun%C3%A7%C3%A3o-csv_importer-dentro-do-m%C3%B3dulo-tech_newscollectorimporterpy-capaz-de-importar-not%C3%ADcias-a-partir-de-um-arquivo-csv-utilizando--como-separador)
-    - [4 - Crie uma função csv_exporter dentro do módulo tech_news/collector/exporter.py capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.](#4---crie-uma-fun%C3%A7%C3%A3o-csv_exporter-dentro-do-m%C3%B3dulo-tech_newscollectorexporterpy-capaz-de-exportar-todas-as-not%C3%ADcias-do-banco-de-dados-para-um-arquivo-csv-utilizando--como-separador)
-    - [5 - Crie uma função search_by_title dentro do módulo tech_news/analyzer/search_engine.py, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.](#5---crie-uma-fun%C3%A7%C3%A3o-search_by_title-dentro-do-m%C3%B3dulo-tech_newsanalyzersearch_enginepy-que-busque-as-not%C3%ADcias-do-banco-de-dados-por-t%C3%ADtulo-parcial-ou-completo-e-retorne-uma-lista-de-not%C3%ADcias-encontradas-para-cada-not%C3%ADcia-encontrada-deve-se-listar-seu-t%C3%ADtulo-e-link)
-    - [6 - Crie uma função search_by_date dentro do módulo tech_news/analyzer/search_engine.py, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.](#6---crie-uma-fun%C3%A7%C3%A3o-search_by_date-dentro-do-m%C3%B3dulo-tech_newsanalyzersearch_enginepy-que-busque-as-not%C3%ADcias-do-banco-de-dados-por-data-e-retorne-uma-lista-de-not%C3%ADcias-encontradas-para-cada-not%C3%ADcia-encontrada-deve-se-listar-seu-t%C3%ADtulo-e-link)
-    - [7 - Crie uma função search_by_source dentro do módulo tech_news/analyzer/search_engine.py, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.](#7---crie-uma-fun%C3%A7%C3%A3o-search_by_source-dentro-do-m%C3%B3dulo-tech_newsanalyzersearch_enginepy-que-busque-as-not%C3%ADcias-do-banco-de-dados-por-fonte-apenas-uma-por-vez-e-com-nome-completo-e-exiba-uma-lista-de-not%C3%ADcias-encontradas-para-cada-not%C3%ADcia-encontrada-deve-se-listar-seu-t%C3%ADtulo-e-link)
-    - [8 - Crie uma função search_by_category dentro do módulo tech_news/analyzer/search_engine.py, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.](#8---crie-uma-fun%C3%A7%C3%A3o-search_by_category-dentro-do-m%C3%B3dulo-tech_newsanalyzersearch_enginepy-que-busque-as-not%C3%ADcias-do-banco-de-dados-por-categoria-apenas-uma-por-vez-e-com-nome-completo-e-exiba-uma-lista-de-not%C3%ADcias-encontradas-para-cada-not%C3%ADcia-encontrada-deve-se-listar-seu-t%C3%ADtulo-e-link)
-    - [9 - Crie uma função top_5_news dentro do módulo tech_news/analyzer/ratings.py, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.](#9---crie-uma-fun%C3%A7%C3%A3o-top_5_news-dentro-do-m%C3%B3dulo-tech_newsanalyzerratingspy-que-liste-as-cinco-not%C3%ADcias-com-a-maior-soma-de-compartilhamentos-e-coment%C3%A1rios-do-banco-de-dados-as-not%C3%ADcias-devem-ser-ordenadas-pela-popularidade-em-caso-de-empate-o-desempate-deve-ser-por-ordem-alfab%C3%A9tica-de-t%C3%ADtulo)
-    - [10 - Crie uma função top_5_categories dentro do módulo tech_news/analyzer/ratings.py, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.](#10---crie-uma-fun%C3%A7%C3%A3o-top_5_categories-dentro-do-m%C3%B3dulo-tech_newsanalyzerratingspy-que-liste-as-cinco-categorias-com-maior-ocorr%C3%AAncia-no-banco-de-dados-as-categorias-devem-ser-ordenadas-por-ordem-alfab%C3%A9tica)
-
-    `Requisitos bônus:`
-    - [11 - Preencha a função collector_menu  que se encontra no módulo tech_news/menu.py como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:](#11---preencha-a-fun%C3%A7%C3%A3o-collector_menu--que-se-encontra-no-m%C3%B3dulo-tech_newsmenupy-como-um-menu-de-op%C3%A7%C3%B5es-em-que-cada-op%C3%A7%C3%A3o-pede-as-informa%C3%A7%C3%B5es-necess%C3%A1rias-para-disparar-uma-a%C3%A7%C3%A3o-o-texto-exibido-pelo-menu-deve-ser-exatamente)
-    - [12 - Selecione uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.](#12---selecione-uma-op%C3%A7%C3%A3o-do-menu-de-op%C3%A7%C3%B5es-e-inserir-as-informa%C3%A7%C3%B5es-necess%C3%A1rias-a-a%C3%A7%C3%A3o-adequada-deve-ser-disparada)
-    - [13 - Preencha a função analyzer_menu  que se encontra no módulo tech_news/menu.py como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:](#13---preencha-a-fun%C3%A7%C3%A3o-analyzer_menu--que-se-encontra-no-m%C3%B3dulo-tech_newsmenupy-como-um-menu-de-op%C3%A7%C3%B5es-em-que-cada-op%C3%A7%C3%A3o-pede-as-informa%C3%A7%C3%B5es-necess%C3%A1rias-para-disparar-uma-a%C3%A7%C3%A3o-o-texto-exibido-pelo-menu-deve-ser-exatamente)
-    - [14 - Selecione uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.](#14---selecione-uma-op%C3%A7%C3%A3o-do-menu-de-op%C3%A7%C3%B5es-e-inserir-as-informa%C3%A7%C3%B5es-necess%C3%A1rias-a-a%C3%A7%C3%A3o-adequada-deve-ser-disparada-e-seu-resultado-deve-ser-exibido)
-
-- [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
-- [Revisando um pull request](#revisando-um-pull-request)
-- [Avisos Finais](#avisos-finais)
+- [1 - Crie a função fetch](#1---crie-a-função-fetch)
+- [2 - Crie a função scrape_noticia](#2---crie-a-função-scrape_noticia)
+- [3 - Crie a função scrape_novidades](#3---crie-a-função-scrape_novidades)
+- [4 - Crie a função scrape_next_page_link](#4---crie-a-função-scrape_next_page_link)
+- [5 - Crie a função get_tech_news para obter as notícias!](#5---crie-a-função-get_tech_news-para-obter-as-notícias)
+- [6 - Crie a função search_by_title](#6---crie-a-função-search_by_title)
+- [7 - Crie a função search_by_date](#7---crie-a-função-search_by_date)
+- [8 - Crie a função search_by_source,](#8---crie-a-função-search_by_source)
+- [9 - Crie a função search_by_category](#9---crie-a-função-search_by_category)
+- [10 - Crie a função top_5_news](#10---crie-a-função-top_5_news)
+- [11 - Crie a função top_5_categories](#11---crie-a-função-top_5_categories)
+- [12 - Crie a função analyzer_menu](#12---crie-a-função-analyzer_menu)
+- [13 - Implemente as funcionalidades do menu](#13---implemente-as-funcionalidades-do-menu)
 
 ---
 
-# Habilidades
+## Habilidades
 
 - Utilizar o terminal interativo do Python.
-
-- Escrever seus próprios módulos e como importá-los em outros códigos.
-
-- Manipular arquivos CSV, JSON.
-
-- Analisar conteúdos HTML afim de extrair dados;
-
-- Aplicar técnicas de raspagem para evitar problemas como bloqueio de acesso;
-
-- Armazenar os dados obtidos em um banco de dados.
+- Escrever seus próprios módulos e importá-los em outros códigos.
+- Aplicar técnicas de raspagem de dados;
+- Extrair dados de conteúdo HTML;
+- Armazenar os dados obtidos em um banco de dados;
 
 ---
 
 ## Entregáveis
 
-Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter o diretório `tech_news` e o diretório `tests` com seus respectivos arquivos, que conterão seu código `Python` e seus testes, respectivamente.
+Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter o diretório `tech_news` e o diretório `tests` com seus arquivos, que conterão seu código `Python` e seus testes, respectivamente.
 
 ### 🚨 É importante que seus arquivos tenham exatamente estes nomes!
 
-Você pode adicionar outros arquivos se julgar necessário. Qualquer dúvida, procure a monitoria.
+Você pode adicionar outros arquivos se julgar necessário. Qualquer dúvida, nos procure.
 
 Lembre-se que você pode consultar nosso conteúdo sobre [_Git & GitHub_](https://course.betrybe.com/intro/git/) sempre que precisar!
 
@@ -81,67 +53,46 @@ Lembre-se que você pode consultar nosso conteúdo sobre [_Git & GitHub_](https:
 
 ## O que deverá ser desenvolvido
 
-Para fixar o conteúdo sobre Python visto até agora, você fará um projeto que tem como principal objetivo criar um banco de dados de notícias sobre tecnologia e realizar algumas consultas nas notícias registradas.
+Você fará um projeto que tem como principal objetivo fazer consultas em notícias sobre tecnologia. Para isso será necessário criar um banco de dados, obter dados para popular este banco, e preparar consultas a serem feitas nestas notícias.
 
-Essas notícias podem ser obtidas de diferentes formas. Sendo elas:
-
-- Através da importação de um arquivo `CSV`;
-
-- E através da raspagem das [últimas notícias do _TecMundo_](https://www.tecmundo.com.br/novidades).
-
-Além de importar ou raspar as notícias, também deve ser possível exportá-las e realizar buscas ou análises nas notícias coletadas. **Ou seja: desenvolva um sistema capaz de importar, exportar notícias e que faça raspagem e preenchimento de um banco de dados com notícias.**
-
-Legal, não é?
+As notícias podem ser obtidas através da raspagem das [últimas notícias do _TecMundo_](https://www.tecmundo.com.br/novidades).
 
 ---
 
-## Desenvolvimento e testes
+## Desenvolvimento
 
-Este repositório já contém um _template_ com a estrutura de diretórios e arquivos, tanto de código quanto de teste criados. Veja abaixo:
+Este repositório contém um _template_ com uma estrutura de diretórios e arquivos. Na estrutura deste _template_, você deve implementar as funções necessárias. Novos arquivos e funções podem ser criados conforme a necessidade da sua implementação, porém não remova arquivos já existentes.
 
-```
-.
-├── dev-requirements.txt
-├── pyproject.toml
-├── README.md
-├── requirements.txt
-├── setup.cfg
-├── setup.py
-├── tech_news
-│   ├── analyzer
-│   │   ├── ratings.py
-│   │   └── search_engine.py
-│   ├── collector
-│   │   ├── exporter.py
-│   │   ├── importer.py
-│   │   └── scrapper.py
-│   ├── database.py
-│   └── menu.py
-└── tests
-    ├── __init__.py
-    ├── test_analyzer
-    │   ├── test_ratings.py
-    │   └── test_search_engine.py
-    ├── test_collector
-    │   ├── test_exporter.py
-    │   ├── test_importer.py
-    │   └── test_scrapper.py
-    └── test_menu.py
-```
+## Testes
 
-Apesar do projeto já possuir uma estrutura base, você quem deve implementar as funções. Novos arquivos podem ser criados conforme a necessidade.
+Para executar os testes certifique-se de que os seguintes passos foram realizados;
 
-Para executar os testes, lembre-se de primeiro **criar e ativar o ambiente virtual**, além de também instalar as dependências do projeto. Isso pode ser feito através dos comandos:
+1. **criar o ambiente virtual**
 
 ```bash
 $ python3 -m venv .venv
+```
 
+2. **ativar o ambiente virtual**
+
+```bash
 $ source .venv/bin/activate
+```
 
+3. **instalar as dependências no ambiente virtual**
+
+```bash
 $ python3 -m pip install -r dev-requirements.txt
 ```
 
-O arquivo `dev-requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
+Com o seu ambiente virtual ativo, as dependências serão instaladas neste ambiente.
+Quando precisar desativar o ambiente virtual, execute o comando "deactivate". Lembre-se de ativar novamente quando voltar a trabalhar no projeto.
+
+O arquivo `dev-requirements.txt` contém todas as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`.
+
+Com esta preparação feita, podemos executar os testes:
+
+**Executar os testes**
 
 ```bash
 $ python3 -m pytest
@@ -151,39 +102,36 @@ Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse 
 
 Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando:
 
+**Verificar o estilo**
+
 ```bash
 $ python3 -m flake8
 ```
+
 ---
 
 ## Dados
 
-### Importação e exportação de CSV
-
-Os arquivos CSV devem seguir o modelo abaixo, utilizando ponto e vírgula (`;`) como separador:
-
-```csv
-url;title;timestamp;writer;shares_count;comments_count;summary;sources;categories
-https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155348-alemanha-trabalha-regulamentacao-carros-autonomos.htm;Alemanha já trabalha na regulamentação de carros autônomos;2020-07-20T15:30:00;Reinaldo Zaruvni;0;0;Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.;The Next Web,The Next Web,Automotive News Europe;Mobilidade Urbana/Smart Cities,Veículos autônomos,Carro,Política
-```
-📌 Fique atento à maneira que os dados estão dispostos, como por exemplo, `sources` e `categories` serão armazenados separados por `,` e `comments_count` e `shares_count` são numéricos.
-
 ### Raspagem de notícias
 
 As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do _TecMundo_: https://www.tecmundo.com.br/novidades.
-
-Essas notícias devem ser salvas no banco de dados, utilizando os mesmos atributos já descritos na importação/exportação citada anteriormente.
+Essas notícias devem ser salvas no banco de dados utilizando as funções python que já vêm prontas no projeto.
 
 ### MongoDB
 
-Para a realização deste projeto, utilizaremos um banco de dados chamado `tech_news`, e as notícias serão armazenadas em uma coleção chamada `news`. Já existem algumas funções prontas no arquivo `tech_news/database.py` que te auxiliarão no desenvolvimento.
+Para a realização deste projeto, utilizaremos um banco de dados chamado `tech_news`, e as notícias serão armazenadas em uma coleção chamada `news`. Já existem algumas funções prontas no arquivo `tech_news/database.py` que te auxiliarão no desenvolvimento. Não altere as funções deste arquivo; mudanças nele não serão executadas no avaliador automático.
 
+Para instalar e rodar o servidor MongoDB, siga as instruções no tutorial oficial:
+Ubuntu: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+MacOS:  https://docs.mongodb.com/guides/server/install/
+
+Lembre-se de que o mongoDB utilizará por padrão a porta 27017. Se já houver outro serviço utilizando esta porta, considere desativá-lo.
 ---
 
 ## Data de Entrega
 
-  - Serão `X` dias de projeto.
-  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
+- Serão `X` dias de projeto.
+- Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
 
 ---
 
@@ -193,9 +141,9 @@ Para a realização deste projeto, utilizaremos um banco de dados chamado `tech_
 
 1. Clone o repositório
 
-- `git clone https://github.com/tryber/sd-0x-tech-news.git`.
+- `git clone https://github.com/tryber/sd-0x-tech-news-update.git`.
 - Entre na pasta do repositório que você acabou de clonar:
-  - `sd-0x-tech-news`
+  - `sd-0x-tech-news-update`
 
 2. Crie o ambiente virtual para o projeto
 
@@ -234,25 +182,25 @@ Para a realização deste projeto, utilizaremos um banco de dados chamado `tech_
 
 7. Crie um novo `Pull Request` _(PR)_
 
-- Vá até a página de _Pull Requests_ do [repositório no _GitHub_](https://github.com/tryber/sd-0x-tech-news/pulls)
+- Vá até a página de _Pull Requests_ do [repositório no _GitHub_](https://github.com/tryber/sd-0x-tech-news-update/pulls)
 - Clique no botão verde _"New pull request"_
 - Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
 - Clique no botão verde _"Create pull request"_
 - Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
 - **Não se preocupe em preencher mais nada por enquanto!**
-- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-tech-news/pulls) e confira que o seu _Pull Request_ está criado
+- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-tech-news-update/pulls) e confira que o seu _Pull Request_ está criado
 
 ---
 
 ## Durante o desenvolvimento
 
-* ⚠ **PULL REQUESTS COM ISSUES NO LINTER NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠
+- ⚠ **PULL REQUESTS COM ISSUES NO LINTER NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠
 
-* Faça `commits` das alterações que você fizer no código regularmente
+- Faça `commits` das alterações que você fizer no código regularmente
 
-* Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
+- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
 
-* Os comandos que você utilizará com mais frequência são:
+- Os comandos que você utilizará com mais frequência são:
   1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
   2. `git add` _(para adicionar arquivos ao stage do Git)_
   3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
@@ -267,7 +215,7 @@ Para garantir a qualidade do código, vamos utilizar neste projeto o linter `Fla
 Assim o código estará alinhado com as boas práticas de desenvolvimento, sendo mais legível
 e de fácil manutenção! Para rodá-lo localmente no projeto, execute o comandos abaixo:
 
-  ```bash
+```bash
 python3 -m flake8
 ```
 
@@ -302,191 +250,170 @@ python3 -m pytest tests/nomedoarquivo.py
 
 ## Requisitos obrigatórios:
 
-### Pacote `tech_news/collector`
+### 1 - Crie a função `fetch`
+local: `tech_news/scraper.py`
 
-#### 1 - Crie uma função chamada `fetch_content` no arquivo `tech_news/collector/scrapper.py` capaz de realizar uma requisição HTTP e retornar o conteúdo como resposta.
+Antes de fazer scrape, precisamos de uma página! Esta função será responsável por fazer a requisição HTTP ao site Tecmundo e obter o conteúdo HTML.
+Alguns cuidados deverão ser tomados: como a nossa função poderá ser utilizada váras vezes em sucessão, na nossa implementação devemos nos assegurar que um [Rate Limit](https://app.betrybe.com/course/computer-science/python/raspagem-dados#alguns-problemas) será respeitado.
 
-- Caso a resposta tenha o código de status diferente de `200`, deve-se retornar uma `str` vazia;
+- A função deve receber uma URL
+- A função deve fazer uma requisição HTTP `get` para esta URL utilizando a função `requests.get`
+- A função deve retornar o conteúdo HTML da resposta.
+- A função deve respeitar um Rate Limit de 1 requisição por segundo; Ou seja, caso chamada múltiplas vezes, ela deve aguardar 1 segundo entre cada requisição que fizer.
+**Dica:** Uma forma simples de garantir que cada requisição seja feita com um intervalo mínimo de um segundo é utilizar `time.sleep(1)` antes de cada requisição. (Existem outras formas mais eficientes.)
+- Caso a requisição seja bem sucedida com `Status Code 200: OK`, deve ser retornado seu conteúdo de texto;
+- Caso a resposta tenha o código de status diferente de `200`, deve-se retornar `None`;
+- Caso a requisição não receba resposta em até 3 segundos, ela deve ser abandonada (este caso é conhecido como "Timeout") e a função deve retornar None.
 
-- O tempo máximo de resposta do servidor deve ser configurado como parâmetro e por padrão será `3` segundos;
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/scraper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch("https://app.betrybe.com/")`.
 
-- Para evitar um problema de [Rate Limit](https://app.betrybe.com/course/computer-science/python/raspagem-dados#alguns-problemas) faça um sleep com tempo obtido por parâmetro, mas que por padrão seja `0.5` segundos;
+**🤖 O que será verificado pelo avaliador:**
+- A função utiliza o método get() da biblioteca requests
+- A função executada com uma URL correta retorna o conteúdo html
+- A função, sofrendo timeout, retorna None
+- A função retorna None quando recebe uma resposta com código diferente de 200
+- A função respeita o rate limit
 
-- Caso a requisição seja bem sucedida retorne seu conteúdo de texto;
+### 2 - Crie a função `scrape_noticia`
+local: `tech_news/scraper.py`
 
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `fetch_content("https://app.betrybe.com/")`.
+Agora que temos a página HTML, é hora de fazer o scrape! Vamos utilizar as ferramentas que aprendemos no curso, como a biblioteca Parsel, para obter os dados que queremos de cada página.
 
-**O que será verificado:**
+- A função deve receber como parâmetro o conteúdo HTML da página de uma notícia da Tecmundo
+- A função deve, no conteúdo recebido, buscar as informações das notícias para preencher um dicionário com os seguintes atributos:
+  - `url` - link para acesso da notícia. Ex: "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
+  - `title` - título da notícia. Ex: "Musk: Tesla está muito perto de carros totalmente autônomos"
+  - `timestamp` - data e hora da notícia. Ex: "2020-07-09T11:00:00"
+  - `writer` - autor da notícia. Ex: "Nilton Kleina"
+  - `shares_count` - número de compartilhamento da notícia. Ex: `61`
+  - `comments_count` - número de comentários que a notícia recebeu. Ex: `26`
+  - `summary` - o primeiro parágrafo da notícia. Ex:"O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado."
+  - `sources` - lista contendo fontes da notícia. Ex: ["Venture Beat", "Source 2"]
+  - `categories` - lista de categorias que classificam a notícia. Ex: ["Mobilidade Urbana/Smart Cities", "Veículos autônomos", "Tesla", "Elon Musk"]
 
-- Será validado que fetch retorna requisição com sucesso
-
-- Será validado fetch com tempo de resposta maior que 3
-
-- Será validado resposta fetch com status diferente de 200
-
-- Será validado o tempo de sleep do fetch
-
-#### 2 - Crie uma função `scrape` dentro do módulo `tech_news/collector/scrapper.py` capaz de raspar as últimas notícias das N primeiras páginas.
-
-Utilizar os seguintes atributos:
-
-* `url` - link para acesso da notícia. Ex: "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
-
-* `title` - título da notícia. Ex: "Musk: Tesla está muito perto de carros totalmente autônomos"
-
-* `timestamp` - data e hora da notícia. Ex: "2020-07-09T11:00:00"
-
-* `writer` - autor da notícia. Ex: "Nilton Kleina"
-
-* `shares_count` - número de compartilhamento da notícia. Ex: 61
-
-* `comments_count` - número de comentários que a notícia recebeu. Ex: 26
-
-* `summary` - o primeiro parágrafo da notícia. Ex:"O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado."
-
-* `sources` - fontes da notícia. Ex: ["Venture Beat"]
-
-* `categories` - categorias que classificam a notícia. Ex: ["Mobilidade Urbana/Smart Cities", "Veículos autônomos", "Tesla", "Elon Musk"]
-
-**Dica:** Caso uma tag possua outras tags aninhadas, para obter todos os textos da tag ancestral e de suas tags descendentes, utilize `*::text` no seletor.
-
-**Exemplo:**
-
-```html
-<p>
-  Recentemente, a Alemanha fez a
-  <a
-    href="https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
-    rel="noopener noreferrer"
-    target="_blank"
-    >Tesla</a
-  >
-  “pisar no freio” quanto ao uso de termos comerciais relacionados a carros
-  autônomos, mas quem pensa que esse é um sinal de resistência à introdução de
-  novas tecnologias se engana. Isso porque, de acordo o
-  <em>Automotive News Europe</em>, o país está se preparando para se tornar o
-  primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos
-  de nível 4.
-</p>
-```
-
-Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é um caso onde a tag _p_ é um ancestral e as tags _a_ e _em_ são as descendentes. Para obter todo o texto do exemplo, utiliza-se `*::text` no seletor.
-
-- Por padrão deve-se raspar apenas as notícias da primeira página;
-
-- Um número de páginas para serem raspadas pode ser passado para a função. Caso o número de páginas seja definido, deve-se raspar os dados das N primeiras páginas;
-
-- A função deve retornar uma lista com cada notícia em no seguinte formato.
+- Exemplo de um retorno da função com uma notícia específica:
 
 ```json
-[{
-    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm",
-    "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
-    "timestamp": "2020-07-09T11:00:00",
-    "writer": "Nilton Kleina",
-    "shares_count": 61,
-    "comments_count": 26,
-    "summary": "O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado.",
-    "sources": ["Venture Beat"],
-    "categories": [
-      "Mobilidade Urbana/Smart Cities",
-      "Veículos autônomos",
-      "Tesla",
-      "Elon Musk"
-    ]
-  }]
+{
+  "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm",
+  "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
+  "timestamp": "2020-07-09T11:00:00",
+  "writer": "Nilton Kleina",
+  "shares_count": 61,
+  "comments_count": 26,
+  "summary": "O CEO da Tesla, Elon Musk, garantiu que a montadora está muito perto de atingir o chamado nível 5 de autonomia de sistemas de piloto automático de carros. A informação foi confirmada em uma mensagem enviada pelo executivo aos participantes da Conferência Anual de Inteligência Artificial (WAIC, na sigla em inglês). O evento aconteceu em Xangai, na China, onde a montadora comemora resultados positivos de mercado.",
+  "sources": ["Venture Beat"],
+  "categories": [
+    "Mobilidade Urbana/Smart Cities",
+    "Veículos autônomos",
+    "Tesla",
+    "Elon Musk"
+  ]
+}
 ```
 
 📌 Muita atenção aos tipos dos campos, por exemplo, `sources` e `categories` são listas, assim como `shares_count` e `comments_count` são numéricos.
 
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/scrapper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
+**Dica para fazer o scraping:** Caso uma tag possua outras tags aninhadas, para obter todos os textos da tag ancestral e de suas tags descendentes, utilize `*::text` no seletor.
 
-**O que será verificado:**
+- Exemplo:
+  ```html
+  <p>
+    Recentemente, a Alemanha fez a
+    <a
+      href="https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm"
+      rel="noopener noreferrer"
+      target="_blank"
+      >Tesla</a
+    >
+    “pisar no freio” quanto ao uso de termos comerciais relacionados a carros
+    autônomos, mas quem pensa que esse é um sinal de resistência à introdução de
+    novas tecnologias se engana. Isso porque, de acordo o
+    <em>Automotive News Europe</em>, o país está se preparando para se tornar o
+    primeiro do mundo a criar uma ampla estrutura para regulamentar tais
+    veículos de nível 4.
+  </p>
+  ```
+  Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é um caso onde a tag _p_ é um ancestral e as tags _a_ e _em_ são as descendentes. Para obter todo o texto do exemplo, utiliza-se `*::text` no seletor.
 
-- Será validado que por default o método scrape irá raspar notícias da primeria página
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/scraper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
 
-- Será validado que ao passar o número de página deverá retornar todas as notícias das N páginas
+**🤖 O que será verificado pelo avaliador:**
+- Será verificado se a função retorna o conteúdo correto e no formato correto, dada uma página de notícia exemplo.
 
-- Será validado o formato da lista está correta
 
-#### 3 - Crie uma função `csv_importer` dentro do módulo `tech_news/collector/importer.py` capaz de importar notícias a partir de um arquivo CSV, utilizando ";" como separador.
+👍 Terminou o requisito 2? Parabéns! Este é o requisito mais longo do projeto, e também a funcionalidade central do nosso tech-news. Faça um break, tome uma água, e #vamosquevamos para os próximos requisitos!
 
-- Caso a extensão do arquivo seja diferente de `.csv`, uma exceção deve ser lançada;
+### 3 - Crie a função `scrape_novidades`
+local: `tech_news/scraper.py`
 
-- Caso o arquivo CSV não exista, uma exceção deve ser lançada;
+Agora que conseguimos fazer o scrape da página de notícias, precisamos de links para várias páginas de notícias. Estes links estão contidos na página Novidades (https://www.tecmundo.com.br/novidades). Esta função fará o scrape da página Novidades para obter as URLs das páginas de notícias.
 
-Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançada dever ser a de formato inválido.
+- A função deve receber uma string com o conteúdo HTML da página Novidades (https://www.tecmundo.com.br/novidades)
+- A função deve fazer o scrape do conteúdo recebido para obter uma lista contendo as URLs das notícias listadas.
+- A função deve retornar esta lista.
+- Caso não encontre nenhuma URL de notícia, a função deve retornar uma lista vazia.
 
-- O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`. Caso contrário, uma exceção deve ser lançada;
+**🤖 O que será verificado pelo avaliador:**
+- A função retorna os dados esperados quando chamada com os parâmetros corretos
+- A função retorna uma lista vazia quando chamada com parâmetros incorretos
 
-- A função deve retornar uma lista com cada notícia em no seguinte formato.
+### 4 - Crie a função `scrape_next_page_link`
+local: `tech_news/scraper.py`
 
-```json
-[{
-    "url": "https://www.tecmundo.com.br/mobilidade-urbana-smart-cities/155000-musk-tesla-carros-totalmente-autonomos.htm",
-    "title": "Musk: Tesla está muito perto de carros totalmente autônomos",
-    "timestamp": "2020-07-09T11:00:00",
-    "writer": "Nilton Kleina",
-    "shares_count": 61,
-    "comments_count": 27,
-    "summary": "Recentemente, a Alemanha fez a Tesla “pisar no freio” quanto ao uso de termos comerciais relacionados a carros autônomos, mas quem pensa que esse é um sinal de resistência à introdução de novas tecnologias se engana. Isso porque, de acordo o Automotive News Europe, o país está se preparando para se tornar o primeiro do mundo a criar uma ampla estrutura para regulamentar tais veículos de nível 4.",
-    "sources": ["Venture Beat"],
-    "categories": [
-      "Mobilidade Urbana/Smart Cities",
-      "Veículos autônomos",
-      "Tesla",
-      "Elon Musk"
-    ]
-  }]
+Para buscar mais notícias, precisaremos fazer a paginação, e para isto, vamos precisar do link da próxima página. Esta função será responsável por fazer o scrape deste link.
+
+- A função deve receber como parâmetro uma `string` contendo o conteúdo HTML da página de novidades (https://www.tecmundo.com.br/novidades)
+- A função deve fazer o scrape deste HTML para obter a URL da próxima página.
+- A função deve retornar a URL obtida.
+- Caso não encontre o link da próxima página, a função deve retornar `None`
+
+**🤖 O que será verificado pelo avaliador:**
+- A função retorna os dados esperados quando chamada com os parâmetros corretos
+- A função retorna None quando chamada com os parâmetros incorretos
+
+### 5 - Crie a função `get_tech_news` para obter as notícias!
+local: `tech_news/scraper.py`
+
+Agora, chegou a hora de aplicar todas as funções que você acabou de fazer. Com estas ferramentas prontas, podemos fazer nosso scraper mais robusto com a paginação.
+
+- A função deve receber como parâmetro um número inteiro `n` e buscar as últimas `n` notícias do site.
+- Utilize as funções `fetch`, `scrape_noticia` `scrape_novidades` e `scrape_next_page_link` para buscar as notícias e processar seu conteúdo.
+- As notícias buscadas devem ser inseridas no MongoDB; Para acessar o banco de dados, importe e utilize as funções que já temos prontas em `tech_news/database.py`
+- Após inserir as notícias no banco, a função deve retornar estas mesmas notícias.
+
+📌 De aqui em diante, usaremos o MongoDB. Para instalar e rodar o servidor MongoDB, siga as instruções no tutorial oficial:
+Ubuntu: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+MacOS:  https://docs.mongodb.com/guides/server/install/
+Com o servidor rodando, o nosso módulo conseguirá acessá-lo sem problemas. Importe o módulo `tech_news/database.py` e chame as funções contidas nele.
+Não altere as funções deste módulo; elas serão utilizadas nos testes.
+
+**🤖 O que será verificado pelo avaliador:**
+- A função `create_news` do `tech_news/database.py` foi chamada corretamente
+- A função retorna a quantidade correta de notícias
+
+### 6 - Crie a função `search_by_title`
+local: `tech_news/analyzer/search_engine.py`
+
+Agora que temos meios de popular nosso banco de dados com notícias, podemos começar a fazer as buscas! Esta função irá fazer buscas por título.
+
+- A função deve receber uma string com um título de notícia
+- A função deve buscar as notícias do banco de dados por título
+- A função deve retornar uma lista de lista de tuplas com as notícias encontradas nesta busca. 
+Exemplo: 
+```python
+[
+  [("Título1_aqui", "url1_aqui")],
+  [("Título2_aqui", "url2_aqui")],
+  [("Título3_aqui", "url3_aqui")],
+]
 ```
-
-**O que será verificado:**
-
-- Será validado que ao importar um arquivo inválido deverá retornar erro
-
-- Será validado que ao importar um arquivo inexistente deverá retornar erro
-
-- Será validado que ao importar um arquivo inexitente com formato inválido irá retornar erro
-
-- Será validado que ao importar um arquivo válido deverá retornar importar com sucesso
-
-📌Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/importer.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_importer("testdata.csv")`.
-
-#### 4 - Crie uma função `csv_exporter` dentro do módulo `tech_news/collector/exporter.py` capaz de exportar todas as notícias do banco de dados para um arquivo CSV, utilizando ";" como separador.
-
-- O arquivo exportado deve possuir o formato CSV. Caso contrário, uma exceção deve ser lançada;
-
-- Caso já exista um arquivo com o mesmo nome, ele deve ser substituído;
-
-- O arquivo CSV deve possuir um cabeçalho contendo `url`, `title`, `timestamp`, `writer`, `shares_count`, `comments_count`, `summary`, `sources` e `categories`;
-
-- Todas as notícias salvas no banco de dados devem ser exportadas.
-
-📌 Um exemplo de arquivo `CSV` pode ser encontrado na seção de [dados](#dados).
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/collector/exporter.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `csv_exporter("output.csv")`.
-
-**O que será verificado:**
-
-- Será validado que ao exportar um arquivo inválido irá mostrar o erro
-
-- Será validado que ao exportar um arquivo válido com sucesso
-
-- Será validado que ao exportar um arquivo com mesmo nome irá atualizar com sucesso
-
-### Pacote `tech_news/analyzer`
-
-#### 5 - Crie uma função `search_by_title` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por título (parcial ou completo) e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
-
-- A busca deve ser _case insensitive_ e deve retornar uma lista de lista de tuplas `[("title", "url")]`;
-
+- A busca deve ser _case insensitive_
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
+📌 Lembre-se; para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`.
 
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_title("Musk")`.
 
 **O que será verificado:**
 
@@ -494,19 +421,20 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Será validado que ao buscar por um título que não existe, o retorno deve ser uma lista vazia
 
-- Será validado que é possível buscar uma notícia pelo título com case sensitive com sucesso
+- Será validado que é possível buscar uma notícia com sucesso, tanto pelo título em maiúsculas como em minúsculas.
 
-#### 6 - Crie uma função `search_by_date` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por data e retorne uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+### 7 - Crie a função `search_by_date`
+local: `tech_news/analyzer/search_engine.py`
 
-- A busca deve retornar uma lista de tuplas `[("title", "url")]`;
+Esta função irá buscar as notícias do banco de dados por data.
 
-- A data deve estar no formato "aaaa-mm-dd" e deve ser válida. Caso seja inválida, uma exceção deve ser lançada `Data inválida`.
-
+- A função deve receber como parâmetro uma data no formato "aaaa-mm-dd"
+- A função deve buscar as notícias do banco de dados por data.
+- A função deve ter retorno no mesmo formato do requisito anterior.
+- Caso a data seja inválida, ou esteja em outro formato, uma exceção `ValueError` deve ser lançada com a mensagem `Data inválida`.
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_date("2020-11-11")`.
 
 **O que será verificado:**
 
@@ -514,17 +442,20 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Será validado que ao buscar por uma data que não existe, o retorno deve ser uma lista vazia
 
-- Sera validado que ao buscar por uma data com formato inválido, deve retornar `Data inválida`
+- Sera validado que ao buscar por uma data com formato inválido, deve lançar um erro `ValueError` com a mensagem `Data inválida`.
 
-#### 7 - Crie uma função `search_by_source` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por fonte (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+### 8 - Crie a função `search_by_source`,
+local: `tech_news/analyzer/search_engine.py`
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
+Esta função irá buscar as notícias por fonte.
 
+- A função deve receber como parâmetro o nome da fonte completo.
+- A função deve buscar as notícias do banco de dados por fonte.
+- A função deve ter retorno no mesmo formato do requisito anterior.
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
+- A busca deve ser _case insensitive_
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_source("Venture Beat")`.
 
 **O que será verificado:**
 
@@ -532,17 +463,20 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Será validado que ao buscar por uma fonte que não existe, o retorno deve ser uma lista vazia
 
-- Será validado que é possível buscar uma notícia pela fonte com case sensitive com sucesso
+- Será validado que é possível buscar uma notícia tanto pela fonte em maiúsculas como em minúsculas
 
-#### 8 - Crie uma função `search_by_category` dentro do módulo `tech_news/analyzer/search_engine.py`, que busque as notícias do banco de dados por categoria (apenas uma por vez e com nome completo) e exiba uma lista de notícias encontradas. Para cada notícia encontrada, deve-se listar seu título e link.
+### 9 - Crie a função `search_by_category`
+local: `tech_news/analyzer/search_engine.py`
 
-- A busca deve ser _case insensitive_ e deve retornar uma lista de tuplas `[("title", "url")]`;
+Esta função irá buscar as notícias por categoria.
 
+- A função deve receber como parâmetro o nome da categoria completo.
+- A função deve buscar as notícias do banco de dados por categoria.
+- A função deve ter retorno no mesmo formato do requisito anterior.
 - Caso nenhuma notícia seja encontrada, deve-se retornar uma lista vazia.
+- A busca deve ser _case insensitive_
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/search_engine.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `search_by_category("Tesla")`.
 
 **O que será verificado:**
 
@@ -550,19 +484,22 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Será validado que ao buscar por uma categoria que não existe, o retorno deve ser uma lista vazia
 
-- Será validado que é possível buscar uma notícia pela categoria com case sensitive com sucesso
+- Será validado que é possível buscar uma notícia tanto pela categoria em maiúsculas como em minúsculas
 
-#### 9 - Crie uma função `top_5_news` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco notícias com a maior soma de compartilhamentos e comentários do banco de dados. As notícias devem ser ordenadas pela popularidade. Em caso de empate, o desempate deve ser por ordem alfabética de título.
+### 10 - Crie a função `top_5_news`
+local: `tech_news/analyzer/ratings.py`
 
-- As top 5 notícias da análise devem ser retornadas em uma lista de tuplas `[("title", "url")]`;
+Esta função irá listar as cinco notícias mais populares; nosso critério de popularidade será a soma dos compartilhamentos e comentários.
 
+- A função deve receber como parâmetro o nome da categoria completo.
+- A função deve buscar as notícias do banco de dados e calcular a sua "popularidade" somando seu número de compartilhamentos e comentários.
+- A função deve ordenar as notícias por ordem de popularidade.
+- Em caso de empate, o desempate deve ser por ordem alfabética de título.
+- A função deve ter retorno no mesmo formato do requisito anterior, porém limitado a 5 notícias.
 - Caso haja menos de cinco notícias, no banco de dados, deve-se retornar todas as notícias existentes;
-
 - Caso não haja notícias disponíveis, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_news()`.
 
 **O que será verificado:**
 
@@ -570,17 +507,20 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Será validado que é possível buscar as cinco top notícias e retornar vazio caso não tenha nenhuma notícia
 
-#### 10 - Crie uma função `top_5_categories` dentro do módulo `tech_news/analyzer/ratings.py`, que liste as cinco categorias com maior ocorrência no banco de dados. As categorias devem ser ordenadas por ordem alfabética.
+- Caso houver menos de 5 categorias, serão retornadas quantas houverem
 
-- As top 5 categorias da análise devem ser retornadas em uma lista no formato `["category"]`;
 
+### 11 - Crie a função `top_5_categories`
+local: `tech_news/analyzer/ratings.py`
+
+Esta função irá listar as cinco categorias com maior ocorrência no banco de dados. 
+
+- As categorias devem ser ordenadas por ordem alfabética.
+- As top 5 categorias da análise devem ser retornadas em uma lista no formato `["category1", "category2"]`;
 - Caso haja menos de cinco categorias, no banco de dados, deve-se retornar todas as categorias existentes;
-
 - Caso não haja categorias disponíveis, deve-se retornar uma lista vazia.
 
-📌 Para acesso ao banco de dados importe `db` definido no módulo `tech_news/database.py`, ou crie uma função no arquivo `database.py` e a utilize aqui. Lembre-se que a coleção se chama `news`.
-
-✍️  Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/analyzer/ratings.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `top_5_categories()`.
 
 **O que será verificado:**
 
@@ -588,72 +528,21 @@ Obs: Caso o arquivo não exista e tenha extensão inválida, a exceção lançad
 
 - Será validado que é possível buscar as cinco top categorias e retornar vazio caso não tenha nenhuma notícia
 
+- Caso houver menos de 5 categorias, serão retornadas quantas houverem
+
 ---
 
 ## Requisitos bônus:
 
-### Pacote `tech_news`
+### 12 - Crie a função `analyzer_menu`
+local: `tech_news/menu.py`
 
-#### 11 - Preencha a função `collector_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
+Esta função é o menu do nosso programa. Através dele poderemos operar as funcionalidades que criamos. Será um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação.
 
-```md
-Selecione uma das opções a seguir:
-
-1 - Importar notícias a partir de um arquivo CSV;
-2 - Exportar notícias para CSV;
-3 - Raspar notícias online;
-4 - Sair.
+- O texto exibido pelo menu deve ser exatamente:
 ```
-
-- A mensagem de menu deve ser exibida corretamente;
-
-- Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser importado:";
-
-- Caso a opção `2` seja selecionada, deve-se exibir a mensagem "Digite o nome do arquivo CSV a ser exportado:";
-
-- Caso a opção `3` seja selecionada, deve-se exibir a mensagem "Digite a quantidade de páginas a serem raspadas:";
-
-- Caso a opção não exista, exiba a mensagem de erro "Opção inválida" na `stderr`.
-
-📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
-
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
-
-**O que será verificado:**
-
-- Será validado que é possível listar o menu collector no console
-
-- Será validado que é possível sair do menu collector
-
-- Será validado que é possível retornar um erro do menu collector quando opção inválida
-
-#### 12 - Selecione uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada.
-
-- Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `csv_importer`;
-
-- Caso a opção `2` seja selecionada, a exportação deve ser feita utilizando a função `csv_exporter`;
-
-- Caso a opção `3` seja selecionada, a raspagem deve ser feita utilizando a função `scrape` e listar o resultado no console;
-
-- Caso a opção `4` seja selecionada, deve-se encerrar a execução do script e deve-se exibir a mensagem "Encerrando script";
-
-- Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
-
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-collector`, assim você conseguirá interagir com o menu.
-
-**O que será verificado:**
-
-- Será validado que é possível executar a opção importar
-
-- Será validado que é possível executar a opção exportar
-
-- Será validado que é possível executar a opção raspar notícia
-
-#### 13 - Preencha a função `analyzer_menu`  que se encontra no módulo `tech_news/menu.py` como um menu de opções, em que cada opção pede as informações necessárias para disparar uma ação. O texto exibido pelo menu deve ser exatamente:
-
-```md
 Selecione uma das opções a seguir:
-
+0 - Popular banco
 1 - Buscar notícias por título;
 2 - Buscar notícias por data;
 3 - Buscar notícias por fonte;
@@ -663,7 +552,7 @@ Selecione uma das opções a seguir:
 7 - Sair.
 ```
 
-- A mensagem de menu deve ser exibida corretamente;
+- Caso a opção `0` seja selecionada, seve-se exibir a mensagem "Digite quantas notícias serão buscadas:"
 
 - Caso a opção `1` seja selecionada, deve-se exibir a mensagem "Digite o título:";
 
@@ -677,17 +566,14 @@ Selecione uma das opções a seguir:
 
 📌 A função `input` deve ser utilizada para receber a entrada de dados da pessoa usuária.
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
+✍️ Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, o menu deve ser exibido. Isto acontece pois durante a configuração inicial do projeto já configuramos para que a função seja corretamente chamada quando este comando seja invocado.
 
-**O que será verificado:**
+### 13 - Implemente as funcionalidades do menu
+local: `tech_news/menu.py`
 
-- Será validado que é possível listar o menu analyzer no console
+- Quando selecionada uma opção do menu, e inseridas as informações necessárias, a ação adequada deve ser realizada.
 
-- Será validado que é possível sair do menu analyzer
-
-- Será validado que é possível retornar um erro do menu analyzer quando opção inválida
-
-#### 14 - Selecione uma opção do menu de opções e inserir as informações necessárias, a ação adequada deve ser disparada e seu resultado deve ser exibido.
+- Caso a opção `0` seja selecionada, a importação deve ser feita utilizando a função `get_tech_news`;
 
 - Caso a opção `1` seja selecionada, a importação deve ser feita utilizando a função `search_by_title` e seu resultado deve ser impresso em tela;
 
@@ -705,21 +591,7 @@ Selecione uma das opções a seguir:
 
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
-✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, assim você conseguirá interagir com o menu.
-
-**O que será verificado:**
-
-- Será validado que é possível executar a opção buscar por título
-
-- Será validado que é possível executar a opção buscar por data
-
-- Será validado que é possível executar a opção buscar por fonte
-
-- Será validado que é possível executar a opção buscar por categoria
-
-- Será validado que é possível executar a opção buscar top 5 noticías
-
-- Será validado que é possível executar a opção buscar top 5 categorias
+✍️ Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, assim você conseguirá interagir com o menu.
 
 ---
 
@@ -727,10 +599,10 @@ Selecione uma das opções a seguir:
 
 Para **"entregar"** seu projeto, siga os passos a seguir:
 
-* Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
-  * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
-  * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
-  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-00`
+- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
+  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
+  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
+  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`
 
 Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
@@ -750,7 +622,7 @@ Use o material que você já viu sobre [Code Review](https://course.betrybe.com/
 
 Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. Leva menos de 3 minutos!
 
-Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
+Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://bit.ly/2OfLJPn)
 
 O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
 

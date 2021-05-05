@@ -1,6 +1,3 @@
-def collector_menu():
-    """Seu código deve vir aqui"""
-
-
+# Requisito 12
 def analyzer_menu():
     """Seu código deve vir aqui"""
