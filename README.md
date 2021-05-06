@@ -11,25 +11,45 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
-## Sumário
+# Sumário
 
-- [1 - Crie a função fetch](#1---crie-a-função-fetch)
-- [2 - Crie a função scrape_noticia](#2---crie-a-função-scrape_noticia)
-- [3 - Crie a função scrape_novidades](#3---crie-a-função-scrape_novidades)
-- [4 - Crie a função scrape_next_page_link](#4---crie-a-função-scrape_next_page_link)
-- [5 - Crie a função get_tech_news para obter as notícias!](#5---crie-a-função-get_tech_news-para-obter-as-notícias)
-- [6 - Crie a função search_by_title](#6---crie-a-função-search_by_title)
-- [7 - Crie a função search_by_date](#7---crie-a-função-search_by_date)
-- [8 - Crie a função search_by_source,](#8---crie-a-função-search_by_source)
-- [9 - Crie a função search_by_category](#9---crie-a-função-search_by_category)
-- [10 - Crie a função top_5_news](#10---crie-a-função-top_5_news)
-- [11 - Crie a função top_5_categories](#11---crie-a-função-top_5_categories)
-- [12 - Crie a função analyzer_menu](#12---crie-a-função-analyzer_menu)
-- [13 - Implemente as funcionalidades do menu](#13---implemente-as-funcionalidades-do-menu)
+- [Habilidades](#habilidades)
+- [Entregáveis](#Entregáveis)
+  - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
+  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
+  - [Data de entrega](#data-de-entrega)
+- [Intruções para entregar](#Instruções-para-entregar-seu-projeto)
+  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
+  - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
+  - [Revisando um pull request](#revisando-um-pull-request)
+  - [Linter](#linter)
+- [Como desenvolver](#como-desenvolver)
+  - [Testes](#testes)
+  - [Raspagem de notícias](#raspagem-de-notícias)
+  - [MongoDB](#mongodb)
+
+Lista de requisitos:
+- [Requisitos obrigatórios](#requisitos-obrigatórios)
+  - [1 - Crie a função fetch](#1---crie-a-função-fetch)
+  - [2 - Crie a função scrape_noticia](#2---crie-a-função-scrape_noticia)
+  - [3 - Crie a função scrape_novidades](#3---crie-a-função-scrape_novidades)
+  - [4 - Crie a função scrape_next_page_link](#4---crie-a-função-scrape_next_page_link)
+  - [5 - Crie a função get_tech_news para obter as notícias!](#5---crie-a-função-get_tech_news-para-obter-as-notícias)
+  - [6 - Crie a função search_by_title](#6---crie-a-função-search_by_title)
+  - [7 - Crie a função search_by_date](#7---crie-a-função-search_by_date)
+  - [8 - Crie a função search_by_source,](#8---crie-a-função-search_by_source)
+  - [9 - Crie a função search_by_category](#9---crie-a-função-search_by_category)
+  - [10 - Crie a função top_5_news](#10---crie-a-função-top_5_news)
+  - [11 - Crie a função top_5_categories](#11---crie-a-função-top_5_categories)
+-[Requisitos bônus](#requisitos-bônus)
+  - [12 - Crie a função analyzer_menu](#12---crie-a-função-analyzer_menu)
+  - [13 - Implemente as funcionalidades do menu](#13---implemente-as-funcionalidades-do-menu)
+
+- [Avisos finais](#avisos-finais)
 
 ---
 
-## Habilidades
+# Habilidades
 
 - Utilizar o terminal interativo do Python.
 - Escrever seus próprios módulos e importá-los em outros códigos.
@@ -39,11 +59,11 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
-## Entregáveis
+# Entregáveis
 
 Para entregar o seu projeto você deverá criar um _Pull Request_ neste repositório. Este _Pull Request_ deverá conter o diretório `tech_news` e o diretório `tests` com seus arquivos, que conterão seu código `Python` e seus testes, respectivamente.
 
-### 🚨 É importante que seus arquivos tenham exatamente estes nomes!
+**🚨 É importante que seus arquivos tenham exatamente estes nomes!**
 
 Você pode adicionar outros arquivos se julgar necessário. Qualquer dúvida, nos procure.
 
@@ -58,86 +78,7 @@ Você fará um projeto que tem como principal objetivo fazer consultas em notíc
 As notícias podem ser obtidas através da raspagem das [últimas notícias do _TecMundo_](https://www.tecmundo.com.br/novidades).
 
 ---
-
-## Desenvolvimento
-
-Este repositório contém um _template_ com uma estrutura de diretórios e arquivos. Na estrutura deste _template_, você deve implementar as funções necessárias. Novos arquivos e funções podem ser criados conforme a necessidade da sua implementação, porém não remova arquivos já existentes.
-
-## Testes
-
-Para executar os testes certifique-se de que os seguintes passos foram realizados;
-
-1. **criar o ambiente virtual**
-
-```bash
-$ python3 -m venv .venv
-```
-
-2. **ativar o ambiente virtual**
-
-```bash
-$ source .venv/bin/activate
-```
-
-3. **instalar as dependências no ambiente virtual**
-
-```bash
-$ python3 -m pip install -r dev-requirements.txt
-```
-
-Com o seu ambiente virtual ativo, as dependências serão instaladas neste ambiente.
-Quando precisar desativar o ambiente virtual, execute o comando "deactivate". Lembre-se de ativar novamente quando voltar a trabalhar no projeto.
-
-O arquivo `dev-requirements.txt` contém todas as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`.
-
-Com esta preparação feita, podemos executar os testes:
-
-**Executar os testes**
-
-```bash
-$ python3 -m pytest
-```
-
-Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse [artigo](https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1).
-
-Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando:
-
-**Verificar o estilo**
-
-```bash
-$ python3 -m flake8
-```
-
----
-
-## Dados
-
-### Raspagem de notícias
-
-As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do _TecMundo_: https://www.tecmundo.com.br/novidades.
-Essas notícias devem ser salvas no banco de dados utilizando as funções python que já vêm prontas no projeto.
-
-### MongoDB
-
-Para a realização deste projeto, utilizaremos um banco de dados chamado `tech_news`, e as notícias serão armazenadas em uma coleção chamada `news`. Já existem algumas funções prontas no arquivo `tech_news/database.py` que te auxiliarão no desenvolvimento. Não altere as funções deste arquivo; mudanças nele não serão executadas no avaliador automático.
-
-Para instalar e rodar o servidor MongoDB, siga as instruções no tutorial oficial:
-Ubuntu: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
-MacOS:  https://docs.mongodb.com/guides/server/install/
-
-Lembre-se de que o mongoDB utilizará por padrão a porta 27017. Se já houver outro serviço utilizando esta porta, considere desativá-lo.
----
-
-## Data de Entrega
-
-- Serão `X` dias de projeto.
-- Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
-
----
-
-## Instruções para entregar seu projeto:
-
-### ANTES DE COMEÇAR A DESENVOLVER:
+## Antes de começar a desenvolver:
 
 1. Clone o repositório
 
@@ -192,9 +133,17 @@ Lembre-se de que o mongoDB utilizará por padrão a porta 27017. Se já houver o
 
 ---
 
+## Data de Entrega
+
+- Serão `X` dias de projeto.
+- Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
+
+---
+# Instruções para entregar seu projeto:
+
 ## Durante o desenvolvimento
 
-- ⚠ **PULL REQUESTS COM ISSUES NO LINTER NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠
+Este repositório contém um _template_ com uma estrutura de diretórios e arquivos. Na estrutura deste _template_, você deve implementar as funções necessárias. Novos arquivos e funções podem ser criados conforme a necessidade da sua implementação, porém não remova arquivos já existentes.
 
 - Faça `commits` das alterações que você fizer no código regularmente
 
@@ -206,6 +155,30 @@ Lembre-se de que o mongoDB utilizará por padrão a porta 27017. Se já houver o
   3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
   4. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
   5. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
+
+- ⚠ Seu projeto não será avaliado com issues no linter, atente-se para manter seu código nos padrões estilo.
+---
+
+## Depois de terminar o desenvolvimento
+
+Para **"entregar"** seu projeto, siga os passos a seguir:
+
+- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
+  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
+  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
+  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`
+
+Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
+
+⚠ Lembre-se que garantir que todas as _issues_ comentadas pelo **Lint** estão resolvidas!
+
+---
+
+## Revisando um pull request
+
+À medida que você e as outras pessoas que estudam na Trybe forem entregando os projetos, vocês receberão um alerta via Slack para também fazer a revisão dos Pull Requests dos seus colegas. Fiquem atentos às mensagens do "Pull Reminders" no Slack!
+
+Use o material que você já viu sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os projetos que chegaram para você.
 
 ---
 
@@ -219,22 +192,50 @@ e de fácil manutenção! Para rodá-lo localmente no projeto, execute o comando
 python3 -m flake8
 ```
 
-⚠️ **PULL REQUESTS COM ISSUES DE LINTER NÃO SERÃO AVALIADAS.
-ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠️
+⚠️ Pull Requests com problemas de linter não serão avaliados.
 
 ---
 
+# Como desenvolver
+
 ## Testes
 
-Com as dependências já instaladas basta executar o comando:
+Para executar os testes certifique-se de que os seguintes passos foram realizados;
+
+1. **criar o ambiente virtual**
 
 ```bash
-python3 -m pytest
+$ python3 -m venv .venv
 ```
 
-Com esse comando irá executar todos os testes do projeto.
+2. **ativar o ambiente virtual**
 
-Caso o teste falhe e você queira ter um print melhor do erro basta executar o seguinte comando:
+```bash
+$ source .venv/bin/activate
+```
+
+3. **instalar as dependências no ambiente virtual**
+
+```bash
+$ python3 -m pip install -r dev-requirements.txt
+```
+
+📚 Se quiser saber mais sobre a instalação de dependências com `pip`, veja esse [artigo](https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1).
+
+Com o seu ambiente virtual ativo, as dependências serão instaladas neste ambiente.
+Quando precisar desativar o ambiente virtual, execute o comando "deactivate". Lembre-se de ativar novamente quando voltar a trabalhar no projeto.
+
+O arquivo `dev-requirements.txt` contém todas as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`.
+
+Com esta preparação feita, podemos executar os testes:
+
+**Executar os testes**
+
+```bash
+$ python3 -m pytest
+```
+
+Este comando irá executar todos os testes do projeto. Caso o teste falhe e você queira ter um print melhor do erro basta executar o seguinte comando:
 
 ```bash
 python3 -m pytest -s -vv
@@ -246,9 +247,33 @@ Caso precise executar apenas um arquivo de testes basta executar o comando:
 python3 -m pytest tests/nomedoarquivo.py
 ```
 
+Para verificar se você está seguindo o guia de estilo do Python corretamente, execute o comando:
+
+**Verificar o estilo**
+
+```bash
+$ python3 -m flake8
+```
+
 ---
 
-## Requisitos obrigatórios:
+## Raspagem de notícias
+
+As notícias a serem raspadas estarão disponíveis na aba de últimas notícias do _TecMundo_: https://www.tecmundo.com.br/novidades.
+Essas notícias devem ser salvas no banco de dados utilizando as funções python que já vêm prontas no módulo `database.py`
+
+## MongoDB
+
+Para a realização deste projeto, utilizaremos um banco de dados chamado `tech_news`, e as notícias serão armazenadas em uma coleção chamada `news`. Já existem algumas funções prontas no arquivo `tech_news/database.py` que te auxiliarão no desenvolvimento. Não altere as funções deste arquivo; mudanças nele não serão executadas no avaliador automático.
+
+Para instalar e rodar o servidor MongoDB, siga as instruções no tutorial oficial:
+Ubuntu: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+MacOS:  https://docs.mongodb.com/guides/server/install/
+
+Lembre-se de que o mongoDB utilizará por padrão a porta 27017. Se já houver outro serviço utilizando esta porta, considere desativá-lo.
+---
+
+# Requisitos obrigatórios:
 
 ### 1 - Crie a função `fetch`
 local: `tech_news/scraper.py`
@@ -592,29 +617,6 @@ local: `tech_news/menu.py`
 - Caso alguma exceção seja lançada, a mesma deve ser capturada e sua mensagem deve ser exibida na saída padrão de erros (`stderr`).
 
 ✍️ Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `tech-news-analyzer`, assim você conseguirá interagir com o menu.
-
----
-
-## Depois de terminar o desenvolvimento
-
-Para **"entregar"** seu projeto, siga os passos a seguir:
-
-- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
-  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
-  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
-  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`
-
-Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
-
-⚠ Lembre-se que garantir que todas as _issues_ comentadas pelo **Lint** estão resolvidas! ⚠
-
----
-
-### Revisando um pull request
-
-À medida que você e as outras pessoas que estudam na Trybe forem entregando os projetos, vocês receberão um alerta via Slack para também fazer a revisão dos Pull Requests dos seus colegas. Fiquem atentos às mensagens do "Pull Reminders" no Slack!
-
-Use o material que você já viu sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os projetos que chegaram para você.
 
 ---
 

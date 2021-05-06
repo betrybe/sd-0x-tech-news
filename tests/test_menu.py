@@ -108,22 +108,11 @@ NEW_NOTICE_6 = {
     "categories": ["PC_6", "Console_6"],
 }
 
-
-# def test_executar_opcao_raspar_collector_menu(capsys):
-#     with patch("builtins.input") as mocked_input, patch(
-#         "tech_news.menu.get_tech_news"
-#     ) as scraper, patch("tech_news.menu.create_news") as create_news:
-#         mocked_input.side_effect = ["3", "1"]
-#         collector_menu()
-#         scraper.assert_called_once_with(1)
-#         create_news.assert_called_once()
-
-
-def test_validar_saida_do_console_analyzer_menu(capsys):
+def test_analyzer_menu_basic(capsys):
+    # validar saída do console analyzer menu
     def fake_input(prompt=""):
         print(prompt, end=" ")
         return ""
-
     with patch("builtins.input", fake_input):
         analyzer_menu()
     out, err = capsys.readouterr()
@@ -133,23 +122,22 @@ def test_validar_saida_do_console_analyzer_menu(capsys):
     )
 
 
-def test_executar_opcao_sair_do_console_analyzer_menu(capsys):
+def test_analyzer_menu_functions(capsys):
+    # executar opção sair
     with patch("builtins.input") as mocked_input:
         mocked_input.side_effect = ["7", ""]
         analyzer_menu()
     out, err = capsys.readouterr()
     assert "Encerrando script\n" in out
 
-
-def test_executar_opcao_invalida_do_analyzer_menu(capsys):
+    # executar opção invalida
     with patch("builtins.input") as mocked_input:
         mocked_input.side_effect = ["8", ""]
         analyzer_menu()
     out, err = capsys.readouterr()
     assert err == "Opção inválida\n"
 
-
-def test_executar_opcao_titulo_do_console_analyzer_menu(capsys):
+    # executar opção buscar por titulo
     db.news.delete_many({})
     db.news.insert_one(NEW_NOTICE_ANALYZER)
     with patch("builtins.input") as mocked_input, patch(
@@ -159,8 +147,7 @@ def test_executar_opcao_titulo_do_console_analyzer_menu(capsys):
         analyzer_menu()
         mock_search_by_title.assert_called_once_with("Vamoscomtudo")
 
-
-def test_executar_opcao_data_do_console_analyzer_menu(capsys):
+    # executar opção buscar por data
     db.news.delete_many({})
     db.news.insert_one(NEW_NOTICE_ANALYZER)
     with patch("builtins.input") as mocked_input, patch(
@@ -170,8 +157,7 @@ def test_executar_opcao_data_do_console_analyzer_menu(capsys):
         analyzer_menu()
         mock_search_by_date.assert_called_once_with("2020-11-23")
 
-
-def test_executar_opcao_fonte_do_console_analyzer_menu(capsys):
+    # executar opção buscar por fonte
     db.news.delete_many({})
     db.news.insert_one(NEW_NOTICE_ANALYZER)
     with patch("builtins.input") as mocked_input, patch(
@@ -181,8 +167,7 @@ def test_executar_opcao_fonte_do_console_analyzer_menu(capsys):
         analyzer_menu()
         mock_search_by_source.assert_called_once_with("ResetEra")
 
-
-def test_executar_opcao_categoria_do_console_analyzer_menu(capsys):
+    # executar opção buscar por categoria
     db.news.delete_many({})
     db.news.insert_one(NEW_NOTICE_ANALYZER)
     with patch("builtins.input") as mocked_input, patch(
@@ -192,8 +177,7 @@ def test_executar_opcao_categoria_do_console_analyzer_menu(capsys):
         analyzer_menu()
         mock_search_by_category.assert_called_once_with("Console")
 
-
-def test_executar_opcao_top5_noticias_do_console_analyzer_menu(capsys):
+    # executar opção top5 noticias
     db.news.delete_many({})
     db.news.insert_many(
         [
@@ -212,8 +196,7 @@ def test_executar_opcao_top5_noticias_do_console_analyzer_menu(capsys):
         analyzer_menu()
         mock_top_5_news.assert_called_once()
 
-
-def test_executar_opcao_top5_categorias_do_console_analyzer_menu(capsys):
+    # executar opção top5 categorias
     db.news.delete_many({})
     db.news.insert_many(
         [
@@ -232,8 +215,7 @@ def test_executar_opcao_top5_categorias_do_console_analyzer_menu(capsys):
         analyzer_menu()
         mock_top_5_categories.assert_called_once()
 
-
-def test_executar_opcao_popular_banco_do_console_analyzer_menu(mocker):
+    # executar opção popular banco
     def mocked_fetch(url):
         path = (
             "tests/assets/tecmundo_pages/"
