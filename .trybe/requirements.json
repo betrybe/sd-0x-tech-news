@@ -32,7 +32,7 @@
     },
     {
       "identifier": "test_buscar_noticia_pela_data",
-      "description": "7---crie-a-função-search_by_date",
+      "description": "7 - crie a função search_by_date",
       "bonus": false
     },
     {
@@ -56,84 +56,14 @@
       "bonus": false
     },
     {
-      "identifier": "",
+      "identifier": "test_analyzer_menu_basic",
       "description": "12 - Crie a função analyzer_menu",
       "bonus": false
     },
     {
-      "identifier": "test_validar_saida_do_console_collector_menu",
-      "description": "11.1 - Será validado que é possível listar o menu collector no console",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_sair_collector_menu",
-      "description": "11.2 - Será validado que é possível sair do menu collector",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_invalida_do_collector_menu",
-      "description": "11.3 - Será validado que é possível retornar um erro do menu collector quando opção inválida",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_importar_collector_menu",
-      "description": "12.1 - Será validado que e possível executar a opção importar",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_exportar_collector_menu",
-      "description": "12.2 - Será validado que e possível executar a opção exportar",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_raspar_collector_menu",
-      "description": "12.3 - Será validado que e possível executar a opção raspar notícia",
-      "bonus": true
-    },
-    {
-      "identifier": "test_validar_saida_do_console_analyzer_menu",
-      "description": "13.1 - Será validado que é possível listar o menu analyzer no console",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_sair_do_console_analyzer_menu",
-      "description": "13.2 - Será validado que é possível sair do menu analyzer",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_invalida_do_analyzer_menu",
-      "description": "13.3 - Será validado que é possível retornar um erro do menu analyzer quando opção inválida",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_titulo_do_console_analyzer_menu",
-      "description": "14.1 - Será validado que é possível executar a opção buscar por título",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_data_do_console_analyzer_menu",
-      "description": "14.2 - Será validado que é possível executar a opção buscar por data",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_fonte_do_console_analyzer_menu",
-      "description": "14.3 - Será validado que é possível executar a opção buscar por fonte",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_categoria_do_console_analyzer_menu",
-      "description": "14.4 - Será validado que é possível executar a opção buscar por categoria",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_top5_noticias_do_console_analyzer_menu",
-      "description": "14.5 - Será validado que é possível executar a opção buscar top 5 noticías",
-      "bonus": true
-    },
-    {
-      "identifier": "test_executar_opcao_top5_categorias_do_console_analyzer_menu",
-      "description": "14.6 - Será validado que é possível executar a opção buscar top 5 categorias",
-      "bonus": true
+      "identifier": "test_analyzer_menu_functions",
+      "description": "13 - Implemente as funcionalidades do menu",
+      "bonus": false
     }
   ]
 }
