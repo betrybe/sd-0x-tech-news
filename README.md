@@ -361,7 +361,7 @@ Agora que temos a página HTML, é hora de fazer o scrape! Vamos utilizar as fer
   ```
   Repare que no exemplo dentro da tag _p_ encontram-se duas outras tags. Esse é um caso onde a tag _p_ é um ancestral e as tags _a_ e _em_ são as descendentes. Para obter todo o texto do exemplo, utiliza-se `*::text` no seletor.
 
-✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/scraper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape(fetcher=fetch_content, pages=2)`.
+✍️ Teste manual: abra um terminal Python importando esta função através do comando `python3 -i tech_news/scraper.py` e invoque a função utilizando diferentes parâmetros. Exemplo: `scrape_noticia(fetcher=fetch_content, pages=2)`.
 
 **🤖 O que será verificado pelo avaliador:**
 - Será verificado se a função retorna o conteúdo correto e no formato correto, dada uma página de notícia exemplo.
